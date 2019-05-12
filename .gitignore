@@ -29,3 +29,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Not to conflict when we use git
+# Only for Mac User
+.DS_Store
