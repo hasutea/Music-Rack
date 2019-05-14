@@ -1,0 +1,18 @@
+<h2>商品詳細</h2>
+	<%= attachment_image_tag product, image %>
+	<%= @product.title %>
+	<%= @product.artist %>
+	<% if @product.stock > 0 %>
+		<p>在庫あり<p>
+	<% else %>
+		<p>在庫なし</p>
+	<% end %>
+	<p>価格(税込)|￥</p>
+	<%= @product.price %>
+<h2>収録曲</h2>
+	<% @product.each do |product| %>
+		<p><% @product.disk %></p>
+		<ul>
+			<li><% @product.disk.song_order %>.<% @product.disk.song_title %></li>
+		</ul>
+	<% end %>
