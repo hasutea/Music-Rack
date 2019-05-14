@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>GithubWork</title>
+    <title><%= page_title %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!-- font-awesomeとjquery追記 -->
+    <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'  %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
+
+  <footer>
+    <%= render 'layouts/footer' %>
+  </footer>
 </html>
