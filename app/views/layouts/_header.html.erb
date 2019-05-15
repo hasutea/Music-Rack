@@ -20,24 +20,24 @@
           <ul class="nav navbar-nav navbar-right">
 
               <!-- 機能追加後削除します -->
-              <li><%= link_to "商品一覧", '#' %></li>
-              <li><%= link_to "商品登録", '#' %></li>
-              <li><%= link_to "ユーザー一覧", '#' %></li>
-              <li><%= link_to "管理者登録", '#' %></li>
-              <li><%= link_to "ログアウト", '#' %></li>
+              <li><%= link_to "商品一覧", products_path %></li>
+              <li><%= link_to "商品登録", new_product_path %></li>
+              <li><%= link_to "ユーザー一覧", users_path %></li>
+              <li><%= link_to "管理者登録", new_admin_registration_path %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path %></li>
 
 <!--             ユーザーログイン前
             <% if user_signed_in? %>
               <li><%= link_to "", '#', class: "glyphicon glyphicon-shopping-cart" %></li>
-              <li><%= link_to "新規登録", '#' %></li>
-              <li><%= link_to "ログイン", '#' %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
 
             ユーザーログイン後
             <% else %>
               <p class="navbar-text navbar-center">ようこそ、ユーザー名さん</p>
               <li><%= link_to "", '#', class: "glyphicon glyphicon-shopping-cart" %></li>
-              <li><%= link_to "マイページ", '#' %></li>
-              <li><%= link_to "ログアウト", '#' %></li>
+              <li><%= link_to "マイページ", user_path %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path %></li>
             <% end %>
 
 
@@ -48,11 +48,11 @@
             管理者ログイン後
             <% else %>
               <p class="navbar-text navbar-center"> 管理者ページ </p>
-              <li><%= link_to "商品一覧", '#' %></li>
-              <li><%= link_to "商品登録", '#' %></li>
-              <li><%= link_to "ユーザー一覧", '#' %></li>
-              <li><%= link_to "管理者登録", '#' %></li>
-              <li><%= link_to "ログアウト", '#' %></li>
+              <li><%= link_to "商品一覧", products_path %></li>
+              <li><%= link_to "商品登録", new_product_path %></li>
+              <li><%= link_to "ユーザー一覧", users_path %></li>
+              <li><%= link_to "管理者登録", new_admin_registration_path %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path %></li>
             <% end %> -->
 
           </ul>
