@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= page_title %></title>
+    <title>Music Rack</title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- font-awesomeとjquery追記 -->
+    <!-- font-awesomeとjqueryn追記 -->
     <%= stylesheet_link_tag    'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'  %>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 
@@ -15,6 +16,11 @@
 
   <body>
     <%= render 'layouts/header' %>
+
+<!--     _search _titleは、表示が必要な画面に以下を貼り付け
+    <%= render 'layouts/search' %>
+    <%= render 'layouts/title' %> -->
+
     <div class="container">
       <%= yield %>
     </div>

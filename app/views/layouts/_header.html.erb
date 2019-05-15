@@ -1,14 +1,63 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "Music Rack", '#', id: "logo" %>git
-    <nav>
-      <ul class="nav navbar-nav navbar-right">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid"> <!-- 流動レイアウト -->
+    <div class="row">
+      <div class="col-md-12">
 
-          <li><%= link_to "カート", '#' %></li>
-          <li><%= link_to "新規登録", '#' %></li>
-          <li><%= link_to "ログイン", '#' %></li>
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navmenu">
+          </button>
+          <a class="navbar-brand" href="#">
+            Music Rack
+          </a>
+        </div>
 
-      </ul>
-    </nav>
+        <div class="collapse navbar-collapse" id="navmenu">
+
+          <div class="nav navbar-nav">
+            <p class="navbar-text navbar-left"> 管理者ページ </p>
+          </div>
+
+          <ul class="nav navbar-nav navbar-right">
+
+              <!-- 機能追加後削除します -->
+              <li><%= link_to "商品一覧", '#' %></li>
+              <li><%= link_to "商品登録", '#' %></li>
+              <li><%= link_to "ユーザー一覧", '#' %></li>
+              <li><%= link_to "管理者登録", '#' %></li>
+              <li><%= link_to "ログアウト", '#' %></li>
+
+<!--             ユーザーログイン前
+            <% if user_signed_in? %>
+              <li><%= link_to "", '#', class: "glyphicon glyphicon-shopping-cart" %></li>
+              <li><%= link_to "新規登録", '#' %></li>
+              <li><%= link_to "ログイン", '#' %></li>
+
+            ユーザーログイン後
+            <% else %>
+              <p class="navbar-text navbar-center">ようこそ、ユーザー名さん</p>
+              <li><%= link_to "", '#', class: "glyphicon glyphicon-shopping-cart" %></li>
+              <li><%= link_to "マイページ", '#' %></li>
+              <li><%= link_to "ログアウト", '#' %></li>
+            <% end %>
+
+
+            管理者ログイン前
+            <% if admin_signed_in? %>
+              <p class="navbar-text navbar-center"> 管理者ページ </p>
+
+            管理者ログイン後
+            <% else %>
+              <p class="navbar-text navbar-center"> 管理者ページ </p>
+              <li><%= link_to "商品一覧", '#' %></li>
+              <li><%= link_to "商品登録", '#' %></li>
+              <li><%= link_to "ユーザー一覧", '#' %></li>
+              <li><%= link_to "管理者登録", '#' %></li>
+              <li><%= link_to "ログアウト", '#' %></li>
+            <% end %> -->
+
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
-</header>
+</nav>
