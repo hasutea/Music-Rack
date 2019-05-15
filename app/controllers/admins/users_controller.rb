@@ -1,4 +1,7 @@
-class UsersController < ApplicationController
+class Admins::UsersController < ApplicationController
+
+  def index
+  end
 
   def show
   end
@@ -11,4 +14,5 @@ class UsersController < ApplicationController
 
   def destroy
   end
+
 end
