@@ -17,16 +17,15 @@
   <body>
     <%= render 'layouts/header' %>
 
-<!--     _search _titleは、表示が必要な画面に以下を貼り付け
+<!--     _search _titleのパーシャルは、表示が必要な画面に以下を貼り付け
     <%= render 'layouts/search' %>
     <%= render 'layouts/title' %> -->
 
     <div class="container">
       <%= yield %>
     </div>
-  </body>
 
-  <footer>
     <%= render 'layouts/footer' %>
-  </footer>
+
+  </body>
 </html>
