@@ -1,2 +1,64 @@
-<h1>Payments#new</h1>
-<p>Find me in app/views/payments/new.html.erb</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+
+    <div class="row">
+      <div class="col-md-5">
+        <h1>決済ページ</h1>
+        <p>カート内の商品をご購入することができます。</p>
+      </div>
+  </div>
+
+    <table class="table table-bordered">
+      <tr>
+        <th>購入内容</th>
+        <th>購入枚数</th>
+        <th>小計</th>
+      </tr>
+      <tr>
+        <td>スプラトゥーン2</td>
+        <td>１枚</td>
+        <td>700 円</td>
+      </tr>
+      <tr>
+        <td>プロを目指す人のためのRuby入門 言語仕様からテスト駆動開発・デバッグ技法まで (Software Design plusシリーズ)</td>
+        <td>2枚</td>
+        <td>800 円</td>
+      </tr>
+    </table>
+
+    <div class="row">
+      <div class="col-md-3 col-md-offset-3 h3">送料 ￥500</div>
+      <div class="col-md-3 h3">購入価格総計￥2,000</div>
+    </div>
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-3 col-md-offset-8">
+      <button type="button" class="btn btn-primary btn-lg center-block btn-block">購入</button>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <form method="post">
+      <p>
+      <input type="radio" name="address" value="現在の送付先は以下の情報です。"> 現在の送付先は以下の情報です。
+      </p>
+      <p>送付先郵便番号：〒3933939</p>
+      <p>送付先住所：東京都ゲキド町3-9-339号室</p>
+
+      <p>
+      <input type="radio" name="address" value="上記送付先の記載の住所とは別の住所に送付する場合、以下を記載してください。"> 上記送付先の記載の住所とは別の住所に送付する場合、以下を記載してください。
+      </p>
+
+
+      </form>
+
+</div>
