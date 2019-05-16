@@ -1,0 +1,35 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid"> <!-- 流動レイアウト -->
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navmenu">
+          </button>
+          <a class="navbar-brand" href="#">
+            Music Rack
+          </a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navmenu">
+
+          <ul class="nav navbar-nav navbar-right">
+
+            <!-- 後日path、ユーザー名を変更する -->
+            <% if user_signed_in? %>
+              <p class="navbar-text navbar-left">ようこそ、ユーザー名さん</p>
+              <li><%= link_to "", '#', class: "glyphicon glyphicon-shopping-cart" %></li>
+              <li><%= link_to "マイページ", '#' %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "", cart_path(@user), class: "glyphicon glyphicon-shopping-cart" %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
+            <% end %>
+
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
