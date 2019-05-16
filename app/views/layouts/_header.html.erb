@@ -19,14 +19,8 @@
 
           <ul class="nav navbar-nav navbar-right">
 
-              <!-- 機能追加後削除します -->
-              <li><%= link_to "商品一覧", products_path %></li>
-              <li><%= link_to "商品登録", new_product_path %></li>
-              <li><%= link_to "ユーザー一覧", users_path %></li>
-              <li><%= link_to "管理者登録", new_admin_registration_path %></li>
-              <li><%= link_to "ログアウト", destroy_user_session_path %></li>
 
-<!--             ユーザーログイン前
+             ユーザーログイン前
             <% if user_signed_in? %>
               <li><%= link_to "", cart_path(@user), class: "glyphicon glyphicon-shopping-cart" %></li>
               <li><%= link_to "新規登録", new_user_registration_path %></li>
@@ -53,7 +47,7 @@
               <li><%= link_to "ユーザー一覧", users_path %></li>
               <li><%= link_to "管理者登録", new_admin_registration_path %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path %></li>
-            <% end %> -->
+            <% end %>
 
           </ul>
         </div>
