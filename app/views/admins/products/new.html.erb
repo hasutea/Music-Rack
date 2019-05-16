@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <h1>商品登録</h1>
+      <div class="col-md-5 col-md-offset-1">
+        <img src="cdjacket1.png" alt="no image">
+      </div>
+
+      <div class="col-md-4">
+
+        <form action="/" method="post">
+          <div>
+            <label for="song_title">シングル/アルバム曲名</label>
+            <input type="text" id="song_title" name="song_title">
+          </div>
+
+          <div>
+            <label for="artist">アーティスト名</label>
+            <input type="text" class="artist" name="artist">
+            <input type="text" class="artist" name="artist" placeholder="選択肢にない場合は、直接入力して下さい">
+          </div>
+
+          <div>
+            <label for="label">レーベル名</label>
+            <input type="text" class="label" name="label">
+            <input type="text" class="label" name="label" placeholder="選択肢にない場合は、直接入力して下さい">
+          </div>
+
+          <div>
+            <label for="genre">ジャンル</label>
+            <input type="text" class="genre" name="genre">
+            <input type="text" class="genre" name="genre" placeholder="選択肢にない場合は、直接入力して下さい">
+          </div>
+
+          <div>
+            <label for="quantity">在庫数</label>
+            <input type="number" class="quantity" name="quantity">
+          </div>
+
+          <div>
+            <label for="price">価格(税別)</label>
+            <input type="text" class="price" name="price" data-format="number">
+          </div>
+
+          <div>
+            <label for="status">ステータス</label>
+            <select name="status">
+              <option value="selling">販売中</option>
+              <option value="stop_sellng">販売停止中</option>
+            </select>
+          </div>
+        </form>
+      </div>
+  </div>
+
+  <div class="row">
+    <h4>シングル/アルバム内の曲名</h4>
+      <div class="col-md-5 col-md-offset-1">
+        <p>Disk1</p>
+          <div>
+            <label for="songs">曲名1</label>
+            <input type="text" class="songs" name="songs">
+          </div>
+          <div>
+            <label for="songs">曲名2</label>
+            <input type="text" class="songs" name="songs">
+          </div>
+          <div>
+            <label for="songs">曲名3</label>
+            <input type="text" class="songs" name="songs">
+          </div>
+
+          <button type="button" class="btn btn-info">曲名を追加</button>
+          <button type="button" class="btn btn-info">Diskを追加</button>
+
+          <button type="submit" class="btn btn-success">新規登録</button>
+      </div>
+  </div>
+</div>
