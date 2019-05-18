@@ -6,24 +6,25 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navmenu">
           </button>
-          <a class="navbar-brand" href="admins_products_path">
+          <a class="navbar-brand" href="products_path">
             Music Rack
           </a>
         </div>
 
         <div class="collapse navbar-collapse" id="navmenu">
-          <div class="nav navbar-nav">
-            <p class="navbar-text navbar-left"> 管理者ページ </p>
-          </div>
 
           <ul class="nav navbar-nav navbar-right">
 
-            <% if admin_signed_in? %>
-              <li><%= link_to "商品一覧", admins_products_path %></li>
-              <li><%= link_to "商品登録", new_admins_product_path %></li>
-              <li><%= link_to "ユーザー一覧", admins_users_path %></li>
-              <li><%= link_to "管理者登録", new_admin_registration_path %></li>
+            <!-- 後日pathとユーザー名修正 -->
+            <% if user_signed_in? %>
+              <p class="navbar-text navbar-left">ようこそ、ユーザー名さん</p>
+              <li><%= link_to "", '#', class: "glyphicon glyphicon-shopping-cart" %></li>
+              <li><%= link_to "マイページ", user_path %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            <% else %>
+              <li><%= link_to "", '#', class: "glyphicon glyphicon-shopping-cart" %></li>
+              <li><%= link_to "新規登録", new_user_registration_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
             <% end %>
 
           </ul>
