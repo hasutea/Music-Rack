@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+  attachment :image
   belongs_to :label
   belongs_to :artist
   belongs_to :genre
