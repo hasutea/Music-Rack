@@ -1,26 +1,32 @@
 <div class="container">
-  <div class="row">
-      <div class="col-md-5 col-md-offset-1">
+  <div class="row border"> <!-- cssでborder設定する -->
+      <div class="col-md-4 col-md-offset-2">
         <img src="cdjacket1.png" alt="no image">
-        <button type="button" class="btn btn-info">画像選択</button>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-5">
         <p>title</p>
         <p>アーティスト名</p>
         <p>価格(税込)|￥5,000</p>
-        <select name="status">
-          <option value="quantity">1</option>
-          <option value="quantity">2</option>
-          <option value="quantity">3</option>
-          <option value="quantity">4</option>
-          <option value="quantity">5</option>
-        </select>
-        <button type="button" class="btn btn-primary btn-sm">削除</button>
+        <p>数量｜
+          <select name="quantity">
+            <option value="quantity">1</option>
+            <option value="quantity">2</option>
+            <option value="quantity">3</option>
+            <option value="quantity">4</option>
+            <option value="quantity">5</option>
+          </select>
+        </p>
+        <p>
+          <button type="button" class="btn btn-danger btn-sm">削除</button>
+        </p>
       </div>
+  </div>
 
-      <div class="col-md-4">
+  <div class="row">
+      <div class="text-center">
         <p>商品合計（税込）｜　¥5,000</p>
+        <button type="button" class="btn btn-primary btn-lg">決済ページへ</button>
       </div>
   </div>
 </div>
