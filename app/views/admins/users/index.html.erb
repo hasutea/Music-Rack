@@ -19,16 +19,32 @@
 		  <table class="table">
 		  	<thead>
 		  		<tr>
-		  			<th>ID</th><th>名前（性・名）</th><th>名前（カナ性・カナ名）</th><th>メールアドレス</th>
+		  			<th>ID</th>
+		  			<th>名前（性・名）</th>
+		  			<th>名前（カナ性・カナ名）</th>
+		  			<th>メールアドレス</th>
 		  		</tr>
 		  	</thead>
+
+		<% @users.each do |user| %>
 
 
 		  	<tbody>
 		  		<tr>
-		  			<td>1</td><td>吉田健</td><td>ヨシダタケル</td><td>User Blocked@mail.com</td>
+		  			<td><%= link_to admins_user_path(user.id) do %>
+		  			    <%= user.id %>
+		  			    <% end %>
+		  			</td>
+
+		  			<td><span><%= user.last_name %></span><span><%= user.first_name %></span></td>
+
+		  			<td><span><%= user.kana_last_name %></span><span><%= user.kana_first_name %></span></td>
+
+		  			<td><span><%= user.email %></span></td>
 		  		</tr>
 		  	</tbody>
+
+		<% end %>
 		  </table>
 		</div>
 	</div>

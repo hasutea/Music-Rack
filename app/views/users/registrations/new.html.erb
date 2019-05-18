@@ -24,18 +24,17 @@
   </div>
 
 
+<%= f.fields_for :addresses do |f| %>
+  <div class="field">
+    <%= f.label :postal_code %><br />
+    <%=f.text_field :postal_code, placeholder:"例：3218364" %>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
+  <div>
+    <%= f.label :address %><br />
+    <%= f.text_field :address, placeholder:"例：東京都千代田区大手町2-11" %>
+  </div>
+<% end %>
 
 
 

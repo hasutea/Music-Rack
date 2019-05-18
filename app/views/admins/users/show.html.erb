@@ -46,19 +46,19 @@
     <div class="col-md-6">
 
        <div>
-        <p><span>ななし</span><span>hoge</span></p>
+        <p><span><%= @user.last_name %></span><span><%= @user.first_name %></span></p>
 
-        <p><span>ナナシ</span><span>ホゲ</span></p>
+        <p><span><%= @user.kana_last_name %></span><span><%= @user.kana_first_name %></span></p>
 
-        <p><span>3933939</span></p>
+        <p><span><%= @addresses.postal_code %></span></p>
 
-        <p><span>東京都</span></p>
+        <p><span><%= @addresses.address %></span></p>
 
-        <p><span>07077777777</span></p>
+        <p><span><%= @user.telephone %></span></p>
 
-        <p><span>hogehoge@hogehoge.com</span></p>
+        <p><span><%= @user.email %></span></p>
 
-        <p><span>password01</span></p>
+        <p><span><%= @user.password %></span></p>
        </div>
 
     </div>
@@ -74,19 +74,31 @@
             <p>ユーザー情報を編集するには編集をクリック<br>
                してください。
             </p>
-            <p><button class="btn btn-success">編集</button></p>
+            <p>
+              <%= link_to edit_admins_user_path(@user.id) do %>
+              <button class="btn btn-success">編集</button>
+              <% end %>
+            </p>
         </div>
 
         <div class="">
             <p>過去の購入履歴を閲覧するには購入履歴一覧<br>
                をクリックしてください。
             </p>
-            <p><button class="btn btn-primary">購入履歴一覧</button></p>
+            <p>
+              <%= link_to admins_payments_path do %>
+              <button class="btn btn-primary">購入履歴一覧</button>
+              <% end %>
+            </p>
         </div>
 
         <div class="">
-            <p>退会処理をするには退会をクリックしてください。</p>
-            <p><button class="btn btn-danger">退会</button></p>
+            <p>このユーザーを退会させるには退会をクリックしてください。</p>
+            <p>
+              <%= link_to user_registration_path(@user.id),method: :delete,"data-confirm" => "本当に退会させますか？" do %>
+              <button class="btn btn-danger">退会</button>
+              <% end %>
+            </p>
         </div>
 
     </div>
