@@ -2,7 +2,7 @@ class Admins::PaymentsController < ApplicationController
 
   layout "admin"
 
-  def index
+  def show
   end
 
   def update

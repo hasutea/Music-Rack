@@ -5,10 +5,10 @@ class PaymentsController < ApplicationController
   def create
   end
 
-  def index
+  def show
   end
 
-  def show
+  def finish
   end
 
 end
