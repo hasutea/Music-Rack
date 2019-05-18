@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def index
+  	@products = Product.all
   end
 
   def show
@@ -8,5 +9,7 @@ class ProductsController < ApplicationController
 
 private
   def product_params
-    params.require(:product).permit(:title, :artist, :genre, :image, :price, :disk, :stock, :status,)
+    params.require(:product).permit(:title, :artist, :genre, :image, :price, :disk, :stock, :status)
+end
+
 end
