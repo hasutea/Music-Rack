@@ -2,30 +2,29 @@
   <%= render 'layouts/search' %>
   <h2>商品詳細</h2>
   <div class="col-md-5 col-md-offset-1">
-    <img src="assets/cdjacket1.png" alt="no image">
+    <%= attachment_image_tag @product, :image, size: "100x100", format: 'jpg' %>
   </div>
   <div class="col-md-4">
-    <label></label><br>
-    <label>artist</label>
-    <p>レーベル名</p>
-    <p>ジャンル｜J-POP</p>
-    <p>在庫あり</p>
-    <p>価格(税込)|￥5,000</p>
-    <P><button type="button" class="btn btn-primary btn-sm">カートに入れる</button></P>
+    <label><%= @product.title %></label><br>
+    <label><%= @product.artist %></label>
+    <p><%= @product.label %></p>
+    <p>ジャンル｜<%= @product.genre %></p>
+    <% if @product.stock > 0 %>
+      <p>在庫あり</p>
+    <% else %>
+      <p>在庫なし</p>
+    <% end %>
+    <p>価格(税込)|￥<%= @product.price %></p>
+    <P><%= link_to "カートに入れる", cart_path(current_user.id), class: "btn btn-primary btn-sm" %></P>
   </div>
 </div>
 <div class="row">
   <h2>収録曲</h2>
   <div class="col-md-5 col-md-offset-1">
-    <p>Disk1</p>
-      <ul>
-        <li>1.美しい日</li>
-        <li>2.運命</li>
-      </ul>
-    <p>Disk2</p>
-      <ul>
-        <li>1.美しい日</li>
-        <li>2.運命</li>
-      </ul>
-  </div>
+    <% @products.disk.each do |disk| %>
+      <p><%= disk.disk %></p>
+        <ul>
+          <li><%= disk.song_order %>.<%= disk.song_title %></li>
+        </ul>
+    <% end %>
 </div>
