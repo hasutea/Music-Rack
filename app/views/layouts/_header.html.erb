@@ -19,7 +19,7 @@
             <% if user_signed_in? %>
               <p class="navbar-text navbar-left">ようこそ、ユーザー名さん</p>
               <li><%= link_to "", '#', class: "glyphicon glyphicon-shopping-cart" %></li>
-              <li><%= link_to "マイページ", user_path %></li>
+              <li><%= link_to "マイページ", '#' %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             <% else %>
               <li><%= link_to "", '#', class: "glyphicon glyphicon-shopping-cart" %></li>
