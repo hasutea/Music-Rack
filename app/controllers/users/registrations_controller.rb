@@ -8,7 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # GET /resource/sign_up
    def new
      @user = User.new
-     @address = @user.build_address
+     @address = @user.addresses.build
    end
 
   # POST /resource
