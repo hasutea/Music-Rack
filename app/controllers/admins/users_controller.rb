@@ -1,5 +1,7 @@
 class Admins::UsersController < ApplicationController
 
+  layout "admin"
+
   def index
     @users = User.all.order(id: "DESC")
   end

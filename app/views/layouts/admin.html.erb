@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Music Rack</title>
+    <title>Music Rack管理者ページ</title>
 
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,9 +13,10 @@
 
   <body>
 
-    <!--     機能追加後削除 -->
+    <div class="admin_header">
+      <%= render "layouts/adminheader" %>
+    </div>
 
-    <%= render 'layouts/header' %>
 
     <div class="container">
       <%= yield %>
