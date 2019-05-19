@@ -50,15 +50,13 @@
 
         <p><span><%= @user.kana_last_name %></span><span><%= @user.kana_first_name %></span></p>
 
-        <p><span><%= @addresses.postal_code %></span></p>
+        <p><span><%= @address.postal_code %></span></p>
 
-        <p><span><%= @addresses.address %></span></p>
+        <p><span><%= @address.address %></span></p>
 
         <p><span><%= @user.telephone %></span></p>
 
         <p><span><%= @user.email %></span></p>
-
-        <p><span><%= @user.password %></span></p>
        </div>
 
     </div>
@@ -86,16 +84,16 @@
                をクリックしてください。
             </p>
             <p>
-              <%= link_to admins_payments_path do %>
               <button class="btn btn-primary">購入履歴一覧</button>
-              <% end %>
             </p>
         </div>
 
         <div class="">
-            <p>このユーザーを退会させるには退会をクリックしてください。</p>
+            <p>このユーザーを退会させるには退会をクリック<br>
+               してください。
+             </p>
             <p>
-              <%= link_to user_registration_path(@user),method: :delete,"data-confirm" => "本当に退会させますか？" do %>
+              <%= link_to user_registration_path(params[:id]),method: :delete,"data-confirm" => "本当に退会させますか？" do %>
               <button class="btn btn-danger">退会</button>
               <% end %>
             </p>
