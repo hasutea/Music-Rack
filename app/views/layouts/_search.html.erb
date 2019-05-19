@@ -1,3 +1,11 @@
+<div>
+  <%= form_tag(products_path,method: "get")do %>
+  <% label_tag :product, "商品" %><%= text_field_tag :product, params[:product] %>
+
+  <%= submit_tag "検索" %>
+  <% end %>
+</div>
+
 <form class="navbar-form navbar-right" role="search">
   <div class="form-group">
     <input type="text" class="form-control" placeholder="検索キーワード">
