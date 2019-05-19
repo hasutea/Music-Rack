@@ -6,4 +6,5 @@ class Product < ApplicationRecord
   has_many :disks, dependent: :destroy
   has_many :purchase_products, dependent: :destroy
   has_many :carts, dependent: :destroy
+
 end

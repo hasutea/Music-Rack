@@ -1,14 +1,6 @@
-<div>
-  <%= form_tag(products_path,method: "get")do %>
-  <% label_tag :product, "商品" %><%= text_field_tag :product, params[:product] %>
+<%search_form_for @query, url: products_path %>
+  <%# タイトルのカラムを指定値で検索%>
+  <%= f.label :title_start, "商品名を入力" %>
+  <%= f.search_field :title_start %>
 
-  <%= submit_tag "検索" %>
-  <% end %>
-</div>
-
-<form class="navbar-form navbar-right" role="search">
-  <div class="form-group">
-    <input type="text" class="form-control" placeholder="検索キーワード">
-  </div>
-  <button type="submit" class="btn btn-default">検索</button>
-</form>
+  <%= f.submit %>
