@@ -3,7 +3,7 @@ class Admins::UsersController < ApplicationController
   layout "admin"
 
   def index
-    @users = User.all.order(id: "DESC")
+    @users = User.page(params[:page]).reverse_order.per(30)
   end
 
   def show
