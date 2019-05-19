@@ -75,7 +75,7 @@
                してください。
             </p>
             <p>
-              <%= link_to edit_admins_user_path(@user.id) do %>
+              <%= link_to edit_admins_user_path(@user) do %>
               <button class="btn btn-success">編集</button>
               <% end %>
             </p>
@@ -95,7 +95,7 @@
         <div class="">
             <p>このユーザーを退会させるには退会をクリックしてください。</p>
             <p>
-              <%= link_to user_registration_path(@user.id),method: :delete,"data-confirm" => "本当に退会させますか？" do %>
+              <%= link_to user_registration_path(@user),method: :delete,"data-confirm" => "本当に退会させますか？" do %>
               <button class="btn btn-danger">退会</button>
               <% end %>
             </p>
