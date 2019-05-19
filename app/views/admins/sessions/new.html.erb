@@ -18,12 +18,12 @@
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :メールアドレスとパスワードを記憶する場合はチェックを入れてください %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "管理者用のページにログインする",class:"btn btn-success col-md-4 col-md-offset-4" %>
+    <%= f.submit "ログイン",class:"btn btn-success col-md-4 col-md-offset-4" %>
   </div>
 <% end %>
 
