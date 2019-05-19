@@ -37,8 +37,6 @@
         <p>□電話番号</p>
 
         <p>□メールアドレス</p>
-
-        <p>□パスワード</p>
       </div>
 
     </div>
@@ -46,19 +44,17 @@
     <div class="col-md-6">
 
        <div>
-        <p><span>ななし</span><span>hoge</span></p>
+        <p><span><%= @user.last_name %></span><span><%= @user.first_name %></span></p>
 
-        <p><span>ナナシ</span><span>ホゲ</span></p>
+        <p><span><%= @user.kana_last_name %></span><span><%= @user.kana_first_name %></span></p>
 
-        <p><span>3933939</span></p>
+        <p><span><%= @address.postal_code %></span></p>
 
-        <p><span>東京都</span></p>
+        <p><span><%= @address.address %></span></p>
 
-        <p><span>07077777777</span></p>
+        <p><span><%= @user.telephone %></span></p>
 
-        <p><span>hogehoge@hogehoge.com</span></p>
-
-        <p><span>password01</span></p>
+        <p><span><%= @user.email %></span></p>
        </div>
 
     </div>
@@ -74,7 +70,10 @@
             <p>ユーザー情報を編集するには編集をクリック<br>
                してください。
             </p>
-            <p><button class="btn btn-success">編集</button></p>
+            <p><%= link_to edit_user_path(@user) do %>
+              <button class="btn btn-success">編集</button>
+              <% end %>
+            </p>
         </div>
 
         <div class="">
@@ -86,7 +85,11 @@
 
         <div class="">
             <p>退会処理をするには退会をクリックしてください。</p>
-            <p><button class="btn btn-danger">退会</button></p>
+            <p>
+              <%= link_to user_registration_path(@user),method: :delete,"data-confirm" => "本当に退会しますか？" do %>
+              <button class="btn btn-danger">退会</button>
+              <% end %>
+            </p>
         </div>
 
     </div>
