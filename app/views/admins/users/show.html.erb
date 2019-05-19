@@ -82,7 +82,9 @@
                をクリックしてください。
             </p>
             <p>
+              <%= link_to admins_payment_path(@user) do %>
               <button class="btn btn-primary">購入履歴一覧</button>
+              <% end %>
             </p>
         </div>
 
@@ -91,7 +93,7 @@
                してください。
              </p>
             <p>
-              <%= link_to user_registration_path(@user.id),method: :delete,"data-confirm" => "本当に退会させますか？" do %>
+              <%= link_to user_registration_path(@user),method: :delete,"data-confirm" => "本当に退会させますか？" do %>
               <button class="btn btn-danger">退会</button>
               <% end %>
             </p>
