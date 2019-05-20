@@ -20,59 +20,20 @@
 
           <div class="form-group">
             <label for="control-label">アーティスト名</label>
-            <select class="form-control" name="artist">
-              <option>選択して下さい</option>
-              <option>back number</option>
-              <option>あいみょん</option>
-              <option>BTS</option>
-              <option>西野カナ</option>
-              <option>TWICE</option>
-              <option>米津玄師</option>
-              <option>平井大</option>
-              <option>AAA</option>
-              <option>ゆず</option>
-            </select>
+            <%= select_tag :artist, options_from_collection_for_select(Artist.all,:id,:artist), include_blank: true, class: "js-searchable form-control" %>
+
             <input type="text" class="form-control" name="artist" placeholder="選択肢にない場合は、直接入力して下さい">
           </div>
 
           <div class="form-group">
             <label for="control-label">レーベル名</label>
-            <select class="form-control" name="label">
-              <option>選択して下さい</option>
-              <option>SMEレコーズ</option>
-              <option>エピックレコードジャパン</option>
-              <option>デフスターレコーズ</option>
-              <option>avex trax</option>
-              <option>rhythm zone</option>
-              <option>EMI Records</option>
-              <option>UNIVERSAL J</option>
-              <option>UNIVERSAL SIGMA</option>
-            </select>
+            <%= select_tag :label, options_from_collection_for_select(Label.all,:id,:label), include_blank: true, class: "js-searchable form-control" %>
             <input type="text" class="form-control" name="label" placeholder="選択肢にない場合は、直接入力して下さい">
           </div>
 
           <div class="form-group">
             <label for="control-label">ジャンル</label>
-            <select class="form-control" name="genre">
-              <option>選択して下さい</option>
-              <option>J-POP・邦楽</option>
-              <option>アニメ・ゲーム（アニソン・ボーカロイド）</option>
-              <option>ロック＆ポップス</option>
-              <option>ヒップホップ/ラップ</option>
-              <option>クラブ/ダンス</option>
-              <option>R&B・ソウル</option>
-              <option>クラシック</option>
-              <option>ハードロック/ヘビーメタル</option>
-              <option>レゲエ</option>
-              <option>ブルース</option>
-              <option>韓流・K-POP</option>
-              <option>洋楽ジャズ</option>
-              <option>邦楽ジャズ</option>
-              <option>フュージョン</option>
-              <option>サントラ</option>
-              <option>キッズ</option>
-              <option>演歌・民謡</option>
-            </select>
+            <%= select_tag :genre, options_from_collection_for_select(Genre.all,:id,:genre), include_blank: true, class: "js-searchable form-control" %>
             <input type="text" class="form-control" name="genre" placeholder="選択肢にない場合は、直接入力して下さい">
           </div>
 
