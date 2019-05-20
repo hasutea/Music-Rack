@@ -2,10 +2,10 @@ class ProductsController < ApplicationController
   def index
     @products = Product.page(params[:page]).reverse_order
 
-    # 検索値を検索するインスタンス変数
-    @query = Product.ransack(params[:q])
-    # 検索結果を表示するインスタンス変数
-    @products = @query.paginate(page: params[:page], per_page: 20)
+    # (params[:q])に検索パラメーターが入り、Productテーブルを検索する@qオブジェクトを生成
+    @q = Product.ransack(params[:q])
+    # 検索結果を表示
+    @results = @q.result
   end
 
   def show
