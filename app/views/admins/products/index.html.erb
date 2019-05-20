@@ -17,49 +17,22 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>2</td>
-          <td><img src="assets/cdjacket1.png" alt="no image"></td>
-          <td>シングル名・アルバム名</td>
-          <td>back number</td>
-          <td>¥1,500</td>
-          <td>11</td>
-          <td>販売中</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td><img src="assets/cdjacket1.png" alt="no image"></td>
-          <td>シングル名・アルバム名</td>
-          <td>あいみょん</td>
-          <td>¥1,500</td>
-          <td>16</td>
-          <td>販売停止中</td>
-        </tr>
+        <% @products.each do |product| %>
+          <tr>
+            <td><%= product.id %></td>
+            <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'png', fallback: "noimage.png"  %></td>
+            <td><%= product.title %></td>
+            <td><%= product.artist %></td>
+            <td>¥<%= product.price %></td>
+            <td><%= product.stock %></td>
+            <td><%= product.order_status %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
 <div class="row">
   <div class="col-md-offset-4">
-    <ul class="pagination">
-      <li>
-        <a href="#" aria-label="前のページへ">
-          <span aria-hidden="true">«</span>
-        </a>
-      </li>
-      <li><a href="#">1</a></li>
-      <li class="active"><a href="#">2</a></li>
-      <li><a href="#">3</a></li>
-      <li><a href="#">4</a></li>
-      <li><a href="#">5</a></li>
-      <li><a href="#">6</a></li>
-      <li><a href="#">7</a></li>
-      <li><a href="#">8</a></li>
-      <li><a href="#">9</a></li>
-      <li>
-        <a href="#" aria-label="次のページへ">
-          <span aria-hidden="true">»</span>
-        </a>
-      </li>
-    </ul>
+    <%= paginate @products, class: "paginate" %>
   </div>
 </div>
