@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       admin_signed_in?
       redirect_to admins_users_path
     else
-      redirect_to products_path
+      redirect_to root_path
     end
   end
 
