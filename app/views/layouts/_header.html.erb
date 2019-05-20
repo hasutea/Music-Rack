@@ -17,7 +17,8 @@
 
             <!-- 後日pathとユーザー名修正 -->
             <% if user_signed_in? %>
-              <p class="navbar-text navbar-left">ようこそ、ユーザー名さん</p>
+              <p class="navbar-text navbar-left">ようこそ、<span><%= current_user.last_name %></span><span><%= current_user.first_name %></span>さん
+              </p>
               <li><%= link_to "", '#', class: "glyphicon glyphicon-shopping-cart" %></li>
               <li><%= link_to "マイページ", '#' %></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
