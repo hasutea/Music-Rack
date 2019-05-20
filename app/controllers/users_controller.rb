@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @addresses = @user.addresses
+    @address = @user.addresses.where()
   end
 
   def update
