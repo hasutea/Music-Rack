@@ -1,6 +1,6 @@
 <form class="navbar-form navbar-right" role="search">
   <div class="form-group">
-    <%= search_form_for @q do |f| %>
+    <%= search_form_for @search do |f| %>
       <!-- 検索値を含むレコードを検索 -->
       <%= f.search_field :title_cont, class: "form-control", placeholder: "商品名を入力" %>
 
@@ -28,7 +28,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @products.each do |product| %>
+        <% @results.each do |product| %>
           <tr>
             <td><%= product.id %></td>
             <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'png', fallback: "noimage.png"  %></td>
