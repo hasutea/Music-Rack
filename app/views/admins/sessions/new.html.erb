@@ -1,26 +1,47 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+<h1>こちらは、管理者さま専用のページです。</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="form-group">
+    <%= f.label :メールアドレス %><br />
+  <div class="row">
+    <div class="col-md-10">
+    <%= f.email_field :email, autofocus: true, autocomplete: "email",class:"form-control" %>
+    </div>
+  </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
+  <div class="form-group">
+    <%= f.label :パスワード %><br />
+  <div class="row">
+    <div class="col-md-10">
+    <%= f.password_field :password, autocomplete: "current-password",class:"form-control" %>
+    </div>
+  </div>
   </div>
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
       <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= f.label :メールアドレスとパスワードを記憶する場合はチェックを入れてください %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン",class:"btn btn-success col-md-4 col-md-offset-4" %>
   </div>
 <% end %>
 
+
+  <div class="row">
+    <div class="col-md-6">
 <%= render "admins/shared/links" %>
+    </div>
+  </div>
+
+    </div>
+  </div>
+</div>
