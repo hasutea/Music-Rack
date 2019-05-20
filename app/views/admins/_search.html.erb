@@ -2,7 +2,7 @@
   <div class="form-group">
     <%= search_form_for @q do |f| %>
       <!-- 検索値を含むレコードを検索 -->
-      <%= f.search_field :title_cont, class: "form-control", placeholder: "商品名を入力" %>
+      <%= f.search_field :title_cont, class: "form-control" %>
 
       <%= f.submit "検索" %>
     <% end %>
@@ -10,8 +10,8 @@
 </form>
 
     <!-- 検索結果を表示 index.html.erbに記載しないといけない -->
-  <% if @result.present? %>
-   <% @results.each do |result| %>
-     <p><%= result.title %></p>
-   <% end %>
-  <% end %>
+    <% if @result.present? %>
+     <% @results.each do |result| %>
+       <p><%= result.title %></p>
+     <% end %>
+    <% end %>
