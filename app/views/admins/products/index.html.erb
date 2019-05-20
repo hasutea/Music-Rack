@@ -1,3 +1,14 @@
+<form class="navbar-form navbar-right" role="search">
+  <div class="form-group">
+    <%= search_form_for @q do |f| %>
+      <!-- 検索値を含むレコードを検索 -->
+      <%= f.search_field :title_cont, class: "form-control", placeholder: "商品名を入力" %>
+
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+</form>
+
 <div class="row">
 
   <h2>商品一覧</h2>
