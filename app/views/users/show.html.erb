@@ -90,7 +90,7 @@
         <div class="">
             <p>退会処理をするには退会をクリックしてください。</p>
             <p>
-              <%= link_to user_registration_path(@user),method: :delete,"data-confirm" => "本当に退会しますか？" do %>
+              <%= link_to user_path(@user),method: :delete,"data-confirm" => "本当に退会しますか？" do %>
               <button class="btn btn-danger">退会</button>
               <% end %>
             </p>

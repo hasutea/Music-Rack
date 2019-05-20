@@ -20,6 +20,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    user = User.find(params[:id])
+    user.destroy
+    if
+      admin_signed_in?
+      redirect_to admins_users_path
+    else
+      redirect_to products_path
+    end
   end
 
 private
