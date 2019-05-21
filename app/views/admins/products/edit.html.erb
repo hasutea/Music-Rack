@@ -2,141 +2,105 @@
   <div class="row">
     <h1>商品編集</h1>
 
-    <%= form_for(@product) do |f| %>
-      <div class="form-group">
-        <div class="col-md-4 col-md-offset-2">
-          <%= attachment_image_tag product, :image, :fill, 200, 100, format: 'png', fallback: "noimage.png"  %>
-          <p>
-            <%= attachment_field :image, class: "btn btn-info btn-sm" %>
-          </p>
-        </div>
+    <div class="form-group">
+      <div class="col-md-4 col-md-offset-2">
+        <img src="cdjacket1.png" alt="no image">
+        <p>
+          <button type="button" class="btn btn-info btn-sm">画像選択</button>
+        </p>
+      </div>
 
-        <div class="col-md-4">
-          <div class="row">
+      <div class="col-md-4">
+        <div class="row">
 
-            <div class="form-group">
-              <label for="control-label">シングル/アルバム名</label>
-              <%= f.text_field :title, class: "form-control" %>
-            </div>
+          <div class="form-group">
+            <label for="control-label">シングル/アルバム名</label>
+            <input type="text" class="form-control" name="single_album">
+          </div>
 
-            <div class="form-group">
-              <label for="control-label">アーティスト名</label>
-              <select class="form-control" name="artist">
-                <option>back number</option>
-                <option>あいみょん</option>
-                <option>BTS</option>
-                <option>西野カナ</option>
-                <option>TWICE</option>
-                <option>米津玄師</option>
-                <option>平井大</option>
-                <option>AAA</option>
-                <option>ゆず</option>
-              </select>
-              <input type="text" class="form-control" name="artist" placeholder="選択肢にない場合は、直接入力して下さい">
-            </div>
+          <div class="form-group">
+            <label for="control-label">アーティスト名</label>
+            <%= select_tag :artist, options_from_collection_for_select(Artist.all,:id,:artist), include_blank: true, class: "js-searchable form-control" %>
 
-            <div class="form-group">
-              <label for="control-label">レーベル名</label>
-              <select class="form-control" name="label">
-                <option>SMEレコーズ</option>
-                <option>エピックレコードジャパン</option>
-                <option>デフスターレコーズ</option>
-                <option>avex trax</option>
-                <option>rhythm zone</option>
-                <option>EMI Records</option>
-                <option>UNIVERSAL J</option>
-                <option>UNIVERSAL SIGMA</option>
-              </select>
-              <input type="text" class="form-control" name="label" placeholder="選択肢にない場合は、直接入力して下さい">
-            </div>
+            <input type="text" class="form-control" name="artist" placeholder="選択肢にない場合は、直接入力して下さい">
+          </div>
 
-            <div class="form-group">
-              <label for="control-label">ジャンル</label>
-              <select class="form-control" name="genre">
-                <option>J-POP・邦楽</option>
-                <option>アニメ・ゲーム（アニソン・ボーカロイド）</option>
-                <option>ロック＆ポップス</option>
-                <option>ヒップホップ/ラップ</option>
-                <option>クラブ/ダンス</option>
-                <option>R&B・ソウル</option>
-                <option>クラシック</option>
-                <option>ハードロック/ヘビーメタル</option>
-                <option>レゲエ</option>
-                <option>ブルース</option>
-                <option>韓流・K-POP</option>
-                <option>洋楽ジャズ</option>
-                <option>邦楽ジャズ</option>
-                <option>フュージョン</option>
-                <option>サントラ</option>
-                <option>キッズ</option>
-                <option>演歌・民謡</option>
-              </select>
-              <input type="text" class="form-control" name="genre" placeholder="選択肢にない場合は、直接入力して下さい">
-            </div>
+          <div class="form-group">
+            <label for="control-label">レーベル名</label>
+            <%= select_tag :label, options_from_collection_for_select(Label.all,:id,:label), include_blank: true, class: "js-searchable form-control" %>
+            <input type="text" class="form-control" name="label" placeholder="選択肢にない場合は、直接入力して下さい">
+          </div>
 
-            <div class="form-group">
-              <label for="control-label">在庫数</label>
-              <select class="form-control" name="quantity">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
-            </div>
+          <div class="form-group">
+            <label for="control-label">ジャンル</label>
+            <%= select_tag :genre, options_from_collection_for_select(Genre.all,:id,:genre), include_blank: true, class: "js-searchable form-control" %>
+            <input type="text" class="form-control" name="genre" placeholder="選択肢にない場合は、直接入力して下さい">
+          </div>
 
-            <div class="form-group">
-              <label for="control-label">価格(税別)</label>
-              <div class="form-group row">
-                <div class="col-md-1">
-                  <label>¥</label>
-                </div>
-                <div class="col-md-11">
-                  <input type="text" class="form-control" name="price" data-format="number">
-                </div>
-            </div>
+          <div class="form-group">
+            <label for="control-label">在庫数</label>
+            <select class="form-control" name="quantity">
+              <option>0</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="control-label">価格(税別)</label>
+            <div class="form-group row">
+              <div class="col-md-1">
+                <label>¥</label>
+              </div>
+              <div class="col-md-11">
+                <input type="text" class="form-control" name="price" data-format="number">
+              </div>
+          </div>
 
 
-            <div class="form-group">
-              <label for="control-label">ステータス</label>
-              <select class="form-control" name="status">
-                <option value="selling">販売中</option>
-                <option value="stop_sellng">販売停止中</option>
-              </select>
-            </div>
+          <div class="form-group">
+            <label for="control-label">ステータス</label>
+            <select class="form-control" name="status">
+              <option value="selling">販売中</option>
+              <option value="stop_sellng">販売停止中</option>
+            </select>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="col-md-5 col-md-offset-2">
-        <label>シングル/アルバム内の曲名</label>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <label>シングル/アルバム内の曲名</label>
 
-          <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-              <p>Disk1</p>
-              <div class="form-group">
-                <label for="control-label">曲名1</label>
-                <input type="text" class="form-control" name="songs">
-              </div>
-              <div class="form-group">
-                <label for="control-label">曲名2</label>
-                <input type="text" class="form-control" name="songs">
-              </div>
-              <div class="form-group">
-                <label for="control-label">曲名3</label>
-                <input type="text" class="form-control" name="songs">
-              </div>
+        <div class="row">
+              <table class="table table-bordered">
+                <tr>
+                  <th>ディスク</th>
+                  <th>曲名</th>
+                  <th>曲順</th>
+                </tr>
+                <tr>
+                  <td>ディスク1</td>
+                  <td>ハレノヒ</td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td>ディスク1</td>
+                  <td>マリーゴールド</td>
+                  <td>2</td>
+                </tr>
+              </table>
 
-              <button type="button" class="btn btn-info btn-sm">曲名を追加</button>
-              <button type="button" class="btn btn-info btn-sm">Diskを追加</button>
-              <!-- 削除ボタンもつける？ -->
-            </div>
+            <button type="button" class="btn btn-info btn-sm">記入欄を追加</button>
           </div>
-
-      </div>
+        </div>
     </div>
+  </div>
 
     <div class="row">
       <div class="col-md-3 col-md-offset-3">
