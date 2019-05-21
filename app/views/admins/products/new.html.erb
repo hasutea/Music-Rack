@@ -58,7 +58,7 @@
               <div class="col-md-11">
                 <input type="text" class="form-control" name="price" data-format="number">
               </div>
-          </div>
+            </div>
 
 
           <div class="form-group">
@@ -78,25 +78,135 @@
       <label>シングル/アルバム内の曲名</label>
 
         <div class="row">
-              <table class="table table-bordered">
-                <tr>
-                  <th>ディスク</th>
-                  <th>曲名</th>
-                  <th>曲順</th>
-                </tr>
-                <tr>
-                  <td>ディスク1</td>
-                  <td>ハレノヒ</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>ディスク1</td>
-                  <td>マリーゴールド</td>
-                  <td>2</td>
-                </tr>
-              </table>
+              <table class="table table-bordered p2146-2-table">
+                <thead>
+                  <tr>
+                    <th>ディスク</th>
+                    <th>曲名</th>
+                    <th>曲順</th>
+                    <th>追加/削除</th>
+                  </tr>
+                </thead>
 
-            <button type="button" class="btn btn-info btn-sm">記入欄を追加</button>
+                <tbody class="p2146-2-tbody">
+                  <tr>
+                    <td>
+                      <select class="form-control" name="disk">
+                        <option>ディスク1</option>
+                        <option>ディスク2</option>
+                        <option>ディスク3</option>
+                        <option>ディスク4</option>
+                        <option>ディスク5</option>
+                        <option>ディスク6</option>
+                        <option>ディスク7</option>
+                        <option>ディスク8</option>
+                        <option>ディスク9</option>
+                        <option>ディスク10</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control p2146-2-tbody" name="song">
+                    </td>
+                    <td>
+                      <select class="form-control p2146-2-tbody" name="song_order">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                        <option>25</option>
+                        <option>26</option>
+                        <option>27</option>
+                        <option>28</option>
+                        <option>29</option>
+                        <option>30</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input value="+" type="button" class="add btn btn-info btn-sm"/>
+                      <input value="-" type="button" class="remove btn btn-danger btn-sm"/>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <select class="form-control" name="disk">
+                        <option>ディスク1</option>
+                        <option>ディスク2</option>
+                        <option>ディスク3</option>
+                        <option>ディスク4</option>
+                        <option>ディスク5</option>
+                        <option>ディスク6</option>
+                        <option>ディスク7</option>
+                        <option>ディスク8</option>
+                        <option>ディスク9</option>
+                        <option>ディスク10</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input type="text" class="form-control p2146-2-tbody" name="song">
+                    </td>
+                    <td>
+                      <select class="form-control p2146-2-tbody" name="song_order">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                        <option>25</option>
+                        <option>26</option>
+                        <option>27</option>
+                        <option>28</option>
+                        <option>29</option>
+                        <option>30</option>
+                      </select>
+                    </td>
+                    <td>
+                      <input value="+" type="button" class="add btn btn-info btn-sm"/>
+                      <input value="-" type="button" class="remove btn btn-danger btn-sm"/>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
           </div>
         </div>
     </div>
