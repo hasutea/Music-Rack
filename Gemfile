@@ -73,4 +73,9 @@ gem 'annotate'
 gem 'ransack'
 gem 'cancancan'
 gem 'rspec-rails'
+<<<<<<< HEAD
+=======
+
+gem "jquery-turbolinks" # Turbolinksで遷移したときもjQuery.ready()を呼び出してくれる
+>>>>>>> master
 gem "select2-rails"
