@@ -73,3 +73,4 @@ gem 'annotate'
 gem 'ransack'
 gem 'cancancan'
 gem 'rspec-rails'
+gem "select2-rails"

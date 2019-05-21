@@ -76,13 +76,7 @@
 
             <div class="form-group">
               <label for="control-label">在庫数</label>
-              <select class="form-control" name="quantity">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-              </select>
+              <%= f.text_field :stock, class: "form-control" %>
             </div>
 
             <div class="form-group">
@@ -92,17 +86,14 @@
                   <label>¥</label>
                 </div>
                 <div class="col-md-11">
-                  <input type="text" class="form-control" name="price" data-format="number">
+                  <%= f.text_field :price, class: "form-control" %>
                 </div>
             </div>
 
 
             <div class="form-group">
               <label for="control-label">ステータス</label>
-              <select class="form-control" name="status">
-                <option value="selling">販売中</option>
-                <option value="stop_sellng">販売停止中</option>
-              </select>
+              <%= f.select :status, [["販売中", "販売中"], ["販売停止中", "販売停止中"]], class: "form-control" %>
             </div>
           </div>
         </div>
