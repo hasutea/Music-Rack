@@ -6,9 +6,9 @@ class ProductsController < ApplicationController
     @products = Product.page(params[:page]).reverse_order
 
     # (params[:q])に検索パラメーターが入り、Productテーブルを検索する@qオブジェクトを生成
-    @q = Product.ransack(params[:q])
+    @search = Product.ransack(params[:q])
     # 検索結果を表示
-    @results = @q.result
+    @results = @search.result
   end
 
   def show

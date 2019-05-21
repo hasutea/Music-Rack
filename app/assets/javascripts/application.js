@@ -15,6 +15,16 @@
 //= require turbolinks
 
 //= require jquery
+//= require jquery.turbolinks
+//= require jquery_ujs
+//= require select2
 //= require bootstrap-sprockets
 
 //= require_tree .
+$(document).ready(function(){
+
+$('.js-searchable').select2({
+  theme: "bootstrap",
+});
+
+})
