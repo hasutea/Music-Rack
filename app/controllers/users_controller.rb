@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :correct_user
+  before_action :correct_user, only: [:show, :edit]
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:destroy]
 
   def show
   	@user = User.find(params[:id])
