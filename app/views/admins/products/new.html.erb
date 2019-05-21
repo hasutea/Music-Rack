@@ -3,7 +3,7 @@
     <h1>商品登録</h1>
 
     <div class="form">
-      <%= form_for(@product, url: new_admins_product_path) do |f| %>
+      <%= form_for(@product, url: new_admins_product_path) do %>
 
         <div class="col-md-4 col-md-offset-2">
           <div class="row">
@@ -14,6 +14,7 @@
             </div>
 
             <div class="form-group">
+              <label for="control-label">ジャケット写真</label>
               <p>
                 <%= f.attachment_field :image, class: "btn btn-info btn-sm" %>
               </p>
