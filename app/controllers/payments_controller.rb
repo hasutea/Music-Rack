@@ -9,7 +9,6 @@ class PaymentsController < ApplicationController
     # @payments = Payment.all
     # @payment = @payments.where(user: current_user)
     # @purchase_products = @payment.purchase_products.all
-    
   end
 
   def finish
