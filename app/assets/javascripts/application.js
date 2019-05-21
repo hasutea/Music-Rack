@@ -28,3 +28,22 @@ $('.js-searchable').select2({
 });
 
 })
+
+
+
+$(document).ready(function() {
+
+// clickイベントが発生した要素からclosest()で遡ってtrオブジェクトを取得し、そのtrオブジェクトをclone()で複製した上で、自身のひとつ下にinsertAfter()で追加
+  $('.add').click(function() {
+   let $row = $(this).closest("tr");
+   let $newRow = $row.clone(true);
+   $newRow.insertAfter($row);
+  });
+
+  // clickイベントが発生した要素からclosest()で遡ってtrオブジェクトを取得し、そのtrオブジェクトをremove()で削除
+  $('.remove').click(function() {
+   let row = $(this).closest("tr").remove();
+   $(row).remove();
+  });
+
+});

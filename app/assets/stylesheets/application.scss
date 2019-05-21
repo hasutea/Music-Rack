@@ -18,3 +18,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+#p2146-2-tbody tr:first-child {
+  display: none;
+}
