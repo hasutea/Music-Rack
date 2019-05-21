@@ -4,5 +4,8 @@ class Admin < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  attachment :image
+
   validates :password, length: {in: 8..32}
+
 end
