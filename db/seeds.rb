@@ -22,3 +22,7 @@ end
 CSV.foreach('db/label.csv', headers: true) do |row|
   Label.create(label: row['label'])
 end
+
+CSV.foreach('db/payment_method.csv', headers: true) do |row|
+  PaymentMethod.create(payment_method: row['payment_method'])
+end
