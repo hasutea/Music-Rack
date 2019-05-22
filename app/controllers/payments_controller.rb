@@ -1,4 +1,7 @@
 class PaymentsController < ApplicationController
+
+	before_action :authenticate_user!
+
   def new
     @payment = Payment.new
   end

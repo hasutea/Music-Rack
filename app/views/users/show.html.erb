@@ -23,25 +23,25 @@
 
   <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-5">
 
       <div class="">
-        <p>□名前（性・名）</p>
+        <p>◾︎名前（性・名）</p>
 
-        <p>□名前（カナ性・カナ名）</p>
+        <p>◾︎名前（カナ性・カナ名）</p>
 
-        <p>□郵便番号</p>
+        <p>◾︎郵便番号</p>
 
-        <p>□住所</p>
+        <p>◾︎住所</p>
 
-        <p>□電話番号</p>
+        <p>◾︎電話番号</p>
 
-        <p>□メールアドレス</p>
+        <p>◾︎メールアドレス</p>
       </div>
 
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-7">
 
        <div>
         <p><span><%= @user.last_name %></span><span><%= @user.first_name %></span></p>
@@ -64,7 +64,7 @@
 
 
 
-    <div class="col-md-6">
+    <div class="col-md-4 col-md-offset-1">
 
         <div class="">
             <p>ユーザー情報を編集するには編集をクリック<br>
@@ -90,7 +90,7 @@
         <div class="">
             <p>退会処理をするには退会をクリックしてください。</p>
             <p>
-              <%= link_to user_registration_path(@user),method: :delete,"data-confirm" => "本当に退会しますか？" do %>
+              <%= link_to user_path(@user),method: :delete,"data-confirm" => "本当に退会しますか？" do %>
               <button class="btn btn-danger">退会</button>
               <% end %>
             </p>
