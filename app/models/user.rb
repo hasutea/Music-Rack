@@ -10,4 +10,11 @@ class User < ApplicationRecord
   has_many :carts, dependent: :destroy
   has_many :payments, dependent: :destroy
 
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :kana_last_name, presence: true
+  validates :kana_first_name, presence: true
+  validates :telephone, presence: true
+  validates :password, length: {in: 8..32}
+
 end

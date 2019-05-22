@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
 
+  before_action :correct_user, only: [:show, :edit]
+
+  before_action :authenticate_user!, except: [:destroy]
+
   def show
   	@user = User.find(params[:id])
   	@address = @user.addresses.where('created_at > ?', 1.day.ago).first
@@ -20,10 +24,25 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    user = User.find(params[:id])
+    user.destroy
+    if
+      admin_signed_in?
+      redirect_to admins_users_path
+    else
+      redirect_to root_path
+    end
   end
 
 private
   def user_params
     params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :telephone, :user_email, :user_password, :address, :postal_code)
+  end
+
+  def correct_user
+    user = User.find(params[:id])
+    if current_user.id != user.id
+      redirect_to root_path
+    end
   end
 end

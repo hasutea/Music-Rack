@@ -6,4 +6,6 @@ class Admin < ApplicationRecord
 
   attachment :image
 
+  validates :password, length: {in: 8..32}
+
 end
