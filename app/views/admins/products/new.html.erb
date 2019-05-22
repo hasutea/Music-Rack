@@ -3,7 +3,7 @@
     <h1>商品登録</h1>
 
       <div class="form">
-        <%= form_for @product, url: admins_products_path, method: :post do |f| %>
+        <%= form_with model: @product, local: true do |f| %>
 
           <div class="row">
             <div class="col-md-4 col-md-offset-2">
@@ -21,7 +21,7 @@
               <%= form_tag admins_products_path, method: :post do %>
                 <div class="form-group">
                   <label for="control-label">アーティスト名</label>
-                  <%= select_tag :artist_id, options_from_collection_for_select(Artist.all, :id, :artist, params[:artist_id]), include_blank: true, class: "js-searchable form-control", name: "artist_id" %>
+                  <%= select_tag :artist_id, options_from_collection_for_select(Artist.all, :id, :artist, params[:artist_id]), {prompt: "選択してください", class: "js-searchable form-control", name: "artist_id"} %>
                 </div>
               <% end %>
 

@@ -28,9 +28,8 @@ class Admins::ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    artist = Artist.find(params[:artist_id])
+    @artist = Artist.find(params[:artist_id])
     if @product.save
-      @product.artists << artist
       redirect_to admins_products_path, notice: "商品を新規登録しました！"
     else
       render :new
