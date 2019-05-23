@@ -88,9 +88,9 @@
 
                     <tbody class="p2146-2-tbody">
                       <tr>
-                        <%= f.nested_fields_for :disks, wrapper_tag: :tr do |q| %>
+                        <%= f.fields_for :disks do |disk| %>
                           <td>
-                            <%= q.select :disk, [
+                            <%= disk.select :disk, [
                               ["ディスク1", "ディスク1"],
                               ["ディスク2", "ディスク2"],
                               ["ディスク3", "ディスク3"],
@@ -103,32 +103,34 @@
                               ["ディスク10", "ディスク10"]
                               ], {}, {class: "form-control"} %>
                           </td>
-                        <% end %>
 
-                        <%= f.nested_fields_for :songs, wrapper_tag: :tr do |q| %>
-                          <td>
-                            <%= q.text_field :song, class: "form-control p2146-2-tbody" %>
-                          </td>
 
-                          <td>
-                            <%= q.select :song_order, [
-                              ["0", "0"],
-                              ["1", "1"],
-                              ["2", "2"],
-                              ["3", "3"],
-                              ["4", "4"],
-                              ["5", "5"],
-                              ["6", "6"],
-                              ["7", "7"],
-                              ["8", "8"],
-                              ["9", "9"],
-                              ["10", "10"]
-                              ], {}, {class: "form-control p2146-2-tbody"} %>
-                          </td>
+                          <%= disk.fields_for :songs do |song| %>
+                            <td>
+                              <%= song.text_field :song, class: "form-control p2146-2-tbody" %>
+                            </td>
 
-                          <td>
-                            <td><%= q.remove_nested_fields_link "-", class: "btn btn-danger btn-sm", role: "button" %></td>
-                          </td>
+                            <td>
+                              <%= song.select :song_order, [
+                                ["0", "0"],
+                                ["1", "1"],
+                                ["2", "2"],
+                                ["3", "3"],
+                                ["4", "4"],
+                                ["5", "5"],
+                                ["6", "6"],
+                                ["7", "7"],
+                                ["8", "8"],
+                                ["9", "9"],
+                                ["10", "10"]
+                                ], {}, {class: "form-control p2146-2-tbody"} %>
+                            </td>
+
+                            <td>
+                              <td><%= song.remove_nested_fields_link "-", class: "btn btn-danger btn-sm", role: "button" %></td>
+                            </td>
+
+                          <% end %>
                         <% end %>
                       </tr>
                     </tbody>
