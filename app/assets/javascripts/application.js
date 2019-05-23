@@ -14,13 +14,21 @@
 //= require activestorage
 //= require turbolinks
 
+
 //= require jquery
 //= require jquery.turbolinks
 //= require jquery_ujs
+
+//= require cocoon
+
 //= require select2
 //= require bootstrap-sprockets
+//= require nested_form_fields
 
 //= require_tree .
+
+
+
 $(document).ready(function(){
 
 $('.js-searchable').select2({
