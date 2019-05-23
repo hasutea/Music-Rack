@@ -1,62 +1,51 @@
 <div class="container">
-  <div class="table-responsive">
-    <table class="table table-hover">
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>画像</th>
-          <th>シングル・アルバム名</th>
-          <th>アーティスト名</th>
-          <th>価格（税別）</th>
-          <th>在庫数</th>
-          <th>ステータス</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @results.each do |product| %>
+  <div class="col-md-10 col-md-offset-1">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
           <tr>
-            <td><%= product.id %></td>
-            <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'png', fallback: "noimage.png"  %></td>
-            <td><%= product.title %></td>
-            <td><%= product.artist %></td>
-            <td>¥<%= product.price %></td>
-            <td><%= product.stock %></td>
-            <td><%= product.status %></td>
+            <th>シングル/アルバム名</th>
+            <th>ジャケット画像</th>
+            <th>アーティスト名</th>
+            <th>価格(税込)</th>
+            <th>数量</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-
-
-      <div class="col-md-4 col-md-offset-2">
-        <img src="cdjacket1.png" alt="no image">
-      </div>
-
-      <div class="col-md-5">
-        <p>title</p>
-        <p>アーティスト名</p>
-        <p>価格(税込)|￥5,000</p>
-        <p>数量｜
-          <select name="quantity">
-            <option value="quantity">1</option>
-            <option value="quantity">2</option>
-            <option value="quantity">3</option>
-            <option value="quantity">4</option>
-            <option value="quantity">5</option>
-          </select>
-        </p>
-        <p>
-          <button type="button" class="btn btn-danger btn-sm">削除</button>
-        </p>
-      </div>
-  </div>
-
-  <div class="row">
+        </thead>
+        <tbody>
+          <% @products.each do |product| %>
+            <tr>
+              <td><%= product.titile %></td>
+              <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'png', fallback: "noimage.png"  %></td>
+              <td><%= product.artist %></td>
+              <td>￥<%= product.price %></td>
+              <td>
+                <%= product.select :quantity, [
+                  ["0", "0"],
+                  ["1", "1"],
+                  ["2", "2"],
+                  ["3", "3"],
+                  ["4", "4"],
+                  ["5", "5"],
+                  ["6", "6"],
+                  ["7", "7"],
+                  ["8", "8"],
+                  ["9", "9"],
+                  ["10", "10"]
+                  ], {}, {class: "form-control"} %>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger btn-sm">削除</button>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
       <div class="text-center">
         <p>商品合計（税込）｜　¥5,000</p>
         <button type="button" class="btn btn-primary btn-lg">決済ページへ</button>
       </div>
+    </div>
   </div>
+</div>

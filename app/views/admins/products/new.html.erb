@@ -15,7 +15,7 @@
               </div>
 
               <div class="form-group">
-                <label for="control-label">ジャケット写真</label>
+                <label for="control-label">ジャケット画像</label>
                 <%= f.attachment_field :image, class: "btn btn-info btn-sm", placeholder: "image" %>
               </div>
 
@@ -79,66 +79,10 @@
           <div class="row">
             <div class="col-md-8 col-md-offset-2">
               <label>シングル/アルバム内の曲名</label>
-                <div class="row">
-                  <table class="table table-bordered p2146-2-table table-hover">
-                    <thead>
-                        <th>ディスク</th>
-                        <th>曲名</th>
-                        <th>曲順</th>
-                        <th>追加/削除</th>
-                      </tr>
-                    </thead>
-
-                    <tbody class="p2146-2-tbody">
-                      <%= f.nested_fields_for :disks, wrapper_tag: :tr do |f| %>
-                        <tr>
-                          <td>
-                            <%= f.select :disk, [
-                              ["ディスク1", "ディスク1"],
-                              ["ディスク2", "ディスク2"],
-                              ["ディスク3", "ディスク3"],
-                              ["ディスク4", "ディスク4"],
-                              ["ディスク5", "ディスク5"],
-                              ["ディスク6", "ディスク6"],
-                              ["ディスク7", "ディスク7"],
-                              ["ディスク8", "ディスク8"],
-                              ["ディスク9", "ディスク9"],
-                              ["ディスク10", "ディスク10"]
-                              ], {}, {class: "form-control"} %>
-                          </td>
-
-                          <%= f.nested_fields_for :songs, wrapper_tag: :tr do |f| %>
-
-                          <td>
-                            <%= f.text_field :song_title, class: "form-control p2146-2-tbody" %>
-                          </td>
-
-                          <td>
-                            <%= f.select :song_order, [
-                              ["0", "0"],
-                              ["1", "1"],
-                              ["2", "2"],
-                              ["3", "3"],
-                              ["4", "4"],
-                              ["5", "5"],
-                              ["6", "6"],
-                              ["7", "7"],
-                              ["8", "8"],
-                              ["9", "9"],
-                              ["10", "10"]
-                              ], {}, {class: "form-control p2146-2-tbody"} %>
-                          </td>
-                          <% end %>
-
-                          <td>
-                            <%= f.remove_nested_fields_link "-", class: "btn btn-danger btn-sm", role: "button" %>
-                          </td>
-                        </tr>
-                      <% end %>
-                    </tbody>
-                  </table>
-                  <%= f.add_nested_fields_link :disks, '+', class: 'btn btn-info btn-sm', role: 'button' %>
-                </div>
+              <div class="row">
+                <%= render 'disk_fields', :f => f %>
+                <%= link_to_add_association "disk add", f, :disks,{class: 'btn btn-info btn-sm', role: 'button'} %>
+              </div>
             </div>
           </div>
 
