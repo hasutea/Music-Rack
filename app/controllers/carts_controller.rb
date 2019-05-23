@@ -10,11 +10,11 @@ class CartsController < ApplicationController
   end
 
   def create
-    # カートの中身を登録する カートに入れるボタンを押したら「カートに商品を追加しました」と表示させてそのページに留まる
+    # カートの中身を登録 商品詳細ページでカートに入れるボタンを押したら「カートに商品を追加しました」と表示させてそのページに留まる
     cart = current_user.cart
     cart = Cart.new(cart_params)
     if cart.save
-      redirect_to cart_path(@cart)
+      redirect_to product_path(@product.id)
     else
       render :show
     end
@@ -31,7 +31,7 @@ class CartsController < ApplicationController
   end
 
   def destroy
-    # カートに入っているある商品idを持ったもののみを削除
+    # カートに入っているある商品idを持ったもののみを削除 決済画面へ遷移したらカートの中身を全て削除
     cart = current_user.cart
     cart_content = Cart.find(params[:product_id])
     cart_content.destroy

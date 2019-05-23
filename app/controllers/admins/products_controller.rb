@@ -18,10 +18,6 @@ class Admins::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def edit
-    @product = Product.find(params[:id])
-  end
-
   def new
     @product = Product.new
   end
@@ -45,6 +41,10 @@ class Admins::ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
@@ -65,7 +65,7 @@ private
       :price,
       :stock,
       :status,
-      :artist_id,
+      :artist_id, to_i,
       :label_id,
       :genre_id,
       disks_attributes: [:id, :disk_id, :_destroy],
