@@ -21,6 +21,11 @@
 //= require bootstrap-sprockets
 
 //= require_tree .
+
+//= require nested_form_field
+
+
+
 $(document).ready(function(){
 
 $('.js-searchable').select2({
