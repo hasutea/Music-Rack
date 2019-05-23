@@ -19,10 +19,11 @@
 //= require jquery_ujs
 //= require select2
 //= require bootstrap-sprockets
+//= require nested_form_field
+//= require cocoon
+
 
 //= require_tree .
-
-//= require nested_form_field
 
 
 
