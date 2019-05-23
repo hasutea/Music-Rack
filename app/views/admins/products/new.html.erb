@@ -88,7 +88,7 @@
 
                     <tbody class="p2146-2-tbody">
                       <tr>
-                        <%= f.nested_fields_for :disks, wrapper_tag: :td do |q| %>
+                        <%= f.nested_fields_for :disks, wrapper_tag: :tr do |q| %>
                           <td>
                             <%= q.select :disk, [
                               ["ディスク1", "ディスク1"],
@@ -105,7 +105,7 @@
                           </td>
                         <% end %>
 
-                        <%= f.nested_fields_for :songs, wrapper_tag: :td do |q| %>
+                        <%= f.nested_fields_for :songs, wrapper_tag: :tr do |q| %>
                           <td>
                             <%= q.text_field :song, class: "form-control p2146-2-tbody" %>
                           </td>

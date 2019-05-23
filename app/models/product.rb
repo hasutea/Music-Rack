@@ -8,4 +8,7 @@ class Product < ApplicationRecord
   has_many :disks, dependent: :destroy
   accepts_nested_attributes_for :disks, allow_destroy: true
 
+  # throughオプションによりdisls経由でsongsにアクセスできるようになる
+  has_many :songs, through: :disks
+
 end

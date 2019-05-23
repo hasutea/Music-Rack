@@ -68,8 +68,8 @@ private
       :artist_id,
       :label_id,
       :genre_id,
-      disks_attributes: [:id, :disk_id]
-      songs_attributes: [:id, :song, :song_order]
+      disks_attributes: [:id, :disk_id, :_destroy],
+      songs_attributes: [:id, :song, :song_order, :_destroy]
       )
   end
 
