@@ -88,64 +88,53 @@
 
                     <tbody class="p2146-2-tbody">
                       <tr>
+                        <%= f.nested_fields_for :disks, wrapper_tag: :td do |q| %>
                           <td>
-                            <select class="form-control" name="disk">
-                              <option>ディスク1</option>
-                              <option>ディスク2</option>
-                              <option>ディスク3</option>
-                              <option>ディスク4</option>
-                              <option>ディスク5</option>
-                              <option>ディスク6</option>
-                              <option>ディスク7</option>
-                              <option>ディスク8</option>
-                              <option>ディスク9</option>
-                              <option>ディスク10</option>
-                            </select>
+                            <%= q.select :disk, [
+                              ["ディスク1", "ディスク1"],
+                              ["ディスク2", "ディスク2"],
+                              ["ディスク3", "ディスク3"],
+                              ["ディスク4", "ディスク4"],
+                              ["ディスク5", "ディスク5"],
+                              ["ディスク6", "ディスク6"],
+                              ["ディスク7", "ディスク7"],
+                              ["ディスク8", "ディスク8"],
+                              ["ディスク9", "ディスク9"],
+                              ["ディスク10", "ディスク10"]
+                              ], {}, {class: "form-control"} %>
                           </td>
+                        <% end %>
+
+                        <%= f.nested_fields_for :songs, wrapper_tag: :td do |q| %>
                           <td>
-                            <input type="text" class="form-control p2146-2-tbody" name="song">
+                            <%= q.text_field :song, class: "form-control p2146-2-tbody" %>
                           </td>
+
                           <td>
-                            <select class="form-control p2146-2-tbody" name="song_order">
-                              <option>1</option>
-                              <option>2</option>
-                              <option>3</option>
-                              <option>4</option>
-                              <option>5</option>
-                              <option>6</option>
-                              <option>7</option>
-                              <option>8</option>
-                              <option>9</option>
-                              <option>10</option>
-                              <option>11</option>
-                              <option>12</option>
-                              <option>13</option>
-                              <option>14</option>
-                              <option>15</option>
-                              <option>16</option>
-                              <option>17</option>
-                              <option>18</option>
-                              <option>19</option>
-                              <option>20</option>
-                              <option>21</option>
-                              <option>22</option>
-                              <option>23</option>
-                              <option>24</option>
-                              <option>25</option>
-                              <option>26</option>
-                              <option>27</option>
-                              <option>28</option>
-                              <option>29</option>
-                              <option>30</option>
-                            </select>
+                            <%= q.select :song_order, [
+                              ["0", "0"],
+                              ["1", "1"],
+                              ["2", "2"],
+                              ["3", "3"],
+                              ["4", "4"],
+                              ["5", "5"],
+                              ["6", "6"],
+                              ["7", "7"],
+                              ["8", "8"],
+                              ["9", "9"],
+                              ["10", "10"]
+                              ], {}, {class: "form-control p2146-2-tbody"} %>
                           </td>
+
                           <td>
-                            <input value="+" type="button" class="add btn btn-info btn-sm"/>
-                            <input value="-" type="button" class="remove btn btn-danger btn-sm"/>
+                            <td><%= q.remove_nested_fields_link "-", class: "btn btn-danger btn-sm", role: "button" %></td>
                           </td>
-                        </tr>
+                        <% end %>
+                      </tr>
                     </tbody>
                   </table>
+                  <%= f.add_nested_fields_link :disks, '+', class: 'btn btn-info btn-sm', role: 'button' %>
+
                 </div>
             </div>
           </div>
