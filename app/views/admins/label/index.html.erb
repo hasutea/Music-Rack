@@ -1,0 +1,42 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-4">
+        <h4 class="title">レーベル新規登録</h4>
+
+        <div class="form">
+          <%= form_with model: @label, url: admins_label_index_path, local: true do |f| %>
+
+            <%= f.text_field :label, autofocus: true, class: "form-control", placeholder: "新規で登録するレーベルを入力" %>
+
+            <%= f.submit "新規登録", class: "btn btn-success btn-lg btn-block" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-xs-8">
+        <h4 class="label">レーベル一覧</h4>
+
+          <table class="table table-hover" table-inverse">
+            <thead>
+              <tr>
+                <th>登録No.</th>
+                <th>レーベル名</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @labels.each do |label| %>
+                <tr>
+                  <td><%= label.id %></td>
+                  <td><%= label.label %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
+
+    </div>
+  </div>
+</div>

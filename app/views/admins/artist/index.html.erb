@@ -1,0 +1,48 @@
+<div class="body">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-4">
+        <h4 class="title">アーティスト新規登録</h4>
+
+        <div class="form">
+          <%= form_with model: @artist, url: admins_artist_index_path, local: true do |f| %>
+
+            <%= f.text_field :artist, autofocus: true, class: "form-control", placeholder: "新規で登録するアーティストを入力" %>
+
+            <%= f.submit "新規登録", class: "btn btn-success btn-lg btn-block" %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-xs-8">
+        <h4 class="artist">アーティスト一覧</h4>
+
+          <table class="table table-hover" table-inverse">
+            <thead>
+              <tr>
+                <th>登録No.</th>
+                <th>アーティスト名</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% @artists.each do |artist| %>
+                <tr>
+                  <td><%= artist.id %></td>
+                  <td><%= artist.artist %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+      </div>
+
+      <div class="row">
+        <div class="col-md-offset-4">
+          <%= paginate @artists, class: "paginate" %>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

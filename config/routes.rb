@@ -106,6 +106,9 @@ namespace :admins do
   resources :products, only: [:index, :show, :edit, :new, :create, :update, :destroy]
   resources :users, only: [:index, :show, :edit, :update, :destroy]
   resources :payments, only: [:show, :update]
+  resources :artist, only: [:index, :new, :create]
+  resources :label, only: [:index, :new, :create]
+  resources :genre, only: [:index, :new, :create]
 end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

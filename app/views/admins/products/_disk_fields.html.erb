@@ -8,11 +8,11 @@
           <th>追加/削除</th>
       </thead>
       <%= id = f.object_name.to_sym.slice(25..36) %>
-      <%= debug id[] %>
+
       <tbody class=<%= "tbody_#{id}" %> >
         <%= render 'song_fields', :f => d %>
       </tbody>
     </table>
   </div>
-  <%= link_to_add_association "song add", f, :songs, class: 'btn btn-info btn-sm', role: 'button','data-association-insertion-method' => 'append','data-association-insertion-node' =>  ".tbody_#{id}" %>
+
 <% end %>
