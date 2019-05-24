@@ -1,28 +1,25 @@
 <%= f.fields_for :songs do |s| %>
-  <tr class='nested-fields'>
-    <td>
+  <div class='nested-fields'>
+    <div class="song_order">
+      <label for="control-label">曲名</label>
       <%= s.text_field :song_title, class: "form-control" %>
-    </td>
+    </div>
 
-    <td>
-      <%= s.select :song_order, [
-        ["0", "0"],
-        ["1", "1"],
-        ["2", "2"],
-        ["3", "3"],
-        ["4", "4"],
-        ["5", "5"],
-        ["6", "6"],
-        ["7", "7"],
-        ["8", "8"],
-        ["9", "9"],
-        ["10", "10"]
-        ], {}, {class: "form-control"} %>
-    </td>
-
-    <td>
-      
-    </td>
-
-  </tr>
+    <div class="song_order">
+      <label for="control-label">曲順</label>
+        <%= s.select :song_order, [
+          ["0", "0"],
+          ["1", "1"],
+          ["2", "2"],
+          ["3", "3"],
+          ["4", "4"],
+          ["5", "5"],
+          ["6", "6"],
+          ["7", "7"],
+          ["8", "8"],
+          ["9", "9"],
+          ["10", "10"]
+          ], {}, {class: "form-control"} %>
+      </div>
+  </div>
 <% end %>

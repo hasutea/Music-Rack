@@ -34,6 +34,7 @@ class Admins::ProductsController < ApplicationController
     @genre = Genre.find(params[:genre_id])
     @product.genre_id = @genre.id
 
+    binding.pry
     if @product.save
       redirect_to admins_products_path, notice: "商品を新規登録しました！"
     else
