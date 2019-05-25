@@ -10,7 +10,7 @@ end
 def create
   @artist = Artist.new(artist_params)
     if @artist.save
-      redirect_to new_admins_product_path
+      redirect_to new_admins_product_path, notice: "アーティストを新規登録しました！"
     else
       render :index
     end

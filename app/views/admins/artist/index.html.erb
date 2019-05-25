@@ -3,7 +3,7 @@
     <div class="row">
 
       <div class="col-xs-4">
-        <h4 class="title">アーティスト新規登録</h4>
+        <h3 class="title">アーティスト新規登録</h3>
 
         <div class="form">
           <%= form_with model: @artist, url: admins_artist_index_path, local: true do |f| %>
@@ -23,6 +23,7 @@
               <tr>
                 <th>登録No.</th>
                 <th>アーティスト名</th>
+                <th></th>
               </tr>
             </thead>
 
@@ -31,6 +32,7 @@
                 <tr>
                   <td><%= artist.id %></td>
                   <td><%= artist.artist %></td>
+                  <td><%= link_to "削除", admins_artist_path(artist.id), class: "btn btn-danger btn-xs", method: :delete, data:{ confirm: "本当に削除しますか？" } %></td>
                 </tr>
               <% end %>
             </tbody>

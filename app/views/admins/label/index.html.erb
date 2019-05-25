@@ -3,7 +3,7 @@
     <div class="row">
 
       <div class="col-xs-4">
-        <h4 class="title">レーベル新規登録</h4>
+        <h3 class="title">レーベル新規登録</h3>
 
         <div class="form">
           <%= form_with model: @label, url: admins_label_index_path, local: true do |f| %>
@@ -23,6 +23,7 @@
               <tr>
                 <th>登録No.</th>
                 <th>レーベル名</th>
+                <th></th>
               </tr>
             </thead>
 
@@ -31,6 +32,7 @@
                 <tr>
                   <td><%= label.id %></td>
                   <td><%= label.label %></td>
+                  <td><%= link_to "削除", admins_label_path(label.id), class: "btn btn-danger btn-xs", method: :delete, data:{ confirm: "本当に削除しますか？" } %></td>
                 </tr>
               <% end %>
             </tbody>
