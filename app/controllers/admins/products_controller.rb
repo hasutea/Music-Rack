@@ -61,7 +61,7 @@ private
       :price,
       :stock,
       :status,
-      :artist_id, to_i,
+      :artist_id,
       :label_id,
       :genre_id,
       disks_attributes: [:id, :disk_id, :_destroy],

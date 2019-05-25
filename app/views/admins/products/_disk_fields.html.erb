@@ -8,7 +8,6 @@
           <th>追加/削除</th>
       </thead>
       <%= id = f.object_name.to_sym.slice(25..36) %>
-      <%= debug id[] %>
       <tbody class=<%= "tbody_#{id}" %> >
         <%= render 'song_fields', :f => d %>
       </tbody>

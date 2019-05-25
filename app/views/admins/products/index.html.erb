@@ -15,7 +15,7 @@
 </div>
 <div class="row">
   <div class="table-responsive">
-    <table class="table table-hover">
+    <table class="table table-hover" id="table">
       <thead>
         <tr>
           <th>ID</th>
@@ -30,15 +30,13 @@
       <tbody>
         <% @results.each do |product| %>
           <tr>
-            <%= link_to (admins_product_path(product.id)) do %>
-              <td><%= product.id %></td>
-              <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'png', fallback: "noimage.png"  %></td>
-              <td><%= product.title %></td>
-              <td><%= product.artist.artist %></td>
-              <td>¥<%= product.price %></td>
-              <td><%= product.stock %></td>
-              <td><%= product.status %></td>
-            <% end %>
+            <td><%= link_to product.id, admins_product_path(product.id) %></td>
+            <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'png', fallback: "noimage.png" %></td>
+            <td><%= product.title %></td>
+            <td><%= product.artist.artist %></td>
+            <td>¥<%= product.price %></td>
+            <td><%= product.stock %></td>
+            <td><%= product.status %></td>
           </tr>
         <% end %>
       </tbody>
