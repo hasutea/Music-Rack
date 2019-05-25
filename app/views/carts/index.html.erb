@@ -12,7 +12,7 @@
           </tr>
         </thead>
         <tbody>
-          <% @products.each do |product| %>
+          <% @carts.each do |products| %>
             <tr>
               <td><%= product.titile %></td>
               <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'png', fallback: "noimage.png"  %></td>

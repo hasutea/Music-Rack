@@ -1,25 +1,25 @@
 class CartsController < ApplicationController
-
   before_action :authenticate_user!, :validate_cart!
+  helper_method :current_cart
 
-  def index
+  def show
     # カートに入れるボタンを押された商品全てを表示(カートテーブルの商品id,ユーザーid,数量を取得して表示)
-    @cart = current_user.cart
-    @cart_products = @cart.products
-    @total_price = @cart_products.joins(:product).sum(:price)
-
+    @carts = current_cart.cart
+    if session[:cart]
+      @cart = Cart.find(session [:cart])
+    else
+      @cart = Cart.create
+      session[:cart] = @cart.id
     # カート内に商品がなかったら、商品がないと表示
+    end
   end
 
   def create
     # カートの中身を登録 商品詳細ページでカートに入れるボタンを押したら「カートに商品を追加しました」と表示させてそのページに留まる
-    cart = current_user.cart
-    cart_product = Cart.new(cart_params)
-    if cart_product.save
-      redirect_to product_path(@product.id)
-    else
-      render :show
-    end
+    session[:cart] = [] unless session[:cart]
+    session[:cart] << params[:item_id]
+    flash[:success] = "カートに追加しました！"
+    redirect_to products_path
   end
 
   def update

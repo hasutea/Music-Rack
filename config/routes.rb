@@ -98,7 +98,7 @@ devise_for :admins, controllers: {
 
 resources :products
 resources :users, only: [:index, :show, :edit, :update, :destroy]
-resources :carts, only: [:create, :index, :destroy, :update]
+resources :carts, only: [:create, :show, :destroy, :update]
 resources :payments, only: [:new, :index, :create, :show, :update]
 match '/finish', to: 'payments#finish', via: 'get'
 
