@@ -18,17 +18,22 @@ class Admins::ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def edit
-    @product = Product.find(params[:id])
-  end
-
   def new
     @product = Product.new
   end
 
   def create
     @product = Product.new(product_params)
+
     @artist = Artist.find(params[:artist_id])
+    @product.artist_id = @artist.id
+
+    @label = Label.find(params[:label_id])
+    @product.label_id = @label.id
+
+    @genre = Genre.find(params[:genre_id])
+    @product.genre_id = @genre.id
+
     if @product.save
       redirect_to admins_products_path, notice: "商品を新規登録しました！"
     else
@@ -56,9 +61,12 @@ private
       :price,
       :stock,
       :status,
-      :artist_id,
+      :artist_id, to_i,
       :label_id,
-      :genre_id)
+      :genre_id,
+      disks_attributes: [:id, :disk_id, :_destroy],
+      songs_attributes: [:id, :song, :song_order, :_destroy]
+      )
   end
 
 end

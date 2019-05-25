@@ -1,0 +1,28 @@
+<%= f.fields_for :songs do |s| %>
+  <tr class='nested-fields'>
+    <td>
+      <%= s.text_field :song_title, class: "form-control" %>
+    </td>
+
+    <td>
+      <%= s.select :song_order, [
+        ["0", "0"],
+        ["1", "1"],
+        ["2", "2"],
+        ["3", "3"],
+        ["4", "4"],
+        ["5", "5"],
+        ["6", "6"],
+        ["7", "7"],
+        ["8", "8"],
+        ["9", "9"],
+        ["10", "10"]
+        ], {}, {class: "form-control"} %>
+    </td>
+
+    <td>
+      
+    </td>
+
+  </tr>
+<% end %>
