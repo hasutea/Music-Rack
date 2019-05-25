@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -6,9 +7,7 @@
       <div class="col-md-5">
         <h1>購入履歴</h1>
         <p>会員登録時のユーザー情報を閲覧することができます。</p>
-      </div>
-      <div class="col-md-4 col-md-offset-3">
-        <p>購入者　ななし　ななお</p>
+        <p>現在の送料 500円</p>
       </div>
     </div>
 
@@ -16,79 +15,29 @@
       <tr>
         <th>購入日</th>
         <th>送付先</th>
-        <th>購入内容</th>
-        <th>購入枚数</th>
-        <th>小計</th>
         <th>ステータス</th>
+        <th>総計</th>
       </tr>
-      <tr>
-        <td>2019/0521</td>
-        <td>東京都ゲキド町3-9-339号室</td>
-        <td>スプラトゥーン2</td>
-        <td>1枚</td>
-        <td>700 円</td>
-        <td>
-          <div>
-            <label for="status"></label>
-            <select name="status">
-              <option value="selling">受付</option>
-              <option value="stop_sellng">受付準備中</option>
-              <option value="stop_sellng">出荷済</option>
-            </select>
-          </div>
-        </td>
-      </tr>
-      <tr>
-        <td><span class="hidden">2019/0521</span></td>
-        <td><span class="hidden">東京都ゲキド町3-9-339号室</span></td>
-        <td>プロを目指す人のためのRuby入門 言語仕様からテスト駆動開発・デバッグ技法まで (Software Design plusシリーズ)</td>
-        <td>2枚</td>
-        <td>800 円</td>
-        <td><span class="hidden">受付</span></td>
-      </tr>
+
+      <% current_user.payments.each do |payment| %>
+          <tr>
+            <th><%= link_to payment_path(payment.id) do %>
+                  <%= payment.created_at.strftime('%Y/%m/%d') %>
+                <% end %>
+            </th>
+            <th><%= payment.shipping_address %></th>
+            <th><%= payment.order_status %></th>
+            <th><% sum = 0 %>
+              <% payment.purchase_products.each do |purchase_product| %>
+              <% sum += purchase_product.price * purchase_product.quantity %>
+                <% end %>
+                <%= sum + 500 %>
+            </th>
+          </tr>
+      <% end %>
     </table>
 
-    <div class="row">
-      <div class="col-md-3 col-md-offset-3 h3">送料 ￥500</div>
-      <div class="col-md-3 col-md-offset-2 h3">購入価格総計￥2,000</div>
     </div>
-
-    <table class="table table-bordered">
-      <tr>
-        <th>購入日</th>
-        <th>送付先</th>
-        <th>購入内容</th>
-        <th>購入枚数</th>
-        <th>小計</th>
-        <th>ステータス</th>
-      </tr>
-      <tr>
-        <td>2019/0521</td>
-        <td>東京都ゲキド町3-9-339号室</td>
-        <td>It's A Ruby Thing You Wouldn't Understand: Personalized Name Lined Writing Journal - 150 Pages, 5X8 - Universe Space Cover</td>
-        <td>2枚</td>
-        <td>800 円</td>
-        <td>
-          <div>
-            <label for="status"></label>
-            <select name="status">
-              <option value="selling">受付</option>
-              <option value="stop_sellng">受付準備中</option>
-              <option value="stop_sellng">出荷済</option>
-            </select>
-          </div>
-        </td>
-      </tr>
-    </table>
-
-    <div class="row">
-      <div class="col-md-3 col-md-offset-3 h3">送料 ￥500</div>
-      <div class="col-md-3 col-md-offset-2 h3">購入価格総計 ￥1,300</div>
-    </div>
-
-
-    </div>
-  </div>
 
   <div class="row">
     <div class="col-md-12">
@@ -100,40 +49,18 @@
     </div>
   </div>
 
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="col-md-4">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-5">
+              <%= paginate @payments, class: "paginate" %>
+            </div>
+            <div class="col-md-3">
+            </div>
+          </div>
         </div>
-        <div class="col-md-5">
-              <nav>
-                <ul class="pagination">
-                  <li>
-                    <a href="#" aria-label="前のページへ">
-                      <span aria-hidden="true">«</span>
-                    </a>
-                  </li>
-                  <li><a href="#">1</a></li>
-                  <li class="active"><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">6</a></li>
-                  <li><a href="#">7</a></li>
-                  <li><a href="#">8</a></li>
-                  <li><a href="#">9</a></li>
-                  <li>
-                    <a href="#" aria-label="次のページへ">
-                      <span aria-hidden="true">»</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-        </div>
-        <div class="col-md-3">
-        </div>
-      </div>
-    </div>
 
 
+  </div>
 </div>

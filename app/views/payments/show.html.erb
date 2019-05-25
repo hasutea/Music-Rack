@@ -12,30 +12,18 @@
 
     <table class="table table-bordered">
       <tr>
-        <th>購入日</th>
-        <th>送付先</th>
         <th>購入内容</th>
         <th>購入枚数</th>
-        <th>ステータス</th>
         <th>価格</th>
-        <th>送料</th>
-        <th>総計</th>
       </tr>
 
-      <% @purchase_products.each do |purchase_products| %>
-
-      <tr>
-        <td><%= @payment.created_at.strftime('%Y/%m/%d') %></td>
-        <td><%= @payment.shipping_address %></td>
-        <td><%= purchase_products.product.title %></td>
-        <td><%= purchase_products.quantity %></td>
-        <td><%= @payment.order_status %></td>
-        <td><%= purchase_products.price %></td>
-        <td>500</td>
-        <td><%= purchase_products.price * purchase_products.quantity + 500 %></td>
-      </tr>
-
-      <% end %>
+        <% @purchase_products.each do |purchase_product| %>
+          <tr>
+            <th><%= purchase_product.product.title %></th>
+            <th><%= purchase_product.quantity %></th>
+            <th><%= purchase_product.price %></th>
+          </tr>
+        <% end %>
     </table>
 
     </div>
@@ -49,40 +37,6 @@
       <div class="col-md-4"></div>
     </div>
   </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="col-md-4">
-        </div>
-        <div class="col-md-5">
-              <nav>
-                <ul class="pagination">
-                  <li>
-                    <a href="#" aria-label="前のページへ">
-                      <span aria-hidden="true">«</span>
-                    </a>
-                  </li>
-                  <li><a href="#">1</a></li>
-                  <li class="active"><a href="#">2</a></li>
-                  <li><a href="#">3</a></li>
-                  <li><a href="#">4</a></li>
-                  <li><a href="#">5</a></li>
-                  <li><a href="#">6</a></li>
-                  <li><a href="#">7</a></li>
-                  <li><a href="#">8</a></li>
-                  <li><a href="#">9</a></li>
-                  <li>
-                    <a href="#" aria-label="次のページへ">
-                      <span aria-hidden="true">»</span>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-        </div>
-        <div class="col-md-3">
-        </div>
-      </div>
-    </div>
 
 
   </div>

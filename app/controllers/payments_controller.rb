@@ -6,9 +6,12 @@ class PaymentsController < ApplicationController
   end
 
   def index
-    # @payments = Payment.all
-    # @payment = @payments.where(user: current_user)
-    # @purchase_products = @payment.purchase_products.all
+    @payments = current_user.payments.page(params[:page]).reverse_order
+  end
+
+  def show
+    @payment = Payment.find(params[:id])
+    @purchase_products = @payment.purchase_products
   end
 
   def finish
