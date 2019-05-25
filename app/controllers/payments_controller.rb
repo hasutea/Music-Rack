@@ -21,6 +21,6 @@ class PaymentsController < ApplicationController
 
 private
   def payment_params
-    params.require(:payment).permit(:shipping_last_name, :shipping_first_name, :shipping_postal_code, :shipping_address, :order_status)
+    params.require(:payment).permit(:shipping_last_name, :shipping_first_name, :shipping_postal_code, :shipping_address, :order_status, :payment_method_id, purchase_products_attributes: [:id, :product_id, :quantity, :price])
   end
 end

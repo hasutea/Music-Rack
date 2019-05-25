@@ -4,53 +4,59 @@
 
     <div class="col-md-10 col-md-offset-1">
       <table class="table table-bordered">
-        <tr>
-          <th>購入内容</th>
-          <th>購入枚数</th>
-          <th>価格</th>
-        </tr>
-        <tr>
-          <td><%= @product.title %></td>
-          <td><%= @cart.quantity %></td>
-          <td><%= @product.price %>円</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>購入内容</th>
+            <th>購入枚数</th>
+            <th>価格</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= products.each do |product| %>
+            <%= product.carts.each do |cart| %>
+              <tr>
+                <td><%= product.title %></td>
+                <td><%= cart.quantity %></td>
+                <td><%= cart.price %>円</td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>
 
   <div class="row border"> <!-- cssでborder設定する -->
     <div class="col-md-10 col-md-offset-1">
-      <div>
-        <p>
-          <label>
-            <input type="radio" name="address" value="現在登録している住所に送る"> 現在登録している住所に送る
-          </label>
-        </p>
-        <p>郵便番号：<%= @address.postal_code %></p>
-        <p>住所：<%= @address.adress %></p>
-      </div>
+  <%= form_for (@payment) do |f| %>
+      <p>
+        <label>
+          <input type="radio" name="address" value="現在登録している住所">
+          現在登録している住所
+        </label>
+      </p>
+      <p>郵便番号：<%= @address.postal_code %></p>
+      <p>住所：<%= @address.adress %></p>
 
-        <p>
-          <label>
-            <input type="radio" name="address" value="登録している住所以外に送付する"> 登録している住所以外に送付する
-          </label>
-        </p>
-        <%= form_tag(new_payments_path, method: :post) do %>
-        <p>
-          <label for="name">送付先氏名：</label>
-          <input type="text" name="name" class="name" size="10" placeholder="例：山田">
-          <input type="text" name="name" class="name" size="10" placeholder="例：太郎">
-        </p>
-        <p>
-          <label for="postal_code">送付先郵便番号：</label>
-          <input type="text" name="postal_code" class="postal_code" size="10" placeholder="例：1234567">
-        </p>
-        <p>
-          <label for="postal_code">送付先住所：</label>
-          <input type="text" name="address" class="address" size="70" placeholder="例：東京都千代田区大手町1-2-3">
-        </p>
-
-        <button type="button" class="btn btn-warning btn-sm">入力した情報を保存する</button>
+      <p>
+        <label>
+          <input type="radio" name="address" value="登録している住所以外に送付する場合は下記に入力してください"> 登録している住所以外に送付する場合は下記に入力してください
+        </label>
+      </p>
+      <%= form_with(model: addresses) do |f| %>
+      <p>
+        <label for="name">送付先氏名：</label>
+        <%= f.text_field :shipping_last_name, class: "form-control", :placeholder => "例：山田" %>
+        <%= f.text_field :shipping_first_name, class: "form-control", :placeholder => "例：太郎" %>
+      </p>
+      <p>
+        <label for="postal_code">送付先郵便番号：</label>
+        <%= f.text_field :shipping_postal_code, class: "form-control", :placeholder => "例：1234567" %>
+      </p>
+      <p>
+        <label for="postal_code">送付先住所：</label>
+        <%= f.text_field :shipping_postal_code, class: "form-control", :placeholder => "例：東京都千代田区大手町1-2-3" %>
+      </p>
       <% end %>
     </div>
   </div>
@@ -58,7 +64,7 @@
   <div class="row border"> <!-- cssでborder設定する -->
     <div class="col-md-10 col-md-offset-1">
         <h4>支払方法を選択</h4>
-        <%= form_for(@payment_method) do |f| %>
+        <%= f.fields_for :payment_methods do |f| %>
           <label>
             <%= f.radio_button :payment_method, "銀行振り込み" %>
           </label>
@@ -81,10 +87,11 @@
   <div class="row">
     <div class="col-md-12">
       <div class="col-md-3 col-md-offset-8">
-        <%= f.submit "購入" class: "btn btn-primary btn-lg center-block btn-block" %>
+        <%= f.submit "購入", class: "btn btn-primary btn-lg center-block btn-block" %>
       </div>
       <div class="col-md-4"></div>
     </div>
   </div>
+  <% end %>
 
 </div>
