@@ -1,5 +1,7 @@
 class Admins::LabelController < ApplicationController
 
+  layout "admin"
+
   def index
     @labels = Label.all
     @label = Label.new

@@ -1,5 +1,7 @@
 class Admins::ArtistController < ApplicationController
 
+  layout "admin"
+
 def index
     @artists = Artist.page(params[:page])
     @artist = Artist.new
@@ -15,6 +17,9 @@ def create
 end
 
 def destroy
+    @artist = Artist.find(params[:id])
+    @artist.destroy
+    redirect_to admins_artist_index_path
 end
 
 private
