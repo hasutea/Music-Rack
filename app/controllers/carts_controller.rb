@@ -2,7 +2,7 @@ class CartsController < ApplicationController
 
   before_action :authenticate_user!, :validate_cart!
 
-  def show
+  def index
     # カートに入れるボタンを押された商品全てを表示(カートテーブルの商品id,ユーザーid,数量を取得して表示)
     @cart = current_user.cart
     @cart_products = @cart.products
