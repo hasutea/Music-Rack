@@ -13,7 +13,13 @@ class PaymentsController < ApplicationController
     end
   end
 
+  def index
+    @payments = current_user.payments.page(params[:page]).reverse_order
+  end
+
   def show
+    @payment = Payment.find(params[:id])
+    @purchase_products = @payment.purchase_products
   end
 
   def finish
@@ -21,6 +27,6 @@ class PaymentsController < ApplicationController
 
 private
   def payment_params
-    params.require(:payment).permit(:shipping_last_name, :shipping_first_name, :shipping_postal_code, :shipping_address, :order_status, :payment_method_id, :user_id, purchase_products_attributes: [:id, :product_id, :quantity, :price])
+  	params.require(:payment).permit(:user, :payment_method, :shipping_last_name, :shipping_first_name, :shipping_postal_code, :shipping_address, :order_status)
   end
 end
