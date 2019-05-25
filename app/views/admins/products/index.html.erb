@@ -30,13 +30,15 @@
       <tbody>
         <% @results.each do |product| %>
           <tr>
-            <td><%= product.id %></td>
-            <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'png', fallback: "noimage.png"  %></td>
-            <td><%= product.title %></td>
-            <td><%= product.artist.artist %></td>
-            <td>¥<%= product.price %></td>
-            <td><%= product.stock %></td>
-            <td><%= product.status %></td>
+            <%= link_to (admins_product_path(product.id)) do %>
+              <td><%= product.id %></td>
+              <td><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'png', fallback: "noimage.png"  %></td>
+              <td><%= product.title %></td>
+              <td><%= product.artist.artist %></td>
+              <td>¥<%= product.price %></td>
+              <td><%= product.stock %></td>
+              <td><%= product.status %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
