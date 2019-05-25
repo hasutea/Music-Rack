@@ -20,6 +20,8 @@ class Admins::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @disk = @product.disks.build
+    @song = @disk.songs.build
   end
 
   def create
@@ -55,18 +57,18 @@ class Admins::ProductsController < ApplicationController
 
 private
   def product_params
-    params.require(:product).permit(
-      :title,
-      :image,
-      :price,
-      :stock,
-      :status,
-      :artist_id, to_i,
-      :label_id,
-      :genre_id,
-      disks_attributes: [:id, :disk_id, :_destroy],
-      songs_attributes: [:id, :song, :song_order, :_destroy]
-      )
+  params.require(:product).permit(
+    :title,
+    :image,
+    :price,
+    :stock,
+    :status,
+    :artist_id,
+    :label_id,
+    :genre_id,
+    disks_attributes: [:id, :disk, :product_id, :_destroy],
+    songs_attributes: [:id, :disk_id, :song_title, :song_order, :_destroy]
+    )
   end
 
 end

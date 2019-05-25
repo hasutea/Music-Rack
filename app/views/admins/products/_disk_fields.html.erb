@@ -1,18 +1,16 @@
-<%= f.fields_for :disks do |d| %>
-  <div class='nested-fields'>
-    <%= d.text_field :disk %>
-    <table class="table table-borderedtable-hover">
-      <thead>
-          <th>曲名</th>
-          <th>曲順</th>
-          <th>追加/削除</th>
-      </thead>
-      <%= id = f.object_name.to_sym.slice(25..36) %>
-      <%= debug id[] %>
-      <tbody class=<%= "tbody_#{id}" %> >
-        <%= render 'song_fields', :f => d %>
-      </tbody>
-    </table>
+<div class="nested-fields well well-compact">
+  <div class="form-group">
+    <label for="control-label">ディスクNo.</label>
+    <%= f.text_field :disk, class: "form-control" %>
+    <%= link_to_remove_association "ディスクを削除", f, {class: "btn btn-danger btn-xs", role: "button"} %>
   </div>
-  <%= link_to_add_association "song add", f, :songs, class: 'btn btn-info btn-sm', role: 'button','data-association-insertion-method' => 'append','data-association-insertion-node' =>  ".tbody_#{id}" %>
-<% end %>
+
+  <div class="songs">
+    <%= f.fields_for :songs do |s| %>
+      <%= render "song_fields", :f => s %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association "曲を追加", f, :songs, {class: "btn btn-info btn-xs", role: "button"} %>
+    </div>
+  </div>
+</div>
