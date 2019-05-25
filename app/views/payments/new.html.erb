@@ -1,88 +1,97 @@
 <div class="container-fluid">
   <div class="row">
     <h1>決済ページ</h1>
-    <p>カート内の商品をご購入することができます。</p>
 
     <div class="col-md-10 col-md-offset-1">
       <table class="table table-bordered">
-        <tr>
-          <th>購入内容</th>
-          <th>購入枚数</th>
-          <th>価格</th>
-        </tr>
-        <tr>
-          <td>スプラトゥーン2</td>
-          <td>１枚</td>
-          <td>700 円</td>
-        </tr>
-        <tr>
-          <td>プロを目指す人のためのRuby入門 言語仕様からテスト駆動開発・デバッグ技法まで (Software Design plusシリーズ)</td>
-          <td>2枚</td>
-          <td>800 円</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>購入内容</th>
+            <th>購入枚数</th>
+            <th>価格</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= @products.each do |product| %>
+            <%= product.carts.each do |cart| %>
+              <tr>
+                <td><%= product.title %></td>
+                <td><%= cart.quantity %></td>
+                <td><%= cart.price %>円</td>
+              </tr>
+            <% end %>
+          <% end %>
+        </tbody>
       </table>
     </div>
   </div>
 
   <div class="row border"> <!-- cssでborder設定する -->
     <div class="col-md-10 col-md-offset-1">
-      <div>
-        <p>
-          <label>
-            <input type="radio" name="address" value="現在登録している住所に送る"> 現在登録している住所に送る
-          </label>
-        </p>
-        <p>郵便番号：3933939</p>
-        <p>住所：東京都ゲキド町3-9-339号室</p>
-      </div>
+  <%= form_for (@payment) do |f| %>
+      <p>
+        <label>
+          <input type="radio" name="address" value="現在登録している住所">
+          現在登録している住所
+        </label>
+      </p>
+      <p>郵便番号：<%= @address.postal_code %></p>
+      <p>住所：<%= @address.adress %></p>
 
-      <form action="new_address" method="post">
-        <p>
-          <label>
-            <input type="radio" name="address" value="登録している住所以外に送付する"> 登録している住所以外に送付する
-          </label>
-        </p>
-        <p>
-          <label for="name">送付先氏名：</label>
-          <input type="text" name="name" class="name" size="10" placeholder="例：山田">
-          <input type="text" name="name" class="name" size="10" placeholder="例：太郎">
-        </p>
-        <p>
-          <label for="postal_code">送付先郵便番号：</label>
-          <input type="text" name="postal_code" class="postal_code" size="10" placeholder="例：1234567">
-        </p>
-        <p>
-          <label for="postal_code">送付先住所：</label>
-          <input type="text" name="address" class="address" size="70" placeholder="例：東京都千代田区大手町1-2-3">
-        </p>
-
-        <button type="button" class="btn btn-warning btn-sm">入力した情報を保存する</button>
-      </form>
+      <p>
+        <label>
+          <input type="radio" name="address" value="登録している住所以外に送付する場合は下記に入力してください"> 登録している住所以外に送付する場合は下記に入力してください
+        </label>
+      </p>
+      <%= form_with(model: addresses) do |f| %>
+      <p>
+        <label for="name">送付先氏名：</label>
+        <%= f.text_field :shipping_last_name, class: "form-control", :placeholder => "例：山田" %>
+        <%= f.text_field :shipping_first_name, class: "form-control", :placeholder => "例：太郎" %>
+      </p>
+      <p>
+        <label for="postal_code">送付先郵便番号：</label>
+        <%= f.text_field :shipping_postal_code, class: "form-control", :placeholder => "例：1234567" %>
+      </p>
+      <p>
+        <label for="postal_code">送付先住所：</label>
+        <%= f.text_field :shipping_postal_code, class: "form-control", :placeholder => "例：東京都千代田区大手町1-2-3" %>
+      </p>
+      <% end %>
     </div>
   </div>
 
   <div class="row border"> <!-- cssでborder設定する -->
     <div class="col-md-10 col-md-offset-1">
         <h4>支払方法を選択</h4>
-          <p><label><input type="radio" name="payment_method" value="reading">銀行振込</label></p>
-          <p><label><input type="radio" name="payment_method" value="music">クレジットカード</label></p>
-          <p><label><input type="radio" name="payment_method" value="travel">代引</label></p>
+        <%= f.fields_for :payment_methods do |f| %>
+          <label>
+            <%= f.radio_button :payment_method, "銀行振り込み" %>
+          </label>
+          <label>
+            <%= f.radio_button :payment_method, "クレジットカード" %>
+          </label>
+          <label>
+            <%= f.radio_button :payment_method, "代引" %>
+          </label>
+        <% end %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-3 col-md-offset-1 h3">商品小計｜¥1,500</div>
+    <div class="col-md-3 col-md-offset-1 h3">商品小計｜¥<%= @cart.price * @cart.quantity %></div>
     <div class="col-md-3 h3">送料｜¥500</div>
-    <div class="col-md-3 h3">総計（税込）｜¥2,000</div>
+    <div class="col-md-3 h3">総計（税込）｜<%= @cart.price * @cart.quantity + 500 %></div>
   </div>
 
   <div class="row">
     <div class="col-md-12">
       <div class="col-md-3 col-md-offset-8">
-      <button type="button" class="btn btn-primary btn-lg center-block btn-block">購入</button>
+        <%= f.submit "購入", class: "btn btn-primary btn-lg center-block btn-block" %>
       </div>
       <div class="col-md-4"></div>
     </div>
   </div>
+  <% end %>
 
 </div>

@@ -3,7 +3,8 @@
     <h1>商品登録</h1>
 
       <div class="form">
-        <%= form_with model: @product, local: true do |f| %>
+
+        <%= form_with model: @product, url: admins_products_path, local: true do |f| %>
 
           <div class="row">
             <div class="col-md-4 col-md-offset-2">
@@ -14,37 +15,87 @@
               </div>
 
               <div class="form-group">
-                <label for="control-label">ジャケット写真</label>
-                <%= f.attachment_field :image, class: "btn btn-info btn-sm" %>
+                <label for="control-label">ジャケット画像</label>
+                <%= f.attachment_field :image, class: "col-xs-12 btn btn-default btn-sm", placeholder: "image" %>
               </div>
 
-              <%= form_tag admins_products_path, method: :post do %>
-                <div class="form-group">
-                  <label for="control-label">アーティスト名</label>
-                  <%= select_tag :artist_id, options_from_collection_for_select(Artist.all, :id, :artist, params[:artist_id]), {prompt: "選択してください", class: "js-searchable form-control", name: "artist_id"} %>
+              <div class="form-group">
+                <label for="control-label">アーティスト名</label>
+                <%= select_tag :artist_id, options_from_collection_for_select(Artist.all, :id, :artist, params[:artist_id]), {prompt: "選択してください", class: "js-searchable form-control", name: "artist_id"} %>
+                <%=link_to "選択肢にない場合はこちら", admins_artist_index_path, class: "btn btn-info btn-xs" %>
+              </div>
+
+              <div class="form-group">
+                <label for="control-label">レーベル名</label>
+                <%= select_tag :label_id, options_from_collection_for_select(Label.all, :id, :label, params[:label_id]), {prompt: "選択してください", class: "js-searchable form-control", name: "label_id"} %>
+                <%=link_to "選択肢にない場合はこちら", admins_label_index_path, class: "btn btn-info btn-xs" %>
+              </div>
+
+              <div class="form-group">
+                <label for="control-label">ジャンル</label>
+                <%= select_tag :genre_id, options_from_collection_for_select(Genre.all,:id,:genre, params[:genre_id]), {prompt: "選択してください", class: "js-searchable form-control", name: "genre_id"} %>
+                <%=link_to "選択肢にない場合はこちら", admins_genre_index_path, class: "btn btn-info btn-xs" %>
+              </div>
+
+
+              <div class="form-group">
+                <label for="control-label">在庫数</label>
+                <%= f.select :stock, [
+                  ["0", "0"],
+                  ["1", "1"],
+                  ["2", "2"],
+                  ["3", "3"],
+                  ["4", "4"],
+                  ["5", "5"],
+                  ["6", "6"],
+                  ["7", "7"],
+                  ["8", "8"],
+                  ["9", "9"],
+                  ["10", "10"]
+                  ], {}, {class: "form-control"} %>
+              </div>
+
+              <div class="form-group">
+                <label for="control-label">価格(税別)</label>
+                <div class="form-group row">
+                  <div class="col-md-1">
+                    <label>¥</label>
+                  </div>
+                  <div class="col-md-11">
+                    <%= f.text_field :price, class: "form-control" %>
+                  </div>
                 </div>
-              <% end %>
+              </div>
 
-              <%= form_tag admins_products_path, method: :post do %>
-                <div class="form-group">
-                  <label for="control-label">レーベル名</label>
-                  <%= select_tag :label_id, options_from_collection_for_select(Label.all,:id,:label), include_blank: true, class: "js-searchable form-control", name: "label_id" %>
+              <div class="form-group">
+                <label for="control-label">ステータス</label>
+                <%= f.select :status, [["販売中", "販売中"], ["販売停止中", "販売停止中"]], {}, {class: "form-control"} %>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+              <label>シングル/アルバム内の曲名</label>
+                <div class="disks">
+                  <%= f.fields_for :disks do |d| %>
+                    <%= render 'disk_fields', :f => d %>
+                  <% end %>
+                  <div class="links">
+                    <%= link_to_add_association "ディスクを追加", f, :disks, {class: "btn btn-info btn-xs", role: "button"} %>
                 </div>
-              <% end %>
+            </div>
+          </div>
 
-              <%= form_tag admins_products_path, method: :post do %>
-                <div class="form-group">
-                  <label for="control-label">ジャンル</label>
-                  <%= select_tag :genre_id, options_from_collection_for_select(Genre.all,:id,:genre), include_blank: true, class: "js-searchable form-control", name: "genre_id" %>
-                </div>
-              <% end %>
-
-
-          <div class="col-md-4 col-md-offset-4">
-            <%= f.submit "新規登録", class: "btn btn-success btn-lg btn-block" %>
+          <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+              <%= f.submit "新規登録", class: "btn btn-success btn-lg btn-block" %>
+            </div>
           </div>
 
         <% end %>
+
       </div>
   </div>
 </div>
