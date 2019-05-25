@@ -19,7 +19,7 @@
           </div>
         </div>
       </div>
-      <%= f.fields_for :address do |f| %>
+      <%= f.fields_for :addresses do |f| %>
         <div class="row">
           <div class="form-group">
             <label>■郵便番号　※ハイフン不要</label>
@@ -56,4 +56,4 @@
     </div>
   </div>
 <% end %>
-<%= link_to "pass", new_user_password_path(@user) %>
+<%= link_to "pass", edit_user_password_path(@user) %>

@@ -76,8 +76,7 @@ gem 'annotate'
 gem 'ransack'
 gem 'cancancan'
 gem 'rspec-rails'
-
-gem "jquery-turbolinks" # Turbolinksで遷移したときもjQuery.ready()を呼び出してくれる
+gem "jquery-turbolinks"
 gem "select2-rails"
 gem 'cocoon'
 gem 'nested_form_fields'

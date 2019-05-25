@@ -24,7 +24,6 @@
 //= require select2
 //= require bootstrap-sprockets
 //= require nested_form_fields
-
 //= require_tree .
 
 
@@ -55,3 +54,8 @@ $(document).ready(function() {
   });
 
 });
+
+  $(document).ready(function(){
+  $('#table').rowClick();
+});
+
