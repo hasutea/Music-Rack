@@ -22,7 +22,7 @@
                 <td>
                   <%= form_for(cart) do |f| %>
                     <%= f.number_field :quantity, class: "form-control" %>
-                    <%= f.submit "数量変更", class: "btn btn-success btn-xs" %>
+                    <%= f.submit "更新", class: "btn btn-success btn-xs" %>
                   <% end %>
                 </td>
                 <td>￥<%= cart.product.price %></td>
