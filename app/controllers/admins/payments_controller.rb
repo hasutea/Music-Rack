@@ -19,6 +19,7 @@ class Admins::PaymentsController < ApplicationController
     @purchase_products = @payment.purchase_products
   end
 
+
   def destroy
     @payment = Payment.find(params[:id])
     @payment.destroy

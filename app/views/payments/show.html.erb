@@ -17,6 +17,7 @@
         <th>価格</th>
       </tr>
 
+
         <% @purchase_products.each do |purchase_product| %>
           <tr>
             <th><%= purchase_product.product.title %></th>
@@ -33,6 +34,7 @@
       <div class="col-md-4"></div>
       <div class="col-md-4">
       <%= link_to "戻る", payments_path, class: "btn btn-primary btn-lg center-block btn-block" %>
+
       </div>
       <div class="col-md-4"></div>
     </div>

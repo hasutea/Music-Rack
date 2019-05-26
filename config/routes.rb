@@ -101,6 +101,7 @@ resources :users, only: [:index, :show, :edit, :update, :destroy]
 get "/users/:id/carts" => "users#cart"
 resources :carts, only: [:create, :destroy, :update]
 resources :payments, only: [:new, :index, :create, :show, :update]
+
 match '/finish', to: 'payments#finish', via: 'get'
 
 namespace :admins do
@@ -110,6 +111,7 @@ namespace :admins do
   resources :artist, only: [:index, :create, :destroy]
   resources :label, only: [:index, :create, :destroy]
   resources :genre, only: [:index, :create, :destroy]
+
 end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

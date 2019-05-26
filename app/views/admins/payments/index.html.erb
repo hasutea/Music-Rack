@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -35,9 +36,11 @@
                 <% end %>
                 <%= sum + 500 %>
             </th>
+
             <th><%= link_to "詳細", admins_payment_path(payment.id), class: "col-xs-12 btn btn-info" %></th>
             <th><%= link_to "編集", edit_admins_payment_path(payment.id), class: "col-xs-12 btn btn-success" %></th>
             <th><%= link_to "削除", admins_payment_path(payment.id), method: :delete, "data-confirm" => "削除してもよろしいでしょうか?",class: "col-xs-12 btn btn-danger" %></th>
+
           </tr>
       <% end %>
     </table>
@@ -54,6 +57,8 @@
       <div class="col-md-4"></div>
     </div>
   </div>
+
+
 
   </div>
 </div>
