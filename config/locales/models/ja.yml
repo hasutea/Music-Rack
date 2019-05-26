@@ -1,10 +1,8 @@
 ja:
   activerecord:
     models:
-      address:アドレス
+      address: アドレス
 
-  attributes:
-    postal_code:
-      郵便番号
-    address:
-      住所
+    attributes:
+      postal_code: 郵便番号
+      address: 住所
