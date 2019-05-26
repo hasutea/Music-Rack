@@ -12,15 +12,7 @@
           </tr>
         </thead>
         <tbody>
-          <%= @products.each do |product| %>
-            <%= product.carts.each do |cart| %>
-              <tr>
-                <td><%= product.title %></td>
-                <td><%= cart.quantity %></td>
-                <td><%= cart.price %>円</td>
-              </tr>
-            <% end %>
-          <% end %>
+          
         </tbody>
       </table>
     </div>
@@ -36,14 +28,14 @@
         </label>
       </p>
       <p>郵便番号：<%= @address.postal_code %></p>
-      <p>住所：<%= @address.adress %></p>
+      <p>住所：<%= @address.address %></p>
 
       <p>
         <label>
           <input type="radio" name="address" value="登録している住所以外に送付する場合は下記に入力してください"> 登録している住所以外に送付する場合は下記に入力してください
         </label>
       </p>
-      <%= form_with(model: addresses) do |f| %>
+      <%= form_for (@address) do |f| %>
       <p>
         <label for="name">送付先氏名：</label>
         <%= f.text_field :shipping_last_name, class: "form-control", :placeholder => "例：山田" %>

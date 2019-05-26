@@ -21,20 +21,19 @@
 
             <div class="form-group">
               <label for="control-label">アーティスト名</label>
-              <%= select_tag :artist, options_from_collection_for_select(Artist.all,:id,:artist), include_blank: true, class: "js-searchable form-control" %>
-
-              <input type="text" class="form-control" name="artist" placeholder="選択肢にない場合は、直接入力して下さい">
+              <%= select_tag :artist_id, options_from_collection_for_select(Artist.all, :id, :artist, params[:artist_id]), {prompt: "選択してください", class: "js-searchable form-control", name: "artist_id"} %>
+              <%=link_to "選択肢にない場合はこちら", admins_artist_index_path, class: "btn btn-info btn-xs" %>
             </div>
 
             <div class="form-group">
               <label for="control-label">レーベル名</label>
-              <%= select_tag :label, options_from_collection_for_select(Label.all,:id,:label), include_blank: true, class: "js-searchable form-control" %>
-              <input type="text" class="form-control" name="label" placeholder="選択肢にない場合は、直接入力して下さい">
+              <%= select_tag :label_id, options_from_collection_for_select(Label.all, :id, :label, params[:label_id]), {prompt: "選択してください", class: "js-searchable form-control", name: "label_id"} %>
+              <%=link_to "選択肢にない場合はこちら", admins_label_index_path, class: "btn btn-info btn-xs" %>
             </div>
             <div class="form-group">
               <label for="control-label">ジャンル</label>
-              <%= select_tag :genre, options_from_collection_for_select(Genre.all,:id,:genre), include_blank: true, class: "js-searchable form-control" %>
-              <input type="text" class="form-control" name="genre" placeholder="選択肢にない場合は、直接入力して下さい">
+              <%= select_tag :genre_id, options_from_collection_for_select(Genre.all,:id,:genre, params[:genre_id]), {prompt: "選択してください", class: "js-searchable form-control", name: "genre_id"} %>
+              <%=link_to "選択肢にない場合はこちら", admins_genre_index_path, class: "btn btn-info btn-xs" %>
             </div>
 
             <div class="form-group">
@@ -51,6 +50,7 @@
                 <div class="col-md-11">
                   <%= f.text_field :price, class: "form-control" %>
                 </div>
+              </div>
             </div>
             <div class="form-group">
               <label for="control-label">ステータス</label>
@@ -58,46 +58,29 @@
             </div>
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
   </div>
 
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
       <label>シングル/アルバム内の曲名</label>
-
-        <div class="row">
-              <table class="table table-bordered">
-                <tr>
-                  <th>ディスク</th>
-                  <th>曲名</th>
-                  <th>曲順</th>
-                </tr>
-                <tr>
-                  <td>ディスク1</td>
-                  <td>ハレノヒ</td>
-                  <td>1</td>
-                </tr>
-                <tr>
-                  <td>ディスク1</td>
-                  <td>マリーゴールド</td>
-                  <td>2</td>
-                </tr>
-              </table>
-
-            <button type="button" class="btn btn-info btn-sm">記入欄を追加</button>
-          </div>
+        <div class="disks">
+          <%= f.fields_for :disks do |d| %>
+            <%= render 'disk_fields', :f => d %>
+          <% end %>
+          <div class="links">
+            <%= link_to_add_association "ディスクを追加", f, :disks, {class: "btn btn-info btn-xs", role: "button"} %>
         </div>
     </div>
   </div>
 
-    <div class="row">
-      <div class="col-md-3 col-md-offset-3">
-        <button type="button" class="btn btn-success btn-lg btn-block">更新</button>
-      </div>
-      <div class="col-md-3">
-        <button type="button" class="btn btn-danger btn-lg btn-block">削除</button>
-      </div>
+  <div class="row">
+    <div class="col-md-3 col-md-offset-3">
+      <%= f.submit "更新", class: "btn btn-success btn-lg btn-block" %>
+    </div>
+    <div class="col-md-3">
+      <%= f.submit "削除", class: "btn btn-danger btn-lg btn-block" %>
+    </div>
     <% end %>
   </div>
 </div>

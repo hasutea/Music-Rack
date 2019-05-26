@@ -16,6 +16,7 @@ class Admins::ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @disks = @product.disks
   end
 
   def new
@@ -43,6 +44,10 @@ class Admins::ProductsController < ApplicationController
     end
   end
 
+  def edit
+    @product = Product.find(params[:id])
+  end
+
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
@@ -53,6 +58,9 @@ class Admins::ProductsController < ApplicationController
   end
 
   def destroy
+    @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to admins_products_path
   end
 
 private
@@ -70,5 +78,4 @@ private
     songs_attributes: [:id, :disk_id, :song_title, :song_order, :_destroy]
     )
   end
-
 end
