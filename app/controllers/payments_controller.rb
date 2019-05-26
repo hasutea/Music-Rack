@@ -19,10 +19,6 @@ class PaymentsController < ApplicationController
     @payments = current_user.payments.page(params[:page]).reverse_order
   end
 
-  def index
-    @payments = current_user.payments.page(params[:page]).reverse_order
-  end
-
   def show
     @payment = Payment.find(params[:id])
     @purchase_products = @payment.purchase_products

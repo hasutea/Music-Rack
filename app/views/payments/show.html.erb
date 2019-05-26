@@ -20,13 +20,12 @@
 
         <% @purchase_products.each do |purchase_product| %>
           <tr>
-            <th><%= purchase_product.product.title %></th>
-            <th><%= purchase_product.quantity %></th>
-            <th><%= purchase_product.price %></th>
+            <td><%= purchase_product.product.title %></td>
+            <td><%= purchase_product.quantity %></td>
+            <td><%= purchase_product.price %></td>
           </tr>
         <% end %>
     </table>
-
     </div>
 
   <div class="row">

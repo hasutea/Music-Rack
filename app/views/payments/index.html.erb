@@ -22,46 +22,45 @@
 
       <% current_user.payments.each do |payment| %>
           <tr>
-            <th><%= payment.created_at.strftime('%Y/%m/%d') %></th>
-            <th><%= payment.shipping_postal_code %></th>
-            <th><%= payment.shipping_address %></th>
-            <th><%= payment.order_status %></th>
-            <th><%= payment.payment_method.payment_method %></th>
-            <th><% sum = 0 %>
+            <td><%= payment.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= payment.shipping_postal_code %></td>
+            <td><%= payment.shipping_address %></td>
+            <td><%= payment.order_status %></td>
+            <td><%= payment.payment_method.payment_method %></td>
+            <td><% sum = 0 %>
               <% payment.purchase_products.each do |purchase_product| %>
               <% sum += purchase_product.price * purchase_product.quantity %>
                 <% end %>
                 <%= sum + 500 %>
-            </th>
-            <th><%= link_to "詳細", payment_path(payment.id), class: "col-xs-12 btn btn-info" %></th>
+            </td>
+            <td><%= link_to "詳細", payment_path(payment.id), class: "col-xs-12 btn btn-info" %></td>
           </tr>
       <% end %>
     </table>
 
     </div>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-      <button type="button" class="btn btn-primary btn-lg center-block btn-block">戻る</button>
-      </div>
-      <div class="col-md-4"></div>
-    </div>
-  </div>
-
-        <div class="row">
-          <div class="col-md-12">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-5">
-              <%= paginate @payments, class: "paginate" %>
-            </div>
-            <div class="col-md-3">
-            </div>
-          </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+        <%= link_to "マイページへ", user_path(current_user), class: "btn btn-primary btn-lg center-block btn-block" %>
         </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
 
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-5">
+          <%= paginate @payments, class: "paginate" %>
+        </div>
+        <div class="col-md-3">
+        </div>
+      </div>
 
+    </div>
   </div>
 </div>
