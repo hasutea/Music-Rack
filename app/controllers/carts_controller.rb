@@ -12,31 +12,20 @@ class CartsController < ApplicationController
 
   def update
     # カートに入っているある商品の個数が変更されたら更新
-    @quantity = [["0", "0"],
-                  ["1", "1"],
-                  ["2", "2"],
-                  ["3", "3"],
-                  ["4", "4"],
-                  ["5", "5"],
-                  ["6", "6"],
-                  ["7", "7"],
-                  ["8", "8"],
-                  ["9", "9"],
-                  ["10", "10"]]
-    @cart = Cart.find(params[:product_id])
-    if @cart.update(cart_params)
-      redirect_to cart_path(@cart)
+    cart = Cart.find(params[:id])
+    if cart.update(cart_params)
+      redirect_to cart_path(cart), notice: "変更しました！."
     else
-      render :show
+      @carts = Cart.all
+      render "users/cart"
     end
   end
 
   def destroy
     # カートに入っているある商品idを持ったもののみを削除 決済画面へ遷移したらカートの中身を全て削除
-    cart = current_user.cart
-    cart_content = Cart.find(params[:product_id])
-    cart_content.destroy
-    redirect_to cart
+    cart = Cart.find(params[:id])
+    cart.destroy
+    redirect_to cart_path
   end
 
 private
