@@ -1,0 +1,51 @@
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+
+    <div class="row">
+      <div class="col-md-5">
+        <h1>購入履歴　編集画面</h1>
+        <p>購入者の購入履歴を編集することができます。</p>
+        <p>現在の送料 500円</p>
+      </div>
+    </div>
+
+
+<%= form_for(@payment) do |f| %>
+
+	<p>送付先郵便番号：　<%= f.text_field :shipping_postal_code %></p>
+	<p>送付先住所：　<%= f.text_field :shipping_address, :size => "100*100" %></p>
+	<p>ステータス：　<%= f.select :order_status, [["受付","受付"],["商品準備中","商品準備中"],["出荷済み","出荷済み"]] %>
+	</p>
+	<p>支払方法：　<%= f.select :payment_method_id, [["銀行振込",1],["クレジットカード",2],["代引",3]] %></p>
+
+  <div class="col-md-2">
+      <% @purchase_products.each do |purchase_product| %>
+    <p>購入数量：　<%= purchase_product.product.title %></p>
+      <% end %>
+  </div>
+  <div class="col-md-2">
+      <%= f.fields_for :purchase_products do |f| %>
+          <%= f.text_field :quantity %>
+      <% end %>
+  </div>
+
+
+  <p><%= f.submit '変更を保存' %></p>
+  <% end %>
+
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+      <%= link_to "戻る", admins_payments_path, class: "btn btn-primary btn-lg center-block btn-block" %>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+
+    </div>
+  </div>
+</div>
