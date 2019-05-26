@@ -14,7 +14,7 @@ class CartsController < ApplicationController
     # カートに入っているある商品の個数が変更されたら更新
     cart = Cart.find(params[:id])
     if cart.update(cart_params)
-      redirect_to cart_path(cart), notice: "変更しました！."
+      redirect_to user_cart_path(current_user.id), notice: "変更しました！"
     else
       @carts = Cart.all
       render "users/cart"
@@ -25,7 +25,7 @@ class CartsController < ApplicationController
     # カートに入っているある商品idを持ったもののみを削除 決済画面へ遷移したらカートの中身を全て削除
     cart = Cart.find(params[:id])
     cart.destroy
-    redirect_to cart_path
+    redirect_to user_cart_path(current_user.id), notice: "削除しました！"
   end
 
 private
