@@ -1,3 +1,4 @@
+
 <p class="text-center h3">購入が完了しました。<br>商品発送までしばらくお待ちください。</p>
 
 
@@ -5,17 +6,12 @@
   <div class="row">
     <div class="col-md-12">
       <div class="col-md-4 col-md-offset-1">
-        <%= link_to "商品一覧へ戻る" , products_path do %>
-        <div class="btn btn-lg btn-primary pull-right">
-        <% end %>
-        </div>
+
+        <%= link_to "商品一覧へ戻る" , products_path, class: "btn btn-lg btn-primary pull-right" %>
       </div>
         <div class="col-md-4 col-md-offset-2">
-          <%= link_to "購入履歴を見る", payments_path do %>
-          <div class="btn btn-lg btn-primary">
-          <% end %>
-          </div>
+          <%= link_to "購入履歴を見る", payments_path, class: "btn btn-lg btn-primary" %>
         </div>
     </div>
   </div>
-</div> 
+</div>

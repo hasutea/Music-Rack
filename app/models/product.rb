@@ -11,4 +11,5 @@ class Product < ApplicationRecord
   # throughオプションによりdisls経由でsongsにアクセスできるようになる
   has_many :songs, through: :disks
 
+
 end

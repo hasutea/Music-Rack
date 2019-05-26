@@ -9,7 +9,7 @@
         <div class="col-md-3">
           <div class="col-md-12">
             <section class="">
-              <%= attachment_image_tag product, :image, :fill, 200, 100, format: 'png', fallback: "noimage.png"  %>
+              <%= attachment_image_tag product, :image, size: "250x200", format: 'png', fallback: "noimage.png"  %>
               <h3 class=""><%= link_to product.title, product_path(product.id) %></h3>
               <p class=""><%= product.artist.artist %></p>
               <p class="">価格(税込)｜￥<%= product.price %></p>
