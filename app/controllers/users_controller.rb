@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:destroy]
 
   def show
-  	@user = User.find(params[:id])
-  	@address = @user.addresses.where('created_at > ?', 1.day.ago).first
+    @user = User.find(params[:id])
+    @address = @user.addresses.where('created_at > ?', 1.day.ago).first
   end
 
   def edit
@@ -34,9 +34,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def cart
+    # カートに入れるボタンを押された商品全てを表示(カートテーブルの商品id,ユーザーid,数量を取得して表示)
+    # カート内に商品がなかったら、商品がないと表示
+    @carts = current_user.carts
+  end
+
 private
   def user_params
-    params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :telephone, :email, :password, addresses_attributes: [:id, :address, :postal_code])
+    params.require(:user).permit(:last_name, :first_name, :kana_last_name, :kana_first_name, :telephone, :email, :password, addresses_attributes: [:id, :address, :postal_code, :_destroy])
   end
 
   def correct_user

@@ -1,14 +1,14 @@
 <div class="row">
   <h2>商品詳細</h2>
   <div class="col-md-5 col-md-offset-1">
-    <%= attachment_image_tag @product, :image, size: "100x100", format: 'jpg' %>
+    <%= attachment_image_tag @product, :image, size: "300x300", format: 'jpg' %>
   </div>
   <div class="col-md-4">
     <label><%= @product.title %></label><br>
     <label><%= @product.artist.artist %></label>
     <p><%= @product.label.label %></p>
     <p>ジャンル｜<%= @product.genre.genre %></p>
-    <p>在庫｜<% @product.stock %></p>
+    <p>在庫｜<%= @product.stock %></p>
     <p>価格(税込)|￥<%= @product.price %></p>
     <P>ステータス｜<%= @product.status %></P>
   </div>
@@ -16,21 +16,24 @@
 <div class="row">
   <h2>収録曲</h2>
   <div class="col-md-5 col-md-offset-1">
-    <% @products.disk.each do |disk| %>
+    <% @disks.each do |disk| %>
       <p><%= disk.disk %></p>
-        <ul>
-          <li><%= disk.song.song_order %>.<%= disk.song.song_title %></li>
-        </ul>
+      <ul>
+        <% disk.songs.each do |song| %>
+        <li><%= song.song_order %>.<%= song.song_title %></li>
+        <% end %>
+      </ul>
     <% end %>
   </div>
 </div>
 <div class="row">
-  <div class="col-md-offset-4 col-md-2">
-    <%= link_to "戻る", products_path(@product), class: "btn btn-default btn-lg" %>
-  <div class="col-md-offset-4 col-md-2">
-    <%= link_to "編集", edit_admins_product(@product), class: "btn btn-success" %>
+  <div class="col-md-offset-2 col-md-2">
+    <%= link_to "戻る", admins_products_path, class: "btn btn-default btn-lg" %>
   </div>
   <div class="col-md-offset-1 col-md-2">
-    <%= link_to "削除", admins_products_path, class: "btn btn-warning btn-lg" %>
+    <%= link_to "編集", edit_admins_product_path, class: "btn btn-success btn-lg" %>
+  </div>
+  <div class="col-md-offset-1 col-md-2">
+    <%= link_to "削除", admins_products_path, method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-warning btn-lg" %>
   </div>
 </div>

@@ -4,6 +4,8 @@ class PaymentsController < ApplicationController
 
   def new
     @payment = Payment.new
+    @address = current_user.addresses.where('created_at > ?', 1.day.ago).first
+    @addresses = current_user.addresses.build
   end
 
   def create
