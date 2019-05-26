@@ -96,7 +96,7 @@ devise_for :admins, controllers: {
     registrations: 'admins/registrations'
 }
 
-resources :products
+resources :products, only: [:index, :show]
 resources :users, only: [:index, :show, :edit, :update, :destroy]
 get "/users/:id/carts" => "users#cart"
 resources :carts, only: [:create, :destroy, :update]

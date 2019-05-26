@@ -35,20 +35,22 @@
           <input type="radio" name="address" value="登録している住所以外に送付する場合は下記に入力してください"> 登録している住所以外に送付する場合は下記に入力してください
         </label>
       </p>
-      <%= form_for (@address) do |f| %>
-      <p>
-        <label for="name">送付先氏名：</label>
-        <%= f.text_field :shipping_last_name, class: "form-control", :placeholder => "例：山田" %>
-        <%= f.text_field :shipping_first_name, class: "form-control", :placeholder => "例：太郎" %>
-      </p>
-      <p>
-        <label for="postal_code">送付先郵便番号：</label>
-        <%= f.text_field :shipping_postal_code, class: "form-control", :placeholder => "例：1234567" %>
-      </p>
-      <p>
-        <label for="postal_code">送付先住所：</label>
-        <%= f.text_field :shipping_postal_code, class: "form-control", :placeholder => "例：東京都千代田区大手町1-2-3" %>
-      </p>
+      <%= form_with model: @user do |f| %>
+        <%= f.fields_for :addresses do |f| %>
+          <p>
+            <label for="name">送付先氏名：</label>
+            <%= f.text_field :shipping_last_name, class: "form-control", :placeholder => "例：山田" %>
+            <%= f.text_field :shipping_first_name, class: "form-control", :placeholder => "例：太郎" %>
+          </p>
+          <p>
+            <label for="postal_code">送付先郵便番号：</label>
+            <%= f.text_field :shipping_postal_code, class: "form-control", :placeholder => "例：1234567" %>
+          </p>
+          <p>
+            <label for="postal_code">送付先住所：</label>
+            <%= f.text_field :shipping_postal_code, class: "form-control", :placeholder => "例：東京都千代田区大手町1-2-3" %>
+          </p>
+        <% end %>
       <% end %>
     </div>
   </div>
