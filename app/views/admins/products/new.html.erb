@@ -40,19 +40,7 @@
 
               <div class="form-group">
                 <label for="control-label">在庫数</label>
-                <%= f.select :stock, [
-                  ["0", "0"],
-                  ["1", "1"],
-                  ["2", "2"],
-                  ["3", "3"],
-                  ["4", "4"],
-                  ["5", "5"],
-                  ["6", "6"],
-                  ["7", "7"],
-                  ["8", "8"],
-                  ["9", "9"],
-                  ["10", "10"]
-                  ], {}, {class: "form-control"} %>
+                <%= f.text_field :stock, class: "form-control" %>
               </div>
 
               <div class="form-group">
@@ -80,7 +68,7 @@
               <label>シングル/アルバム内の曲名</label>
                 <div class="disks">
                   <%= f.fields_for :disks do |d| %>
-                    <%= render 'disk_fields', :f => d %>
+                    <%= render "disk_fields", :f => d %>
                   <% end %>
                   <div class="links">
                     <%= link_to_add_association "ディスクを追加", f, :disks, {class: "btn btn-info btn-xs", role: "button"} %>

@@ -66,8 +66,13 @@ private
     :artist_id,
     :label_id,
     :genre_id,
-    disks_attributes: [:id, :disk, :product_id, :_destroy],
-    songs_attributes: [:id, :disk_id, :song_title, :song_order, :_destroy]
+    disks_attributes: [
+      :id,
+      :disk,
+      :product_id,
+      :_destroy,
+      songs_attributes: [:id, :disk_id, :song_title, :song_order, :_destroy]
+    ]
     )
   end
 
