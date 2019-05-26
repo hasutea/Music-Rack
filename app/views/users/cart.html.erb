@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>シングル/アルバム名</th>
+            <th>ジャケット画像</th>
+            <th>アーティスト名</th>
+            <th>数量</th>
+            <th>価格(税込)</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @carts.each do |cart| %>
+            <tr>
+              <td><%= cart.product_id.titile %></td>
+              <td><%= attachment_image_tag cart, :image, :fill, 50, 50, format: 'png', fallback: "noimage.png"  %></td>
+              <td><%= cart.artist %></td>
+              <td>
+                <%=form_for cart, url: cart_path(cart.id), method: :post do |f| %>
+                 <%= f.select :quantity, options_for_select(@quantity, {selected: cart.quantity.to_i}), class: "form-control" %>
+                 <%= f.submit "数量変更", class: "btn btn-success btn-xs" %>
+                <% end %>
+              </td>
+              <td>￥<%= cart.price %></td>
+              <td>
+                <%= link_to "削除", cart_path(cart.id), class: "btn btn-danger btn-xs", method: :delete, data:{ confirm: "本当に削除しますか？" } %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="row">
+      <div class="text-right">
+        <p>合計金額（税込）｜　¥5,000</p>
+        <%= link_to "決済ページへ", new_payment_path, class: "btn btn-primary btn-lg" %>
+      </div>
+    </div>
+  </div>
+</div>
