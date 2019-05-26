@@ -1,29 +1,28 @@
 class CartsController < ApplicationController
-
-  before_action :authenticate_user!, :validate_cart!
-
-  def show
-    # カートに入れるボタンを押された商品全てを表示(カートテーブルの商品id,ユーザーid,数量を取得して表示)
-    @cart = current_user.cart
-    @cart_products = @cart.products
-    @total_price = @cart_products.joins(:product).sum(:price)
-
-    # カート内に商品がなかったら、商品がないと表示
-  end
+  before_action :authenticate_user!
 
   def create
     # カートの中身を登録 商品詳細ページでカートに入れるボタンを押したら「カートに商品を追加しました」と表示させてそのページに留まる
-    cart = current_user.cart
-    cart_product = Cart.new(cart_params)
-    if cart_product.save
-      redirect_to product_path(@product.id)
-    else
-      render :show
+    @cart = Cart.new(cart_params)
+    @cart.user_id = current_user.id
+    if @cart.save
+      redirect_to product_path(@product.id), notice: "カートに追加しました！"
     end
   end
 
   def update
     # カートに入っているある商品の個数が変更されたら更新
+    @quantity = [["0", "0"],
+                  ["1", "1"],
+                  ["2", "2"],
+                  ["3", "3"],
+                  ["4", "4"],
+                  ["5", "5"],
+                  ["6", "6"],
+                  ["7", "7"],
+                  ["8", "8"],
+                  ["9", "9"],
+                  ["10", "10"]]
     @cart = Cart.find(params[:product_id])
     if @cart.update(cart_params)
       redirect_to cart_path(@cart)
@@ -40,15 +39,10 @@ class CartsController < ApplicationController
     redirect_to cart
   end
 
-  private
+private
 
   def cart_params
     params.require(:cart).permit(:product_id, :user_id, :quantity)
-  end
-
-  def validate_cart!
-    @cart = current_user.cart
-    @params_cart = Cart.find(params[:id])
   end
 
 end

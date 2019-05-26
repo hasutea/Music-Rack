@@ -5,8 +5,8 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, except: [:destroy]
 
   def show
-  	@user = User.find(params[:id])
-  	@address = @user.addresses.where('created_at > ?', 1.day.ago).first
+    @user = User.find(params[:id])
+    @address = @user.addresses.where('created_at > ?', 1.day.ago).first
   end
 
   def edit
@@ -32,6 +32,12 @@ class UsersController < ApplicationController
     else
       redirect_to root_path
     end
+  end
+
+  def cart
+    # カートに入れるボタンを押された商品全てを表示(カートテーブルの商品id,ユーザーid,数量を取得して表示)
+    # カート内に商品がなかったら、商品がないと表示
+    @carts = current_user.carts
   end
 
 private
