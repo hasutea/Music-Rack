@@ -13,10 +13,22 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find(params[:id])
+    @disks = @product.disks
   end
 
 private
   def product_params
-    params.require(:product).permit(:title, :artist, :genre, :image, :price, :disk, :stock, :status,)
+  params.require(:product).permit(
+    :title,
+    :image,
+    :price,
+    :stock,
+    :status,
+    :artist_id,
+    :label_id,
+    :genre_id,
+    disks_attributes: [:id, :disk, :product_id, :_destroy],
+    songs_attributes: [:id, :disk_id, :song_title, :song_order, :_destroy]
+    )
   end
 end
