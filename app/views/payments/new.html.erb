@@ -59,15 +59,21 @@
     <div class="col-md-10 col-md-offset-1">
         <h4>支払方法を選択</h4>
         <%= f.fields_for :payment_methods do |f| %>
+        <p>
           <label>
-            <%= f.radio_button :payment_method, "銀行振り込み" %>
+            <%= f.radio_button :payment_method, "銀行振込" %> 銀行振込
           </label>
+        </p>
+        <p>
           <label>
-            <%= f.radio_button :payment_method, "クレジットカード" %>
+            <%= f.radio_button :payment_method, "クレジットカード" %> クレジットカード
           </label>
+        </p>
+        <p>
           <label>
-            <%= f.radio_button :payment_method, "代引" %>
+            <%= f.radio_button :payment_method, "代引" %> 代引
           </label>
+        </p>
         <% end %>
     </div>
   </div>

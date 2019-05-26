@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -10,31 +11,40 @@
       </div>
     </div>
 
+      <% @users.each do |user| %>
+      <p>購入者：<%= user.last_name %> <%= user.first_name %></p>
     <table class="table table-bordered">
       <tr>
         <th>購入日</th>
-        <th>送付先</th>
+        <th>送付先郵便番号</th>
+        <th>送付先住所</th>
         <th>ステータス</th>
-        <th>総計</th>
+        <th>支払方法</th>
+        <th>総計（送料込み）</th>
       </tr>
 
-      <% current_user.payments.each do |payment| %>
+      <% user.payments.each do |payment| %>
           <tr>
-            <th><%= link_to payment_path(payment.id) do %>
-                  <%= payment.created_at.strftime('%Y/%m/%d') %>
-                <% end %>
-            </th>
-            <th><%= payment.shipping_address %></th>
-            <th><%= payment.order_status %></th>
-            <th><% sum = 0 %>
+            <td><%= payment.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= payment.shipping_postal_code %></td>
+            <td><%= payment.shipping_address %></td>
+            <td><%= payment.order_status %></td>
+            <td><%= payment.payment_method.payment_method %></td>
+            <td><% sum = 0 %>
               <% payment.purchase_products.each do |purchase_product| %>
               <% sum += purchase_product.price * purchase_product.quantity %>
                 <% end %>
                 <%= sum + 500 %>
-            </th>
+            </td>
+
+            <td><%= link_to "詳細", admins_payment_path(payment.id), class: "col-xs-12 btn btn-info" %></td>
+            <td><%= link_to "編集", edit_admins_payment_path(payment.id), class: "col-xs-12 btn btn-success" %></td>
+            <td><%= link_to "削除", admins_payment_path(payment.id), method: :delete, "data-confirm" => "削除してもよろしいでしょうか?",class: "col-xs-12 btn btn-danger" %></td>
+
           </tr>
       <% end %>
     </table>
+    <% end %>
 
     </div>
 
@@ -48,17 +58,6 @@
     </div>
   </div>
 
-        <div class="row">
-          <div class="col-md-12">
-            <div class="col-md-4">
-            </div>
-            <div class="col-md-5">
-              <%= paginate @payments, class: "paginate" %>
-            </div>
-            <div class="col-md-3">
-            </div>
-          </div>
-        </div>
 
 
   </div>
