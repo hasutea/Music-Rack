@@ -105,7 +105,7 @@ match '/finish', to: 'payments#finish', via: 'get'
 namespace :admins do
   resources :products, only: [:index, :show, :edit, :new, :create, :update, :destroy]
   resources :users, only: [:index, :show, :edit, :update, :destroy]
-  resources :payments, only: [:index, :show, :update]
+  resources :payments, only: [:index, :show, :edit, :update, :destroy]
   resources :artist, only: [:index, :create, :destroy]
   resources :label, only: [:index, :create, :destroy]
   resources :genre, only: [:index, :create, :destroy]

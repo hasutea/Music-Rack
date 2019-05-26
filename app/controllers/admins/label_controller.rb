@@ -8,7 +8,7 @@ class Admins::LabelController < ApplicationController
   end
 
   def create
-    @label = zlabel.new(genre_params)
+    @label = Label.new(genre_params)
     if @label.save
       redirect_to new_admins_product_path, notice: "レーベルを新規登録しました！"
     else

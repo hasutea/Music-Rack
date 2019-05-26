@@ -13,25 +13,27 @@
     <table class="table table-bordered">
       <tr>
         <th>購入日</th>
-        <th>送付先</th>
+        <th>送付先郵便番号</th>
+        <th>送付先住所</th>
         <th>ステータス</th>
-        <th>総計</th>
+        <th>支払方法</th>
+        <th>総計（送料込み）</th>
       </tr>
 
       <% current_user.payments.each do |payment| %>
           <tr>
-            <th><%= link_to payment_path(payment.id) do %>
-                  <%= payment.created_at.strftime('%Y/%m/%d') %>
-                <% end %>
-            </th>
+            <th><%= payment.created_at.strftime('%Y/%m/%d') %></th>
+            <th><%= payment.shipping_postal_code %></th>
             <th><%= payment.shipping_address %></th>
             <th><%= payment.order_status %></th>
+            <th><%= payment.payment_method.payment_method %></th>
             <th><% sum = 0 %>
               <% payment.purchase_products.each do |purchase_product| %>
               <% sum += purchase_product.price * purchase_product.quantity %>
                 <% end %>
                 <%= sum + 500 %>
             </th>
+            <th><%= link_to "詳細", payment_path(payment.id), class: "col-xs-12 btn btn-info" %></th>
           </tr>
       <% end %>
     </table>
