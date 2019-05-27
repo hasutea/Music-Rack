@@ -21,8 +21,11 @@
   <div class="row border"> <!-- cssでborder設定する -->
     <div class="col-md-10 col-md-offset-1">
   <%= form_for (@payment) do |f| %>
+    <%= form_with model: @user do |f| %>
+        <%= f.fields_for :addresses do |f| %>
       <p>
         <label>
+          <%= f.radio_button :addresses, "" %>銀行振り込み
           <input type="radio" name="address" value="現在登録している住所">
           現在登録している住所
         </label>
@@ -32,6 +35,7 @@
 
       <p>
         <label>
+          <%= f.radio_button :payment_method, "銀行振り込み" %>銀行振り込み
           <input type="radio" name="address" value="登録している住所以外に送付する場合は下記に入力してください"> 登録している住所以外に送付する場合は下記に入力してください
         </label>
       </p>
@@ -60,22 +64,20 @@
         <h4>支払方法を選択</h4>
         <%= f.fields_for :payment_methods do |f| %>
           <label>
-            <%= f.radio_button :payment_method, "銀行振り込み" %>
-          </label>
+            <%= f.radio_button :payment_method, "銀行振り込み" %>銀行振り込み
+          </label><br>
           <label>
-            <%= f.radio_button :payment_method, "クレジットカード" %>
-          </label>
+            <%= f.radio_button :payment_method, "クレジットカード" %>クレジットカード
+          </label><br>
           <label>
-            <%= f.radio_button :payment_method, "代引" %>
+            <%= f.radio_button :payment_method, "代引" %>代引
           </label>
         <% end %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-3 col-md-offset-1 h3">商品小計｜¥<%= @cart.price * @cart.quantity %></div>
-    <div class="col-md-3 h3">送料｜¥500</div>
-    <div class="col-md-3 h3">総計（税込）｜<%= @cart.price * @cart.quantity + 500 %></div>
+    
   </div>
 
   <div class="row">
