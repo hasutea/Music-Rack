@@ -6,7 +6,7 @@ class CartsController < ApplicationController
     @cart = Cart.new(cart_params)
     @cart.user_id = current_user.id
     if @cart.save
-      redirect_to product_path(@product.id), notice: "カートに追加しました！"
+      redirect_to product_path(@cart.product.id), notice: "カートに追加しました！"
     end
   end
 
