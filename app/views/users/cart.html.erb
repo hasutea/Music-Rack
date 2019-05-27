@@ -21,7 +21,7 @@
                 <td><%= cart.product.artist.artist %></td>
                 <td>
                   <%= form_for(cart) do |f| %>
-                    <%= f.number_field :quantity, class: "form-control" %>
+                    <%= f.number_field :quantity, options_for_select(@quantity, {selected: cart.quantity.to_i}), class: "form-control" %>
                     <%= f.submit "更新", class: "btn btn-success btn-xs" %>
                   <% end %>
                 </td>

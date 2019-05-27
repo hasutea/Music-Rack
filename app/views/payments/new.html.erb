@@ -45,7 +45,7 @@
       <div class="row border"> <!-- cssでborder設定する -->
         <div class="col-md-10 col-md-offset-1">
           <h4>支払方法を選択</h4>
-          <%= select_tag :payment_method_id, options_from_collection_for_select(PaymentMethod.all, :id, :payment_method, params[:payment_method_id]), {prompt: "選択してください", class: "js-searchable form-control", name: "payment_method_id"} %>
+<!--           <%= select_tag :payment_method_id, options_from_collection_for_select(PaymentMethod.all, :id, :payment_method, params[:payment_method_id]), {prompt: "選択してください", class: "js-searchable form-control", name: "payment_method_id"} %> -->
         </div>
       </div>
 

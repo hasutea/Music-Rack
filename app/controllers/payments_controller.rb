@@ -9,6 +9,9 @@ class PaymentsController < ApplicationController
   end
 
   def create
+    # @payment_method = PaymentMethod.find(params[:payment_method_id])
+    # @payment.payment_method_id = @payment_method.id
+
     @payment = Payment.new(payment_params)
     if @payment.save
       redirect_to finish_path
