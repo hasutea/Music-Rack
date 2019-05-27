@@ -1,6 +1,5 @@
 <div class="container">
   <div class="col-md-10 col-md-offset-1">
-    <p id="notice"><%= flash[:notice] %></p>
     <% if @carts.present? %>
       <div class="table-responsive">
         <table class="table table-hover">
@@ -45,7 +44,7 @@
               <%= sum  %>
             </p>
             <%= link_to "購入手続きへ進む", new_payment_path, class: "btn btn-warning btn-lg btn-block" %>
-            <%= link_to "買い物を続ける", new_payment_path, class: "btn btn-primary btn-lg btn-block" %>
+            <%= link_to "買い物を続ける", products_path, class: "btn btn-primary btn-lg btn-block" %>
         </div>
       </div>
     <% else %>
