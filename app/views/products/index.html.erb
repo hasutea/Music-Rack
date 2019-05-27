@@ -13,7 +13,7 @@
               <h3 class=""><%= link_to product.title, product_path(product.id) %></h3>
               <p class=""><%= product.artist.artist %></p>
               <p class="">価格(税込)｜￥<%= product.price %></p>
-              <% if @product.stock > 0 %>
+              <% if product.stock > 0 %>
                 <p>在庫あり</p>
               <% else %>
                 <p>売り切れ</p>
@@ -23,13 +23,12 @@
         </div>
         <% end %>
 
-
         <div class="row">
           <div class="col-md-12">
             <div class="col-md-4">
             </div>
             <div class="col-md-5">
-              <%= paginate @products, class: "paginate" %>
+              <%= paginate @results, class: "paginate" %>
             </div>
             <div class="col-md-3">
             </div>

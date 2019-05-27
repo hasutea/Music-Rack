@@ -8,8 +8,8 @@ ja:
       user:
         last_name: "名前（性）"
         first_name: "名前（名）"
-        kana_last_name: "カナ名前（性）"
-        kana_first_name: "カナ名前（名）"
+        kana_last_name: "名前（カナ性）"
+        kana_first_name: "名前（カナ名）"
         telephone: "電話番号"
         email: "メールアドレス"
         password: "パスワード"
@@ -74,5 +74,5 @@ ja:
       not_found: "は見つかりませんでした。"
       not_locked: "ロックされていません。"
       not_saved:
-        one: "エラーによりこの %{resource} を保存できません"
-        other: "%{count} 個のエラーによりこの %{resource} を保存できません"
+        one: "エラーによりこの %{resource} を登録できません"
+        other: "%{count} 個のエラーによりこの %{resource} を登録できません"

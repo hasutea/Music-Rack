@@ -1,31 +1,18 @@
 <div class="container-fluid">
   <div class="row">
-    <h1>購入お手続き</h1>
+    <h1>購入手続き</h1>
 
-    <div class="col-md-10 col-md-offset-1">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>購入内容</th>
-            <th>購入枚数</th>
-            <th>価格</th>
-          </tr>
-        </thead>
-        <tbody>
-   
-        </tbody>
-      </table>
-    </div>
-  </div>
+    
 
   <div class="row border"> <!-- cssでborder設定する -->
     <div class="col-md-10 col-md-offset-1">
+
       <p>
         <label>
           お届け先をご確認ください。登録されている宛先と異なる場合は入力してください。 <!-- current userが登録している住所を表示させる -->
         </label>
       </p>
-      <%= form_for (@payment) do |f| %>
+  <%= form_for (@payment) do |f| %>
           <p>
             <label for="name">お届け先氏名：</label>
             <%= f.text_field :shipping_last_name, value: current_user.last_name, class: "form-control" %>
@@ -39,29 +26,32 @@
             <label for="postal_code">お届け先住所：</label>
             <%= f.text_field :shipping_postal_code, value: @address.address,class: "form-control" %>
           </p>
-        </div>
-      </div>
+    </div>
+  </div>
+  <div class="row border"> <!-- cssでborder設定する -->
+    <div class="col-md-10 col-md-offset-1">
+        <h4>支払方法を選択</h4>
+          <label>
+            <%= f.radio_button :payment_method, "銀行振り込み" %>銀行振り込み
+          </label><br>
+          <label>
+            <%= f.radio_button :payment_method, "クレジットカード" %>クレジットカード
+          </label><br>
+          <label>
+            <%= f.radio_button :payment_method, "代引" %>代引
+          </label>
+    </div>
+  </div>
 
-      <div class="row border"> <!-- cssでborder設定する -->
-        <div class="col-md-10 col-md-offset-1">
-          <h4>支払方法を選択</h4>
-<!--           <%= select_tag :payment_method_id, options_from_collection_for_select(PaymentMethod.all, :id, :payment_method, params[:payment_method_id]), {prompt: "選択してください", class: "js-searchable form-control", name: "payment_method_id"} %> -->
-        </div>
-      </div>
+  
 
-      <div class="row">
-        <div class="col-md-3 col-md-offset-1 h3">商品小計｜¥ <%= @cart.price * @cart.quantity %> </div>
-        <div class="col-md-3 h3">送料｜¥ 500</div>
-        <div class="col-md-3 h3">総計（税込）｜¥ <%= @cart.price * @cart.quantity + 500 %> </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="col-md-3 col-md-offset-8">
+        <%= f.submit "購入", class: "btn btn-primary btn-lg center-block btn-block" %>
       </div>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="col-md-3 col-md-offset-8">
-            <%= f.submit "購入", class: "btn btn-primary btn-lg center-block btn-block" %>
-          </div>
-          <div class="col-md-4"></div>
-        </div>
-      </div>
-      <% end %>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+  <% end %>
 </div>
