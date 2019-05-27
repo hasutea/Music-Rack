@@ -1,6 +1,7 @@
 <div class="container">
   <div class="col-md-10 col-md-offset-1">
-    <% if @cart_items.present? %>
+    <p id="notice"><%= flash[:notice] %></p>
+    <% if @carts.present? %>
       <div class="table-responsive">
         <table class="table table-hover">
           <thead>
@@ -21,7 +22,7 @@
                 <td><%= cart.product.artist.artist %></td>
                 <td>
                   <%= form_for(cart) do |f| %>
-                    <%= f.number_field :quantity, options_for_select(@quantity, {selected: cart.quantity.to_i}), class: "form-control" %>
+                    <%= f.number_field :quantity, class: "form-control" %>
                     <%= f.submit "更新", class: "btn btn-success btn-xs" %>
                   <% end %>
                 </td>
@@ -35,7 +36,7 @@
         </table>
       </div>
       <div class="row">
-        <div class="col-md-4 col-md-offset-8">
+        <div class="col-md-3 col-md-offset-8">
             <p>合計金額（税込）￥
               <% sum = 0 %>
               <% @carts.each do |cart| %>
@@ -43,8 +44,8 @@
               <% end %>
               <%= sum  %>
             </p>
-            <%= link_to "購入手続きへ進む", new_payment_path, class: "btn btn-primary btn-lg" %>
-            <%= link_to "買い物を続ける", new_payment_path, class: "btn btn-primary btn-lg" %>
+            <%= link_to "購入手続きへ進む", new_payment_path, class: "btn btn-warning btn-lg btn-block" %>
+            <%= link_to "買い物を続ける", new_payment_path, class: "btn btn-primary btn-lg btn-block" %>
         </div>
       </div>
     <% else %>
