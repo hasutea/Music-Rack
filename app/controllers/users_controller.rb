@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def cart
     # カートに入れるボタンを押された商品全てを表示(カートテーブルの商品id,ユーザーid,数量を取得して表示)
     # カート内に商品がなかったら、商品がないと表示
-    carts = current_user.carts
+    @carts = current_user.carts
   end
 
 private

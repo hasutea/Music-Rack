@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
     <h2>商品詳細</h2>
+      <p id="notice"><%= flash[:notice] %></p>
       <div class="col-md-5 col-md-offset-2">
         <%= attachment_image_tag @product, :image, size: "300x300", format: 'jpg' %>
       </div>
@@ -33,8 +34,8 @@
   </div>
   <div class="row">
     <div class="col-md-4 col-md-offset-4">
-      <%= form_with model: @cart, url: carts_path, local: true do |f| %>
-        <%= f.hidden_field :quantity, options_for_select(@quantity, {selected: cart.quantity.to_i}), value: @quantity %>
+      <%= form_for(@cart) do |f| %>
+        <%= f.hidden_field :quantity, value: 1 %> <!-- モデルにquantityを保存 -->
         <%= f.hidden_field :product_id, value: @product.id %> <!-- モデルにproduct_idを保存 -->
         <%= f.submit "カートに入れる", class: "btn btn-warning btn-lg btn-block" %>
       <% end %>
