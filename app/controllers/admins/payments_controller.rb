@@ -25,10 +25,6 @@ class Admins::PaymentsController < ApplicationController
 
   def update
     @payment = Payment.find(params[:id])
-
-    # @payment_method = Payment_method.find(params[:payment_method_id])
-    # @payment.payment_method_id = @payment_method.id
-
     if @payment.update(payment_params)
     flash[:success] = '変更内容が保存されました。'
     redirect_to admins_payments_path
@@ -40,7 +36,7 @@ class Admins::PaymentsController < ApplicationController
   def destroy
     @payment = Payment.find(params[:id])
     @payment.destroy
-    flash[:success] = '購入履歴が削除されました。'
+    flash[:danger] = '購入履歴が削除されました。'
     redirect_to admins_payments_path
   end
 
