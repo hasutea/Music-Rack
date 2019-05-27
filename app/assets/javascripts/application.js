@@ -60,3 +60,13 @@ $(document).ready(function(){
   $('#table').rowClick();
 });
 
+
+
+(function() {
+  $("#js-button a").on("click,function"(){
+    $("footer, html").animate({
+      scrollTop:0
+  }, 800);
+    return false;
+  });
+});
