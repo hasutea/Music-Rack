@@ -3,12 +3,10 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index,:show,]
 
   def index
-    @products = Product.page(params[:page]).reverse_order
-
     # (params[:q])に検索パラメーターが入り、Productテーブルを検索する@qオブジェクトを生成
     @search = Product.ransack(params[:q])
     # 検索結果を表示
-    @results = @search.result
+    @results = @search.result.page(params[:page]).reverse_order.per(20)
   end
 
   def show
