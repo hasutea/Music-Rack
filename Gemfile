@@ -80,3 +80,4 @@ gem "jquery-turbolinks"
 gem "select2-rails"
 gem 'cocoon'
 gem 'nested_form_fields'
+gem 'rails-i18n'

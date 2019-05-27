@@ -98,18 +98,20 @@ devise_for :admins, controllers: {
 
 resources :products, only: [:index, :show]
 resources :users, only: [:index, :show, :edit, :update, :destroy]
-get "/users/:id/carts" => "users#cart"
+get "/users/:id/carts" => "users#cart", as: "user_cart"
 resources :carts, only: [:create, :destroy, :update]
 resources :payments, only: [:new, :index, :create, :show, :update]
+
 match '/finish', to: 'payments#finish', via: 'get'
 
 namespace :admins do
   resources :products, only: [:index, :show, :edit, :new, :create, :update, :destroy]
   resources :users, only: [:index, :show, :edit, :update, :destroy]
-  resources :payments, only: [:index, :show, :update]
+  resources :payments, only: [:index, :show, :edit, :update, :destroy]
   resources :artist, only: [:index, :create, :destroy]
   resources :label, only: [:index, :create, :destroy]
   resources :genre, only: [:index, :create, :destroy]
+
 end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
