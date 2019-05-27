@@ -13,7 +13,11 @@
               <h3 class=""><%= link_to product.title, product_path(product.id) %></h3>
               <p class=""><%= product.artist.artist %></p>
               <p class="">価格(税込)｜￥<%= product.price %></p>
-
+              <% if product.stock > 0 %>
+                <p>在庫あり</p>
+              <% else %>
+                <p>売り切れ</p>
+              <% end %>
             </section>
           </div>
         </div>
