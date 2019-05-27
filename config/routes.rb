@@ -98,7 +98,7 @@ devise_for :admins, controllers: {
 
 resources :products, only: [:index, :show]
 resources :users, only: [:index, :show, :edit, :update, :destroy]
-get "/users/:id/carts" => "users#cart"
+get "/users/:id/carts" => "users#cart", as: "user_cart"
 resources :carts, only: [:create, :destroy, :update]
 resources :payments, only: [:new, :index, :create, :show, :update]
 

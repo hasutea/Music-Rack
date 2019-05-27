@@ -22,3 +22,35 @@
 #p2146-2-tbody tr:first-child {
   display: none;
 }
+
+
+#js-button{
+  position: fixed;
+  right:50px;
+  bottom: 40px;
+  size: 7x;
+}
+
+#header{
+}
+
+
+.btn-primary{
+  background: #0984e3;
+}
+
+.btn-success{
+  background: #00b894;
+}
+
+.btn-info{
+  background: #00cec9;
+}
+
+.btn-warning{
+  background: #f9ca24;
+}
+
+.btn-btn-danger{
+  background: #d63031;
+}
