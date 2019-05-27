@@ -1,4 +1,11 @@
 
+
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>">
+    <%= message %>
+  </div>
+<% end %>
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12">
@@ -14,7 +21,7 @@
     </div>
 
       <% @results_user.each do |user| %>
-      <p>購入者：<%= user.last_name %> <%= user.first_name %></p>
+      <p>購入者：<%= user.last_name %>　<%= user.first_name %></p>
     <table class="table table-bordered">
       <tr>
         <th>購入日</th>
@@ -38,29 +45,14 @@
                 <% end %>
                 <%= sum + 500 %>
             </td>
-
             <td><%= link_to "詳細", admins_payment_path(payment.id), class: "col-xs-12 btn btn-info" %></td>
             <td><%= link_to "編集", edit_admins_payment_path(payment.id), class: "col-xs-12 btn btn-success" %></td>
             <td><%= link_to "削除", admins_payment_path(payment.id), method: :delete, "data-confirm" => "削除してもよろしいでしょうか?",class: "col-xs-12 btn btn-danger" %></td>
-
           </tr>
       <% end %>
     </table>
     <% end %>
 
     </div>
-
-  <div class="row">
-    <div class="col-md-12">
-      <div class="col-md-4"></div>
-      <div class="col-md-4">
-      <button type="button" class="btn btn-primary btn-lg center-block btn-block">戻る</button>
-      </div>
-      <div class="col-md-4"></div>
-    </div>
-  </div>
-
-
-
   </div>
 </div>
