@@ -12,7 +12,7 @@
     </div>
 
 
-<%= form_for(@payment) do |f| %>
+<%= form_for (@payment), :url => { :controller => :payments, :action => :update } do |f| %>
 
 	<p>送付先郵便番号：　<%= f.text_field :shipping_postal_code %></p>
 	<p>送付先住所：　<%= f.text_field :shipping_address, :size => "100*100" %></p>
