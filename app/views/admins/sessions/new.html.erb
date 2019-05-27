@@ -2,6 +2,8 @@
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
 
+<p id="notice"><%= flash[:notice] %></p>
+
 <h1>こちらは、管理者さま専用のページです。</h1>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
