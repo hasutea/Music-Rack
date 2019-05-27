@@ -6,7 +6,11 @@ class Admins::PaymentsController < ApplicationController
 
   def index
   	@users = User.all
-    @payments = current_user.payments.page(params[:page]).reverse_order
+
+    # (params[:q])に検索パラメーターが入り、Productテーブルを検索する@qオブジェクトを生成
+    @search_user = User.ransack(params[:q])
+    # 検索結果を表示
+    @results_user = @search_user.result.page(params[:page]).reverse_order.per(20)
   end
 
   def show
@@ -19,6 +23,19 @@ class Admins::PaymentsController < ApplicationController
     @purchase_products = @payment.purchase_products
   end
 
+  def update
+    @payment = Payment.find(params[:id])
+
+    # @payment_method = Payment_method.find(params[:payment_method_id])
+    # @payment.payment_method_id = @payment_method.id
+
+    if @payment.update(payment_params)
+    flash[:success] = '変更内容が保存されました。'
+    redirect_to admins_payments_path
+    else
+      render :edit
+    end
+  end
 
   def destroy
     @payment = Payment.find(params[:id])
