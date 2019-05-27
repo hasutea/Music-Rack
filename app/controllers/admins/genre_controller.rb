@@ -12,6 +12,7 @@ class Admins::GenreController < ApplicationController
     if @genre.save
       redirect_to new_admins_product_path, notice: "ジャンルを新規登録しました！"
     else
+      @genres = Genre.all
       render :index
     end
   end

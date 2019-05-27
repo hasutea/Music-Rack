@@ -12,6 +12,7 @@ class Admins::LabelController < ApplicationController
     if @label.save
       redirect_to new_admins_product_path, notice: "レーベルを新規登録しました！"
     else
+      @label = Label.all
       render :index
     end
   end
