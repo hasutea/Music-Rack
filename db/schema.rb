@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_25_052934) do
+ActiveRecord::Schema.define(version: 2019_05_27_031938) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id"
     t.string "address"
-    t.integer "postal_code"
+    t.string "postal_code"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_052934) do
     t.string "first_name"
     t.string "kana_last_name"
     t.string "kana_first_name"
-    t.integer "telephone"
+    t.string "telephone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
