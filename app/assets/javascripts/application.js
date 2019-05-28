@@ -34,7 +34,7 @@ $('.js-searchable').select2({
   width: "resolve"
 });
 
-})
+});
 
 
 
@@ -56,7 +56,7 @@ $(document).ready(function() {
 });
 
 (function() {
-  $("#js-button a").on("click,function"(){
+  $("#js-button a").on("click",function(){
     $("footer, html").animate({
       scrollTop:0
   }, 800);
