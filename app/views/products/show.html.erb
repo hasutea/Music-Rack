@@ -3,6 +3,19 @@
     <div class="row">
       <div class="col-md-5 col-md-offset-2">
         <p><%= flash[:notice] %></p>
+        <%= attachment_image_tag @product, :image, size: "300x300", format: 'jpg' %>
+      </div>
+      <div class="col-md-4">
+        <label><%= @product.title %></label><br>
+        <label><%= @product.artist.artist %></label>
+        <p>レーベル｜<%= @product.label.label %></p>
+        <p>ジャンル｜<%= @product.genre.genre %></p>
+        <% if product.stock == 0 %>
+          <p>売り切れ</p>
+        <% else %>
+          <p>在庫あり</p>
+        <% end %>
+        <p>価格(税込)|￥<%= @product.price %></p>
       </div>
     </div>
     <div class="col-md-5 col-md-offset-2">

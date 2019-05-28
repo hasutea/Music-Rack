@@ -33,7 +33,8 @@ class PaymentsController < ApplicationController
       @payment.user.carts.destroy_all
       redirect_to finish_path
     else
-      redirect_to new_payment_path
+      @carts = current_user.carts
+      render :new
     end
   end
 
