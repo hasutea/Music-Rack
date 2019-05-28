@@ -5,7 +5,13 @@ class PaymentsController < ApplicationController
   def new
     @payment = Payment.new
     @address = current_user.addresses.where('created_at > ?', 1.day.ago).first
-    @payment.payment_method_id = params[:payment_method_id]
+    @payment.user_id = current_user.id
+    @carts = current_user.carts
+    @total_price = 0
+    @carts.each do |cart|
+      @total_price += cart.product.price * cart.quantity
+    end
+    @purchase_product = @payment.purchase_products.build
   end
 
   def create
@@ -13,8 +19,21 @@ class PaymentsController < ApplicationController
     # @payment.payment_method_id = @payment_method.id
 
     @payment = Payment.new(payment_params)
+    @payment.user_id = current_user.id
+
     if @payment.save
+      @payment.user.carts.each do |cart|
+        purchase_product = PurchaseProduct.new
+        purchase_product.product_id = cart.product.id
+        purchase_product.quantity = cart.quantity
+        purchase_product.price = cart.product.price
+        purchase_product.payment_id = @payment.id
+        purchase_product.save
+      end
+      @payment.user.carts.destroy_all
       redirect_to finish_path
+    else
+      redirect_to new_payment_path
     end
   end
 
@@ -43,7 +62,7 @@ private
       :shipping_postal_code,
       :shipping_address,
       :order_status,
-      purchase_products_attributes: [:id, :quantity, :price]
+      purchase_products_attributes: [:id, :quantity, :price, :payment_id]
       )
   end
 end

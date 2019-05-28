@@ -17,7 +17,6 @@ class Admins::ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @disks = @product.disks
-    @cart = current_user.cart
   end
 
   def new
