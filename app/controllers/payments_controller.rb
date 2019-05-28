@@ -4,7 +4,7 @@ class PaymentsController < ApplicationController
 
   def new
     @payment = Payment.new
-    @address = current_user.addresses.where('created_at > ?', 1.day.ago).first
+    @address = current_user.addresses.first
     @payment.user_id = current_user.id
     @carts = current_user.carts
     @total_price = 0
@@ -34,7 +34,7 @@ class PaymentsController < ApplicationController
       redirect_to finish_path
     else
       @payment.user_id = current_user.id
-      @address = current_user.addresses.where('created_at > ?', 1.day.ago).first
+      @address = current_user.addresses.first
       @carts = current_user.carts
       @total_price = 0
       @carts.each do |cart|
