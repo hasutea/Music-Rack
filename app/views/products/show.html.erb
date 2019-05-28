@@ -10,10 +10,10 @@
         <label><%= @product.artist.artist %></label>
         <p>レーベル｜<%= @product.label.label %></p>
         <p>ジャンル｜<%= @product.genre.genre %></p>
-        <% if @product.stock > 0 %>
-          <p>在庫あり</p>
-        <% else %>
+        <% if product.stock == 0 %>
           <p>売り切れ</p>
+        <% else %>
+          <p>在庫あり</p>
         <% end %>
         <p>価格(税込)|￥<%= @product.price %></p>
       </div>
