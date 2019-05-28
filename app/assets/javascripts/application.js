@@ -55,13 +55,6 @@ $(document).ready(function() {
 
 });
 
-
-$(document).ready(function(){
-  $('#table').rowClick();
-});
-
-
-
 (function() {
   $("#js-button a").on("click,function"(){
     $("footer, html").animate({
@@ -69,4 +62,8 @@ $(document).ready(function(){
   }, 800);
     return false;
   });
+});
+
+$(document).ready(function(){
+  $('#select').rowClick();
 });

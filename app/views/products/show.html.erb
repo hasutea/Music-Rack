@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <h2>商品詳細</h2>
-      <p id="notice"><%= flash[:notice] %></p>
+      <div class="row">
+        <div class="col-md-5 col-md-offset-2">
+          <p><%= flash[:notice] %></p>
+        </div>
+      </div>
       <div class="col-md-5 col-md-offset-2">
         <%= attachment_image_tag @product, :image, size: "300x300", format: 'jpg' %>
       </div>

@@ -2,8 +2,8 @@
   <div class="form-group">
     <%= search_form_for @search_user do |f| %>
       <!-- 検索値を含むレコードを検索 -->
-      <%= f.search_field :last_name_cont, class: "form-control", placeholder: "ユーザー名を入力" %>
-
+      姓：<%= f.search_field :last_name_cont, class: "form-control", placeholder: "ユーザー名の姓を入力" %>
+      名：<%= f.search_field :first_name_cont, class: "form-control", placeholder: "ユーザー名の名を入力" %>
       <%= f.submit "検索" %>
     <% end %>
   </div>

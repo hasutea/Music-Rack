@@ -2,8 +2,21 @@ ja:
   activerecord:
     models:
       address: アドレス
+      genre: ジャンル
+
 
     attributes:
       addresses:
         postal_code: 郵便番号
         address: 住所
+
+
+
+ja:
+  activerecord:
+    models:
+      genre: ジャンル
+
+    attributes:
+      genres:
+        genre: ジャンル
