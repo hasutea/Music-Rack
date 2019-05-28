@@ -1,12 +1,12 @@
-<div class="row">
-  <h2>商品詳細</h2>
-    <div class="row">
       <% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>">
           <%= message %>
         </div>
-      <% end %>
+        <% end %>
 
+<div class="row">
+  <h2>商品詳細</h2>
+    <div class="row">
       <div class="col-md-5 col-md-offset-2">
         <%= attachment_image_tag @product, :image, size: "300x300", format: 'jpg' %>
       </div>
