@@ -1,0 +1,7 @@
+ja:
+  activerecord:
+    errors:
+      messages:
+        not_saved:
+        one: "エラーによりこの %{resource} を登録できません"
+        other: "%{count} 個のエラーによりこの %{resource} を登録できません"

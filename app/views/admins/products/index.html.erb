@@ -1,30 +1,22 @@
 <div class="admin-index">
-        <% flash.each do |message_type, message| %>
-          <div class="alert alert-<%= message_type %>">
-            <%= message %>
-          </div>
-        <% end %>
+  <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>">
+      <%= message %>
+    </div>
+  <% end %>
 
-<form class="navbar-form navbar-right" role="search">
-  <div class="form-group">
-    <%= search_form_for @search do |f| %>
-      <!-- 検索値を含むレコードを検索 -->
-      <%= f.search_field :title_cont , class: "form-control", placeholder: "商品名を入力" %>
-        <%= f.submit "検索" %>
+  <form class="navbar-form navbar-right" role="search">
+    <div class="form-group">
+      <%= search_form_for @search do |f| %>
+        <!-- 検索値を含むレコードを検索 -->
+        <%= f.search_field :title_cont , class: "form-control", placeholder: "商品名を入力" %>
+          <%= f.submit "検索" %>
       <% end %>
     </div>
   </form>
 
   <div class="row">
-
     <h2>商品一覧</h2>
-
-    <div class="row">
-      <div class="col-md-4 col-md-offset-1">
-        <p><%= flash[:notice] %></p>
-      </div>
-    </div>
-
   </div>
   <div class="row">
     <div class="table-responsive">
@@ -62,3 +54,5 @@
     </div>
   </div>
 </div>
+
+
