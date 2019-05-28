@@ -26,3 +26,7 @@ end
 CSV.foreach('db/payment_method.csv', headers: true) do |row|
   PaymentMethod.create(payment_method: row['payment_method'])
 end
+
+CSV.foreach('db/admin.csv', headers: true) do |row|
+  Admin.create(email: row['email'], encrypted_password: row['encrypted_password'])
+end

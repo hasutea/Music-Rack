@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 2019_05_27_031938) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.integer "product_id"
+    t.integer "cart_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["product_id"], name: "index_cart_items_on_product_id"
+  end
+
   create_table "carts", force: :cascade do |t|
     t.integer "product_id"
     t.integer "user_id"

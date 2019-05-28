@@ -1,23 +1,29 @@
 <div class="body">
   <div class="container">
     <div class="row">
-
       <div class="col-xs-4">
-        <h3 class="title">ジャンル新規登録</h3>
+        <h3 class="title">ジャンル登録</h3>
 
-        <div class="form">
-          <%= form_with model: @genre, url: admins_genre_index_path, local: true do |f| %>
-
-            <%= f.text_field :genre, autofocus: true, class: "form-control", placeholder: "新規で登録するジャンルを入力" %>
-
-            <%= f.submit "新規登録", class: "btn btn-success btn-lg btn-block" %>
+          <% if @genre.errors.any? %>
+            <div id="error_explanation">
+              <% @genre.errors.count %>
+              <% @genre.errors.full_messages.each do |message| %>
+                <p><%= message %></p>
+              <% end %>
+            </div>
           <% end %>
+
+          <div class="form">
+            <%= form_with model: @genre, url: admins_genre_index_path, local: true do |f| %>
+
+              <%= f.text_field :genre, autofocus: true, class: "form-control", placeholder: "新規で登録するジャンルを入力" %>
+
+              <%= f.submit "新規登録", class: "btn btn-success btn-lg btn-block" %>
+            <% end %>
+          </div>
         </div>
-      </div>
 
-      <div class="col-xs-8">
-        <h4 class="genre">ジャンル一覧</h4>
-
+        <div class="col-xs-6 col-md-offset-1">
           <table class="table table-hover" table-inverse">
             <thead>
               <tr>
@@ -36,8 +42,7 @@
               <% end %>
             </tbody>
           </table>
-      </div>
-
+        </div>
     </div>
   </div>
 </div>

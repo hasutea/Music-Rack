@@ -2,13 +2,15 @@ class Admins::ArtistController < ApplicationController
 
   layout "admin"
 
-def index
-    @artists = Artist.page(params[:page])
-    @artist = Artist.new
-end
+  def index
+      @artists = Artist.page(params[:page])
+      @artist = Artist.new
+  end
+
 
 def create
   @artist = Artist.new(artist_params)
+  @artists = Artist.all
     if @artist.save
       flash[:info] = 'アーティストを新規登録しました！'
       redirect_to new_admins_product_path
@@ -17,11 +19,11 @@ def create
     end
 end
 
-def destroy
-    @artist = Artist.find(params[:id])
-    @artist.destroy
-    redirect_to admins_artist_index_path
-end
+  def destroy
+      @artist = Artist.find(params[:id])
+      @artist.destroy
+      redirect_to admins_artist_index_path
+  end
 
 private
 

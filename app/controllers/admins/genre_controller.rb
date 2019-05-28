@@ -13,6 +13,7 @@ class Admins::GenreController < ApplicationController
       flash[:info] = 'ジャンルを新規登録しました！'
       redirect_to new_admins_product_path
     else
+      @genres = Genre.all
       render :index
     end
   end
