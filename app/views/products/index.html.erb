@@ -4,9 +4,7 @@
   </div>
 </div>
 <%= render 'layouts/search' %>
-
-<p id="notice"><%= flash[:notice] %></p>
-
+<h2>Lineup</h2>
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-12">
@@ -16,7 +14,7 @@
           <div class="col-md-12">
             <section class="">
               <%= attachment_image_tag product, :image, size: "250x200", format: 'png', fallback: "noimage.png"  %>
-              <h3 class=""><%= link_to product.title, product_path(product.id) %></h3>
+              <h4 class=""><%= link_to product.title, product_path(product.id) %></h4>
               <p class=""><%= product.artist.artist %></p>
               <p class="">価格(税込)｜￥<%= product.price %></p>
               <% if product.stock == 0 %>

@@ -11,7 +11,7 @@
           <ul class="nav navbar-nav navbar-right">
             <!-- 後日pathとユーザー名修正 -->
             <% if user_signed_in? %>
-              <p class="navbar-text navbar-left">ようこそ、<span><%= current_user.last_name %></span><span><%= current_user.first_name %></span>さん
+              <p class="navbar-text navbar-left" id="navmenu">ようこそ、<span><%= current_user.last_name %></span><span><%= current_user.first_name %></span>さん
               </p>
               <li><%= link_to "", user_cart_path(current_user), class: "glyphicon glyphicon-shopping-cart" %></li>
               <li class="dropdpwn">

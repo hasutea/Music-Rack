@@ -7,7 +7,6 @@ class Admins::ArtistController < ApplicationController
       @artist = Artist.new
   end
 
-
 def create
   @artist = Artist.new(artist_params)
   @artists = Artist.all

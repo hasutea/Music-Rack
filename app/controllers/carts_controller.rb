@@ -5,9 +5,15 @@ class CartsController < ApplicationController
     # カートの中身を登録 商品詳細ページでカートに入れるボタンを押したら「カートに商品を追加しました」と表示させてそのページに留まる
     @cart = Cart.new(cart_params)
     @cart.user_id = current_user.id
-    if @cart.save
-      flash[:info] = 'カートに追加しました！'
-      redirect_to product_path(@cart.product.id)
+
+    if Cart.exists?(product_id: @cart.product_id)
+      @cart_update = Cart.find_by(product_id: @cart.product_id)
+      @cart_update.quantity = @cart_update.quantity + @cart.quantity
+      @cart_update.save
+      redirect_to product_path(@cart.product.id), notice: "カートに追加しました！"
+    else
+      @cart.save
+      redirect_to product_path(@cart.product.id), notice: "カートに追加しました！"
     end
   end
 
