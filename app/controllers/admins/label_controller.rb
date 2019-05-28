@@ -10,7 +10,8 @@ class Admins::LabelController < ApplicationController
   def create
     @label = Label.new(genre_params)
     if @label.save
-      redirect_to new_admins_product_path, notice: "レーベルを新規登録しました！"
+      flash[:info] = 'レーベルを新規登録しました！'
+      redirect_to new_admins_product_path
     else
       render :index
     end
