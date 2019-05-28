@@ -3,20 +3,23 @@ ja:
     models:
       address: アドレス
       genre: ジャンル
-
+      artist: アーティスト
+      label: レーベル
+      payment: 決済
 
     attributes:
       addresses:
         postal_code: 郵便番号
         address: 住所
-
-
-
-ja:
-  activerecord:
-    models:
-      genre: ジャンル
-
-    attributes:
-      genres:
+      genre:
         genre: ジャンル
+      artist:
+        artist: アーティスト
+      label:
+        label: レーベル
+      payment:
+        shipping_last_name: 送付先名（性）
+        shipping_first_name: 送付先名（名）
+        shipping_postal_code: 送付先郵便番号
+        shipping_address: 送付先住所
+        payment_method_id: 支払い方法ID
