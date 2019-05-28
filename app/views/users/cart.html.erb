@@ -1,6 +1,11 @@
 <div class="container">
   <div class="col-md-10 col-md-offset-1">
-    <p id="notice"><%= flash[:notice] %></p>
+    <h3>ショッピングカート</h3>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-1">
+        <p><%= flash[:notice] %></p>
+      </div>
+    </div>
     <% if @carts.present? %>
       <div class="table-responsive">
         <table class="table table-hover">
@@ -26,7 +31,7 @@
                     <%= f.submit "更新", class: "btn btn-success btn-xs" %>
                   <% end %>
                 </td>
-                <td>￥<%= cart.product.price %></td>
+                <td>￥<%= cart.product.price*cart.quantity %></td>
                 <td>
                   <%= link_to "削除", cart_path(cart), method: :delete, class: "btn btn-danger btn-xs", data:{ confirm: "本当に削除しますか？" } %>
                 </td>
@@ -40,12 +45,12 @@
             <p>合計金額（税込）￥
               <% sum = 0 %>
               <% @carts.each do |cart| %>
-                <% sum += cart.product.price %>
+                <% sum += cart.product.price*cart.quantity %>
               <% end %>
               <%= sum  %>
             </p>
             <%= link_to "購入手続きへ進む", new_payment_path, class: "btn btn-warning btn-lg btn-block" %>
-            <%= link_to "買い物を続ける", new_payment_path, class: "btn btn-primary btn-lg btn-block" %>
+            <%= link_to "買い物を続ける", products_path, class: "btn btn-primary btn-lg btn-block" %>
         </div>
       </div>
     <% else %>

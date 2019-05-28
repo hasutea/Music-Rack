@@ -6,6 +6,17 @@
 
 <h1>新規登録</h1>
 
+<div id="error_explanation">
+  <% if @payment.errors.any? %>
+    <h2><%= @payment.errors.count %>error prohibited this obj form being saved:</h2>
+    <ul>
+      <% @payment.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 

@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
     <h2>商品詳細</h2>
-      <p id="notice"><%= flash[:notice] %></p>
+      <div class="row">
+        <div class="col-md-5 col-md-offset-2">
+          <p><%= flash[:notice] %></p>
+        </div>
+      </div>
       <div class="col-md-5 col-md-offset-2">
         <%= attachment_image_tag @product, :image, size: "300x300", format: 'jpg' %>
       </div>
@@ -10,10 +14,10 @@
         <label><%= @product.artist.artist %></label>
         <p>レーベル｜<%= @product.label.label %></p>
         <p>ジャンル｜<%= @product.genre.genre %></p>
-        <% if @product.stock > 0 %>
-          <p>在庫あり</p>
-        <% else %>
+        <% if @product.stock == 0 %>
           <p>売り切れ</p>
+        <% else %>
+          <p>在庫あり</p>
         <% end %>
         <p>価格(税込)|￥<%= @product.price %></p>
       </div>
