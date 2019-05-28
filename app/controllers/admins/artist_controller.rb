@@ -7,9 +7,9 @@ class Admins::ArtistController < ApplicationController
       @artist = Artist.new
   end
 
-<<<<<<< HEAD
 def create
   @artist = Artist.new(artist_params)
+  @artists = Artist.all
     if @artist.save
       flash[:info] = 'アーティストを新規登録しました！'
       redirect_to new_admins_product_path
@@ -17,17 +17,6 @@ def create
       render :index
     end
 end
-=======
-  def create
-    @artist = Artist.new(artist_params)
-    @artists = Artist.all
-      if @artist.save
-        redirect_to new_admins_product_path, notice: "アーティストを新規登録しました！"
-      else
-        render :index
-      end
-  end
->>>>>>> master
 
   def destroy
       @artist = Artist.find(params[:id])
