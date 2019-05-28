@@ -23,7 +23,6 @@
   display: none;
 }
 
-
 #js-button{
   position: fixed;
   right:50px;
@@ -31,9 +30,57 @@
   size: 7x;
 }
 
-#header{
+/* ナビゲーションバー */
+
+#navmenu{
+  margin-left: 30px;
+  color: #2e3740;
 }
 
+.main-visual{
+  width: 100%;
+  height: 260px;
+  background-image: url("/images/music.jpg");
+  background-size: cover;
+  margin-bottom: 30px;
+}
+
+.main-visual-content{
+  text-align: center;
+  padding-top: 85px;
+}
+
+.main-visual-text{
+  font-size: 35px;
+  color: white;
+  font-weight: bold;
+}
+
+/* フッター */
+
+footer{
+  height: 150px;
+  width: 100%;
+  background: #2e3740;
+  margin-top: 100px;
+}
+
+.footer-copyright{
+  margin-top: 60px;
+  color: white;
+  text-align: center;
+}
+
+/* 見出し */
+
+h1, h2,h3{
+  margin: 50px;
+  padding: 0.3em 0.5em;
+  border-left: solid 5px #2e3740;
+  background: transparent;
+}
+
+/* ボタン */
 
 .btn-primary{
   background: #0984e3;
