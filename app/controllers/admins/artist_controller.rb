@@ -9,7 +9,7 @@ class Admins::ArtistController < ApplicationController
 
   def create
     @artist = Artist.new(artist_params)
-    @artists = Artist.all
+    @artists = Artist.page(params[:page]).reverse_order
       if @artist.save
         redirect_to new_admins_product_path, notice: "アーティストを新規登録しました！"
       else
