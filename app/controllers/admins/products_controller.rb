@@ -38,7 +38,8 @@ class Admins::ProductsController < ApplicationController
     @product.genre_id = @genre.id
 
     if @product.save
-      redirect_to admins_products_path, notice: "商品を新規登録しました！"
+      flash[:info] = '商品を新規登録しました！'
+      redirect_to admins_products_path
     else
       render :new
     end
@@ -51,7 +52,8 @@ class Admins::ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update_attributes(product_params)
-      redirect_to admins_products_path, notice: "商品情報を更新しました！"
+      flash[:success] = '商品情報を更新しました！'
+      redirect_to admins_products_path
     else
       render :edit
     end

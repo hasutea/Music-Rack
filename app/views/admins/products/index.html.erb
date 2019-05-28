@@ -1,10 +1,15 @@
 <div class="admin-index">
-  <form class="navbar-form navbar-right" role="search">
-    <div class="form-group">
-      <%= search_form_for @search do |f| %>
-        <!-- 検索値を含むレコードを検索 -->
-        <%= f.search_field :title_cont , class: "form-control", placeholder: "商品名を入力" %>
+        <% flash.each do |message_type, message| %>
+          <div class="alert alert-<%= message_type %>">
+            <%= message %>
+          </div>
+        <% end %>
 
+<form class="navbar-form navbar-right" role="search">
+  <div class="form-group">
+    <%= search_form_for @search do |f| %>
+      <!-- 検索値を含むレコードを検索 -->
+      <%= f.search_field :title_cont , class: "form-control", placeholder: "商品名を入力" %>
         <%= f.submit "検索" %>
       <% end %>
     </div>
