@@ -31,6 +31,7 @@ $(document).ready(function(){
 
 $('.js-searchable').select2({
   theme: "bootstrap",
+  width: "resolve"
 });
 
 })
