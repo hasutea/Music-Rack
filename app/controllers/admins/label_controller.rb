@@ -13,6 +13,7 @@ class Admins::LabelController < ApplicationController
       flash[:info] = 'レーベルを新規登録しました！'
       redirect_to new_admins_product_path
     else
+      @labels = Label.all
       render :index
     end
   end
