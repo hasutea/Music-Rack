@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
 
-  before_action :authenticate_user!, except: [:index,:show,]
+  before_action :authenticate_user!, except: [:index,:show]
 
   def index
     # (params[:q])に検索パラメーターが入り、Productテーブルを検索する@qオブジェクトを生成
@@ -12,8 +12,11 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @disks = @product.disks
-
-    @cart = current_user.carts.new
+    if user_signed_in?
+      @cart = current_user.carts.new
+    else
+      @cart = Cart.new(user_id: 1)
+    end
   end
 
 private
