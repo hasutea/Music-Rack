@@ -9,5 +9,4 @@ class Payment < ApplicationRecord
   validates :shipping_first_name, presence: true
   validates :shipping_postal_code, presence: true
   validates :shipping_address, presence: true
-  validates :payment_method_id, acceptance: true
 end
