@@ -10,10 +10,12 @@ class CartsController < ApplicationController
       @cart_update = Cart.find_by(product_id: @cart.product_id)
       @cart_update.quantity = @cart_update.quantity + @cart.quantity
       @cart_update.save
-      redirect_to product_path(@cart.product.id), notice: "カートに追加しました！"
+      flash[:info] = 'カートに追加しました！'
+      redirect_to product_path(@cart.product.id)
     else
       @cart.save
-      redirect_to product_path(@cart.product.id), notice: "カートに追加しました！"
+      flash[:info] = 'カートに追加しました！'
+      redirect_to product_path(@cart.product.id)
     end
   end
 
