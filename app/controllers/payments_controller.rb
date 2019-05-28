@@ -33,7 +33,14 @@ class PaymentsController < ApplicationController
       @payment.user.carts.destroy_all
       redirect_to finish_path
     else
+      @payment.user_id = current_user.id
+      @address = current_user.addresses.where('created_at > ?', 1.day.ago).first
       @carts = current_user.carts
+      @total_price = 0
+      @carts.each do |cart|
+        @total_price += cart.product.price * cart.quantity
+      end
+      @purchase_product = @payment.purchase_products.build
       render :new
     end
   end
