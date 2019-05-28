@@ -1,7 +1,6 @@
 <div class="body">
   <div class="container">
     <div class="row">
-
       <div class="col-xs-4">
         <h3 class="title">レーベル登録</h3>
 
@@ -23,57 +22,29 @@
             <% end %>
           </div>
         </div>
-<<<<<<< HEAD
 
-        <div class="col-xs-8">
-          <h4>レーベル一覧</h4>
-
-            <table class="table table-hover" table-inverse">
-              <thead>
-                <tr>
-                  <th>登録No.</th>
-                  <th>レーベル名</th>
-                  <th></th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <% @labels.each do |label| %>
-                  <tr>
-                    <td><%= label.id %></td>
-                    <td><%= label.label %></td>
-                    <td><%= link_to "削除", admins_label_path(label.id), class: "btn btn-danger btn-xs", method: :delete, data:{ confirm: "本当に削除しますか？" } %></td>
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
-        </div>
-=======
-      </div>
-
-      <div class="col-xs-6 col-md-offset-1">
-        <table class="table table-hover" table-inverse">
-          <thead>
-            <tr>
-              <th>登録No.</th>
-              <th>レーベル名</th>
-              <th></th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <% @labels.each do |label| %>
+        <div class="col-xs-6 col-md-offset-1">
+          <table class="table table-hover" table-inverse">
+            <thead>
               <tr>
-                <td><%= label.id %></td>
-                <td><%= label.label %></td>
-                <td><%= link_to "削除", admins_label_path(label.id), class: "btn btn-danger btn-xs", method: :delete, data:{ confirm: "本当に削除しますか？" } %></td>
+                <th>登録No.</th>
+                <th>レーベル名</th>
+                <th></th>
               </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
->>>>>>> cart
+            </thead>
 
+            <tbody>
+              <% @labels.each do |label| %>
+                <tr>
+                  <td><%= label.id %></td>
+                  <td><%= label.label %></td>
+                  <td><%= link_to "削除", admins_label_path(label.id), class: "btn btn-danger btn-xs", method: :delete, data:{ confirm: "本当に削除しますか？" } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 </div>
