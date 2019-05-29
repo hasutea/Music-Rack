@@ -16,7 +16,7 @@
               <%= attachment_image_tag product, :image, size: "250x200", format: 'png', fallback: "noimage.png"  %>
               <h4 class=""><%= link_to product.title, product_path(product.id) %></h4>
               <p class=""><%= product.artist.artist %></p>
-              <p class="">価格(税込)｜￥<%= product.price %></p>
+              <p class="">価格(税込)｜￥<%= (product.price * 1.08).floor %></p>
               <% if product.stock == 0 %>
                 <p>売り切れ</p>
               <% else %>

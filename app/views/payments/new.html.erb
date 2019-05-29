@@ -4,7 +4,6 @@
 
 <div id="error_explanation">
   <% if @payment.errors.any? %>
-    <h2><%= @payment.errors.count %>error prohibited this obj form being saved:</h2>
     <ul>
       <% @payment.errors.full_messages.each do |message| %>
       <li><%= message %></li>

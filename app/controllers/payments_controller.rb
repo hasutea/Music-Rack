@@ -29,6 +29,10 @@ class PaymentsController < ApplicationController
         purchase_product.price = cart.product.price
         purchase_product.payment_id = @payment.id
         purchase_product.save
+
+        purchase_product.product.stock = purchase_product.product.stock - purchase_product.quantity
+        purchase_product.product.save
+
       end
       @payment.user.carts.destroy_all
       redirect_to finish_path
@@ -73,4 +77,6 @@ private
       purchase_products_attributes: [:id, :quantity, :price, :payment_id]
       )
   end
+
+
 end

@@ -80,6 +80,25 @@ h1, h2,h3{
   background: transparent;
 }
 
+
+/* 商品詳細 */
+
+.product-title{
+  color: #2e3740;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.product-artist{
+  margin-bottom: 50px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.song-list{
+  list-style: none;
+}
+
 /* ボタン */
 
 .btn-primary{

@@ -30,6 +30,7 @@
             <th>価格（税別）</th>
             <th>在庫数</th>
             <th>ステータス</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -42,6 +43,7 @@
               <td>¥<%= product.price %></td>
               <td><%= product.stock %></td>
               <td><%= product.status %></td>
+              <td><%= link_to "編集", edit_admins_product_path(product), class: "btn btn-success btn-xs btn-block" %></td>
             </tr>
           <% end %>
         </tbody>
@@ -50,7 +52,7 @@
   </div>
   <div class="row">
     <div class="col-md-offset-4">
-      <%= paginate @products, class: "paginate" %>
+      <%= paginate @results, class: "paginate" %>
     </div>
   </div>
 </div>
