@@ -29,7 +29,7 @@
             <td><%= payment.payment_method.payment_method %></td>
             <td><% sum = 0 %>
               <% payment.purchase_products.each do |purchase_product| %>
-              <% sum += (purchase_product.price * 1.08).floor * purchase_product.quantity %>
+              <% sum += purchase_product.price * purchase_product.quantity %>
                 <% end %>
                 <%= sum + 500 %>
             </td>
