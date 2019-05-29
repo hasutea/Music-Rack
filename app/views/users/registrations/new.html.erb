@@ -6,17 +6,6 @@
 
 <h1>新規登録</h1>
 
-<div id="error_explanation">
-  <% if @user.errors.any? %>
-    <h2><%= @user.errors.count %>error prohibited this obj form being saved:</h2>
-    <ul>
-      <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
-  <% end %>
-</div>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -119,7 +108,7 @@
   <div class="row">
     <div class="col-md-9">
     <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "パスワード", placeholder:"半角英数字8〜32文字",class:"form-control" %>
+    <%= f.password_field :password, autocomplete: "パスワード", placeholder:"半角英数字6文字以上",class:"form-control" %>
     </div>
   </div>
   </div>
@@ -128,7 +117,7 @@
   <div class="row">
     <div class="col-md-9">
     <%= f.label :パスワード確認 %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "パスワード確認", placeholder:"半角英数字8〜32文字",class:"form-control" %>
+    <%= f.password_field :password_confirmation, autocomplete: "パスワード確認", placeholder:"半角英数字6文字以上",class:"form-control" %>
     </div>
   </div>
   </div>
