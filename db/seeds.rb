@@ -30,3 +30,4 @@ end
 CSV.foreach('db/admin.csv', headers: true) do |row|
   Admin.create(email: row['email'], encrypted_password: row['encrypted_password'])
 end
+
