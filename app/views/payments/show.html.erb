@@ -14,16 +14,22 @@
       <tr>
         <th>購入内容</th>
         <th>購入枚数</th>
-        <th>価格</th>
+        <th>価格（税込）</th>
       </tr>
 
 
         <% @purchase_products.each do |purchase_product| %>
-          <tr>
-            <td><%= purchase_product.product.title %></td>
-            <td><%= purchase_product.quantity %></td>
-            <td><%= purchase_product.price %></td>
-          </tr>
+        <% if purchase_product.product == nil %>
+              <td></td>
+              <td><%= purchase_product.quantity %>枚</td>
+              <td><%= purchase_product.price %>円</td>
+          <% else %>
+            <tr>
+              <td><%= purchase_product.product.title %></td>
+              <td><%= purchase_product.quantity %>枚</td>
+              <td><%= purchase_product.price %>円</td>
+            </tr>
+          <% end %>
         <% end %>
     </table>
     </div>
@@ -33,12 +39,9 @@
       <div class="col-md-4"></div>
       <div class="col-md-4">
       <%= link_to "戻る", payments_path, class: "btn btn-primary btn-lg center-block btn-block" %>
-
       </div>
       <div class="col-md-4"></div>
     </div>
   </div>
-
-
   </div>
 </div>
