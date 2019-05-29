@@ -21,7 +21,8 @@
         <th>総計（送料込み）</th>
       </tr>
 
-      <% current_user.payments.reverse.each do |payment| %>
+
+      <% @payments.each do |payment| %>
           <tr>
             <td><%= payment.created_at.strftime('%Y/%m/%d') %></td>
             <td><%= payment.shipping_last_name %>　<%= payment.shipping_first_name %></td>
