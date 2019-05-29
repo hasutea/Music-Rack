@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
     @disks = @product.disks
+    @price = (@product.price * 1.08).floor
     if user_signed_in?
       @cart = current_user.carts.new
     else
