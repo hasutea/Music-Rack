@@ -1,2 +1,2 @@
-id,email,encrypted_password
-1,admins@music.com,password
+id,email,password
+1,admin@hasutea.com,password

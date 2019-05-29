@@ -4,8 +4,7 @@
 
     <div class="row">
       <div class="col-md-5">
-        <h1>購入履歴</h1>
-        <p>会員登録時のユーザー情報を閲覧することができます。</p>
+        <h1>購入履歴詳細</h1>
         <p>現在の送料 500円</p>
       </div>
     </div>
@@ -14,16 +13,22 @@
       <tr>
         <th>購入内容</th>
         <th>購入枚数</th>
-        <th>価格</th>
+        <th>価格（税込）</th>
       </tr>
 
 
         <% @purchase_products.each do |purchase_product| %>
-          <tr>
-            <td><%= purchase_product.product.title %></td>
-            <td><%= purchase_product.quantity %></td>
-            <td><%= purchase_product.price %></td>
-          </tr>
+        <% if purchase_product.product == nil %>
+              <td></td>
+              <td><%= purchase_product.quantity %>枚</td>
+              <td><%= purchase_product.price %>円</td>
+          <% else %>
+            <tr>
+              <td><%= purchase_product.product.title %></td>
+              <td><%= purchase_product.quantity %>枚</td>
+              <td><%= purchase_product.price %>円</td>
+            </tr>
+          <% end %>
         <% end %>
     </table>
     </div>
@@ -33,12 +38,9 @@
       <div class="col-md-4"></div>
       <div class="col-md-4">
       <%= link_to "戻る", payments_path, class: "btn btn-primary btn-lg center-block btn-block" %>
-
       </div>
       <div class="col-md-4"></div>
     </div>
   </div>
-
-
   </div>
 </div>
