@@ -24,6 +24,7 @@
     <table class="table table-bordered">
       <tr>
         <th>購入日</th>
+        <th>送付先氏名</th>
         <th>送付先郵便番号</th>
         <th>送付先住所</th>
         <th>ステータス</th>
@@ -34,6 +35,7 @@
       <% user.payments.reverse.each do |payment| %>
           <tr>
             <td><%= payment.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= payment.shipping_last_name %>　<%= payment.shipping_first_name %></td>
             <td><%= payment.shipping_postal_code %></td>
             <td><%= payment.shipping_address %></td>
             <td><%= payment.order_status %></td>

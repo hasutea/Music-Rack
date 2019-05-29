@@ -22,4 +22,4 @@ ja:
         shipping_first_name: 送付先名（名）
         shipping_postal_code: 送付先郵便番号
         shipping_address: 送付先住所
-        payment_method_id: 支払い方法ID
+        payment_method: 支払い方法

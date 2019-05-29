@@ -15,5 +15,4 @@ class User < ApplicationRecord
   validates :kana_last_name, presence: true
   validates :kana_first_name, presence: true
   validates :telephone, presence: true
-  validates :password, length: {in: 8..32}
 end
