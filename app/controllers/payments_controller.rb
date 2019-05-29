@@ -9,7 +9,7 @@ class PaymentsController < ApplicationController
     @carts = current_user.carts
     @total_price = 0
     @carts.each do |cart|
-      @total_price += cart.product.price * cart.quantity
+      @total_price += (cart.product.price * 1.08).floor * cart.quantity
     end
     @purchase_product = @payment.purchase_products.build
   end
@@ -26,7 +26,7 @@ class PaymentsController < ApplicationController
         purchase_product = PurchaseProduct.new
         purchase_product.product_id = cart.product.id
         purchase_product.quantity = cart.quantity
-        purchase_product.price = cart.product.price
+        purchase_product.price = (cart.product.price * 1.08).floor
         purchase_product.payment_id = @payment.id
         purchase_product.save
 
@@ -42,7 +42,7 @@ class PaymentsController < ApplicationController
       @carts = current_user.carts
       @total_price = 0
       @carts.each do |cart|
-        @total_price += cart.product.price * cart.quantity
+        @total_price += (cart.product.price * 1.08).floor * cart.quantity
       end
       @purchase_product = @payment.purchase_products.build
       render :new
