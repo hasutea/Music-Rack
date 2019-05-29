@@ -29,22 +29,22 @@
 		<% @users.each do |user| %>
 
 
-		  	<tbody>
-		  		<tr>
-		  			<td><%= link_to user.id, admins_user_path(user.id) %></td>
+              <tbody>
+                <tr>
+                    <td><%= link_to user.id, admins_user_path(user.id) %></td>
 
-		  			<td><span><%= user.last_name %></span><span><%= user.first_name %></span></td>
+                    <td><span><%= user.last_name %></span><span><%= user.first_name %></span></td>
 
-		  			<td><span><%= user.kana_last_name %></span><span><%= user.kana_first_name %></span></td>
+                    <td><span><%= user.kana_last_name %></span><span><%= user.kana_first_name %></span></td>
 
-		  			<td><span><%= user.email %></span></td>
-		  		</tr>
-		  	</tbody>
+                    <td><span><%= user.email %></span></td>
+                </tr>
+             </tbody>
 
-		<% end %>
-		  </table>
-		</div>
-	</div>
+    	<% end %>
+    	  </table>
+    	</div>
+    </div>
 
     <div class="row">
           <div class="col-md-12">
@@ -56,6 +56,6 @@
             <div class="col-md-3">
             </div>
           </div>
-  </div>
+     </div>
 
 </div>

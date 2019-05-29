@@ -83,8 +83,22 @@ h1, h2,h3{
 /* 商品登録 */
 
 #border{
-  boader: solid 3px black;
-  boader-radius: 10px;
+  border: 1px solid #ccc;
+  boader-radius: 4px;
+}
+
+/* 商品詳細 */
+
+.product-title{
+  color: #2e3740;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.product-artist{
+  margin-bottom: 50px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 
