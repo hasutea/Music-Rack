@@ -33,7 +33,7 @@
               <% payment.purchase_products.each do |purchase_product| %>
               <% sum += purchase_product.price * purchase_product.quantity %>
                 <% end %>
-                <%= sum + 500 %>
+                <%= sum + 500 %>円
             </td>
             <td><%= link_to "詳細", payment_path(payment.id), class: "col-xs-12 btn btn-info" %></td>
           </tr>
