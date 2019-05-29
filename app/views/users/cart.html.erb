@@ -24,7 +24,7 @@
             <% @carts.each do |cart| %>
               <tr>
                 <td><%= cart.product.title %></td>
-                <td><%= attachment_image_tag cart.product, :image, :fill, 50, 50, format: 'png', fallback: "noimage.png"  %></td>
+                <td><%= attachment_image_tag cart.product, :image, :fill, 50, 50, format: 'png' %></td>
                 <td><%= cart.product.artist.artist %></td>
                 <td>
                   <%= form_for(cart) do |f| %>
