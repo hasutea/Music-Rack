@@ -3,7 +3,7 @@ class Admins::ArtistController < ApplicationController
   layout "admin"
 
   def index
-      @artists = Artist.page(params[:page])
+      @artists = Artist.all
       @artist = Artist.new
   end
 

@@ -16,9 +16,5 @@ class Product < ApplicationRecord
   validates :stock, presence: true
   validates :status, presence: true
 
-  validates :image_id, presence: true
-  validates :artist_id, presence: true
-  validates :label_id, presence: true
-  validates :genre_id, presence: true
 
 end

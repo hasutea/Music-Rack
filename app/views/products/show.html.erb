@@ -30,7 +30,7 @@
     <h4>収録曲</h4>
       <% @disks.each do |disk| %>
         <p><label>ディスクNo.</label><%= disk.disk %></p>
-        <ul>
+        <ul class="song-list">
           <% disk.songs.each do |song| %>
             <li><%= song.song_order %>.   <%= song.song_title %></li>
           <% end %>
