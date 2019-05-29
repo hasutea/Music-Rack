@@ -11,5 +11,10 @@ class Product < ApplicationRecord
   # throughオプションによりdisls経由でsongsにアクセスできるようになる
   has_many :songs, through: :disks
 
+  validates :title, presence: true
+  validates :price, presence: true
+  validates :stock, presence: true
+  validates :status, presence: true
+
 
 end

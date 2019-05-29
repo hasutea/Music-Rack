@@ -9,6 +9,7 @@ class Admins::ProductsController < ApplicationController
     @search = Product.ransack(params[:q])
     # 検索結果を表示
     @results = @search.result.page(params[:page]).reverse_order.per(20)
+
   end
 
   def show
@@ -48,6 +49,16 @@ class Admins::ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+
+    @artist = Artist.find(params[:artist_id])
+    @product.artist_id = params[:artist_id]
+
+    @label = Label.find(params[:label_id])
+    @product.label_id = @label.id
+
+    @genre = Genre.find(params[:genre_id])
+    @product.genre_id = @genre.id
+
     if @product.update_attributes(product_params)
       flash[:success] = '商品情報を更新しました！'
       redirect_to admins_products_path
