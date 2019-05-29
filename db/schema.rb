@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 2019_05_28_072359) do
   create_table "carts", force: :cascade do |t|
     t.integer "product_id"
     t.integer "user_id"
-    t.integer "quantity"
+    t.integer "quantity", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -124,13 +124,13 @@ ActiveRecord::Schema.define(version: 2019_05_28_072359) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "last_name"
     t.string "first_name"
     t.string "kana_last_name"
     t.string "kana_first_name"
     t.string "telephone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
