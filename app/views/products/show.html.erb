@@ -15,7 +15,7 @@
         <div class="product-artist"><%= @product.artist.artist %></div>
         <p>レーベル｜<%= @product.label.label %></p>
         <p>ジャンル｜<%= @product.genre.genre %></p>
-        <p>価格(税込)|￥<%= @product.price%></p>
+        <p>価格(税込)|￥<%= @price %></p>
         <% if @product.stock == 0 %>
           <p>売り切れ</p>
         <% else %>
